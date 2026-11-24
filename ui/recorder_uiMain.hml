@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hml>
+    <meta>
+        <project name="recorder_ui" appId="com.example.recorder_ui" resolution="390X450" minSdk="API 4: HoneyGUI V2.0.0" pixelMode="RGB565" />
+        <author name="Anonymous" />
+    </meta>
+    <view>
+        <hg_view id="recorder_uiMainView" entry="true" x="0" y="0" width="390" height="450" backgroundColor="#000000" />
+    </view>
+</hml>

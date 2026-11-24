@@ -1,0 +1,16 @@
+{
+  "$schema": "HoneyGUI",
+  "type": "Designer",
+  "version": "1.0.0",
+  "name": "recorder_ui",
+  "appId": "com.example.recorder_ui",
+  "resolution": "390X450",
+  "cornerRadius": 20,
+  "targetEngine": "honeygui",
+  "aiAssets": true,
+  "minSdk": "API 4: HoneyGUI V2.0.0",
+  "pixelMode": "RGB565",
+  "mainHmlFile": "ui/recorder_uiMain.hml",
+  "romfsBaseAddr": "0x704D1000",
+  "created": "2026-11-24T06:54:45.308Z"
+}

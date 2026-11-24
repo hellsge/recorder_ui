@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.associations": {
+      "*.hml": "xml"
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "honeygui-visual-designer.honeygui-visual-designer"
+    ]
+  }
+}

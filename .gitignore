@@ -1,0 +1,19 @@
+# HoneyDesigner simulator build: regenerated on every Compile & Simulate.
+# Keep only the small ROMFS outputs that the device build may consume.
+/build/*
+!/build/ui_resource.h
+!/build/app_romfs.c
+!/build/app_romfs_*.bin
+
+# Compiler / SCons / Python intermediates
+*.o
+*.obj
+*.d
+*.map
+*.pyc
+__pycache__/
+.sconsign.dblite
+
+# AI skill and the guide that depends on it (auto-maintained by the extension)
+/.claude/
+/AGENTS.md
