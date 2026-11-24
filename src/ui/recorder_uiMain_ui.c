@@ -13,6 +13,7 @@
 #include <stddef.h>
 
 // Component handle definitions
+gui_img_t *img_1 = NULL;
 
 
 // Create recorder_uiMainView (hg_view)
@@ -24,7 +25,7 @@ static void recorder_uiMainView_switch_out(gui_view_t *view)
 static void recorder_uiMainView_switch_in(gui_view_t *view)
 {
     // Set animation step
-    gui_view_set_animate_step(view, 45);
+    gui_view_set_animate_step(view, 39);
 
     // Set opacity
     gui_view_set_opacity(view, 255);
@@ -33,5 +34,9 @@ static void recorder_uiMainView_switch_in(gui_view_t *view)
     gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
 
     GUI_UNUSED(view);
+
+
+    // Create img_1 (hg_image)
+    img_1 = gui_img_create_from_fs((gui_obj_t *)view, "img_1", "/recorder2.bin", 0, 0, 450, 390);
 }
 GUI_VIEW_INSTANCE("recorder_uiMainView", false, recorder_uiMainView_switch_in, recorder_uiMainView_switch_out, false);

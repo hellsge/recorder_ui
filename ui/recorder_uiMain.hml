@@ -5,6 +5,8 @@
         <author name="Anonymous" />
     </meta>
     <view>
-        <hg_view id="recorder_uiMainView" entry="true" x="0" y="0" width="390" height="450" backgroundColor="#000000" />
+        <hg_view id="recorder_uiMainView" x="0" y="0" width="450" height="390" backgroundColor="#000000" entry="true" zIndex="0">
+            <hg_image id="img_1" x="0" y="0" width="450" height="390" src="assets/recorder2.png" zIndex="1" />
+        </hg_view>
     </view>
 </hml>

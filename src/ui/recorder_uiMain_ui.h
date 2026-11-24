@@ -11,7 +11,9 @@
 #include "gui_components_init.h"
 #include "gui_view.h"
 #include "gui_view_instance.h"
+#include "gui_img.h"
 
 // Component handle declarations
+extern gui_img_t *img_1;
 
 #endif // RECORDER_UIMAIN_UI_H

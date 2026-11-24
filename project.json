@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "name": "recorder_ui",
   "appId": "com.example.recorder_ui",
-  "resolution": "390X450",
+  "resolution": "450X390",
   "cornerRadius": 20,
   "targetEngine": "honeygui",
   "aiAssets": true,
