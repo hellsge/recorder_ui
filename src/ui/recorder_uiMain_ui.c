@@ -14,6 +14,7 @@
 
 // Component handle definitions
 gui_img_t *img_1 = NULL;
+gui_img_t *img_2 = NULL;
 
 
 // Create recorder_uiMainView (hg_view)
@@ -33,10 +34,35 @@ static void recorder_uiMainView_switch_in(gui_view_t *view)
     // Set background color
     gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
 
-    GUI_UNUSED(view);
+    gui_view_switch_on_event(view, "recorder_uiSecondView", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_MOVE_LEFT);
 
 
     // Create img_1 (hg_image)
     img_1 = gui_img_create_from_fs((gui_obj_t *)view, "img_1", "/recorder2.bin", 0, 0, 450, 390);
 }
 GUI_VIEW_INSTANCE("recorder_uiMainView", false, recorder_uiMainView_switch_in, recorder_uiMainView_switch_out, false);
+
+// Create recorder_uiSecondView (hg_view)
+static void recorder_uiSecondView_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void recorder_uiSecondView_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "recorder_uiMainView", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_MOVE_RIGHT);
+
+
+    // Create img_2 (hg_image)
+    img_2 = gui_img_create_from_fs((gui_obj_t *)view, "img_2", "/switch2.bin", 0, 0, 450, 390);
+}
+GUI_VIEW_INSTANCE("recorder_uiSecondView", false, recorder_uiSecondView_switch_in, recorder_uiSecondView_switch_out, false);

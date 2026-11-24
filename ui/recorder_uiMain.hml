@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <hml>
     <meta>
-        <project name="recorder_ui" appId="com.example.recorder_ui" resolution="390X450" minSdk="API 4: HoneyGUI V2.0.0" pixelMode="RGB565" />
+        <project name="recorder_ui" appId="com.example.recorder_ui" resolution="450X390" minSdk="API 4: HoneyGUI V2.0.0" pixelMode="RGB565" />
         <author name="Anonymous" />
     </meta>
     <view>
         <hg_view id="recorder_uiMainView" x="0" y="0" width="450" height="390" backgroundColor="#000000" entry="true" zIndex="0">
+            <events>
+                <event type="onSwipeLeft">
+                    <action type="switchView" target="recorder_uiSecondView" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+            </events>
             <hg_image id="img_1" x="0" y="0" width="450" height="390" src="assets/recorder2.png" zIndex="1" />
+        </hg_view>
+        <hg_view id="recorder_uiSecondView" x="563" y="0" width="450" height="390" backgroundColor="#000000" zIndex="0">
+            <events>
+                <event type="onSwipeRight">
+                    <action type="switchView" target="recorder_uiMainView" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+            </events>
+            <hg_image id="img_2" x="0" y="0" width="450" height="390" src="assets/switch2.png" zIndex="1" />
         </hg_view>
     </view>
 </hml>

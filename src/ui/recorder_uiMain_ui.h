@@ -15,5 +15,6 @@
 
 // Component handle declarations
 extern gui_img_t *img_1;
+extern gui_img_t *img_2;
 
 #endif // RECORDER_UIMAIN_UI_H

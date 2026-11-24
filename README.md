@@ -5,7 +5,7 @@ A HoneyGUI project created with HoneyDesigner.
 ## Project Information
 
 - **APP ID**: com.example.recorder_ui
-- **Resolution**: 390X450
+- **Resolution**: 450X390
 - **Format**: Standard HML Format (v1.0)
 - **Created**: 2026-11-24T06:54:45.308Z
 
