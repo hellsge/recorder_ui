@@ -17,6 +17,13 @@
       "format": "RGB565",
       "compression": "rle",
       "dither": true
+    },
+    "elements": {
+      "compression": "rle",
+      "format": "RGB565"
+    },
+    "elements/bg_main.png": {
+      "dither": true
     }
   }
 }

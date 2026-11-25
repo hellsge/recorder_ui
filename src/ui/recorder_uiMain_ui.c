@@ -34,7 +34,7 @@ static void recorder_uiMainView_switch_in(gui_view_t *view)
     // Set background color
     gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
 
-    gui_view_switch_on_event(view, "recorder_uiSecondView", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_MOVE_LEFT);
+    gui_view_switch_on_event(view, "recorder_uiSecondView", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_MOVE_LEFT);
 
 
     // Create img_1 (hg_image)
@@ -59,7 +59,7 @@ static void recorder_uiSecondView_switch_in(gui_view_t *view)
     // Set background color
     gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
 
-    gui_view_switch_on_event(view, "recorder_uiMainView", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_MOVE_RIGHT);
+    gui_view_switch_on_event(view, "recorder_uiMainView", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_MOVE_RIGHT);
 
 
     // Create img_2 (hg_image)

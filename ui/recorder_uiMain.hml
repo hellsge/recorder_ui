@@ -5,10 +5,10 @@
         <author name="Anonymous" />
     </meta>
     <view>
-        <hg_view id="recorder_uiMainView" x="0" y="0" width="450" height="390" backgroundColor="#000000" entry="true" zIndex="0">
+        <hg_view id="recorder_uiMainView" x="0" y="0" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
             <events>
                 <event type="onSwipeLeft">
-                    <action type="switchView" target="recorder_uiSecondView" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                    <action type="switchView" target="recorder_uiSecondView" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
                 </event>
             </events>
             <hg_image id="img_1" x="0" y="0" width="450" height="390" src="assets/recorder2.png" zIndex="1" />
@@ -16,7 +16,7 @@
         <hg_view id="recorder_uiSecondView" x="563" y="0" width="450" height="390" backgroundColor="#000000" zIndex="0">
             <events>
                 <event type="onSwipeRight">
-                    <action type="switchView" target="recorder_uiMainView" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                    <action type="switchView" target="recorder_uiMainView" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
                 </event>
             </events>
             <hg_image id="img_2" x="0" y="0" width="450" height="390" src="assets/switch2.png" zIndex="1" />
