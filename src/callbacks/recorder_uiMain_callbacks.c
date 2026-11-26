@@ -14,7 +14,1115 @@
 #include <string.h>
 #include <time.h>
 
+// Internal preset animation clock state (real elapsed time, not callback counts)
+static uint32_t a0_img_spinner_timer_start_ms = 0;
+static bool a0_img_spinner_timer_started = false;
+static uint32_t a0_img_spinner_timer_prev_elapsed_ms = 0;
+static uint32_t c0_img_rec_dot_timer_start_ms = 0;
+static bool c0_img_rec_dot_timer_started = false;
+static uint32_t c0_img_rec_dot_timer_prev_elapsed_ms = 0;
+static uint32_t c1_img_rec_dot_timer_start_ms = 0;
+static bool c1_img_rec_dot_timer_started = false;
+static uint32_t c1_img_rec_dot_timer_prev_elapsed_ms = 0;
+static uint32_t c2_img_rec_dot_timer_start_ms = 0;
+static bool c2_img_rec_dot_timer_started = false;
+static uint32_t c2_img_rec_dot_timer_prev_elapsed_ms = 0;
+static uint32_t d0_img_rec_dot_timer_start_ms = 0;
+static bool d0_img_rec_dot_timer_started = false;
+static uint32_t d0_img_rec_dot_timer_prev_elapsed_ms = 0;
+static uint32_t d1_img_rec_dot_timer_start_ms = 0;
+static bool d1_img_rec_dot_timer_started = false;
+static uint32_t d1_img_rec_dot_timer_prev_elapsed_ms = 0;
+static uint32_t e0_img_pill_timer_start_ms = 0;
+static bool e0_img_pill_timer_started = false;
+static uint32_t e0_img_pill_timer_prev_elapsed_ms = 0;
+static uint32_t f0_img_ring_timer_start_ms = 0;
+static bool f0_img_ring_timer_started = false;
+static uint32_t f0_img_ring_timer_prev_elapsed_ms = 0;
+static uint32_t g0_img_rec_dot_timer_start_ms = 0;
+static bool g0_img_rec_dot_timer_started = false;
+static uint32_t g0_img_rec_dot_timer_prev_elapsed_ms = 0;
+static uint32_t g1_img_rec_dot_timer_start_ms = 0;
+static bool g1_img_rec_dot_timer_started = false;
+static uint32_t g1_img_rec_dot_timer_prev_elapsed_ms = 0;
+static uint32_t g2_img_rec_dot_timer_start_ms = 0;
+static bool g2_img_rec_dot_timer_started = false;
+static uint32_t g2_img_rec_dot_timer_prev_elapsed_ms = 0;
+
+void a0_img_spinner_preset_animation_reset(void)
+{
+    a0_img_spinner_timer_start_ms = 0;
+    a0_img_spinner_timer_started = false;
+    a0_img_spinner_timer_prev_elapsed_ms = 0;
+}
+
+void c0_img_rec_dot_preset_animation_reset(void)
+{
+    c0_img_rec_dot_timer_start_ms = 0;
+    c0_img_rec_dot_timer_started = false;
+    c0_img_rec_dot_timer_prev_elapsed_ms = 0;
+}
+
+void c1_img_rec_dot_preset_animation_reset(void)
+{
+    c1_img_rec_dot_timer_start_ms = 0;
+    c1_img_rec_dot_timer_started = false;
+    c1_img_rec_dot_timer_prev_elapsed_ms = 0;
+}
+
+void c2_img_rec_dot_preset_animation_reset(void)
+{
+    c2_img_rec_dot_timer_start_ms = 0;
+    c2_img_rec_dot_timer_started = false;
+    c2_img_rec_dot_timer_prev_elapsed_ms = 0;
+}
+
+void d0_img_rec_dot_preset_animation_reset(void)
+{
+    d0_img_rec_dot_timer_start_ms = 0;
+    d0_img_rec_dot_timer_started = false;
+    d0_img_rec_dot_timer_prev_elapsed_ms = 0;
+}
+
+void d1_img_rec_dot_preset_animation_reset(void)
+{
+    d1_img_rec_dot_timer_start_ms = 0;
+    d1_img_rec_dot_timer_started = false;
+    d1_img_rec_dot_timer_prev_elapsed_ms = 0;
+}
+
+void e0_img_pill_preset_animation_reset(void)
+{
+    e0_img_pill_timer_start_ms = 0;
+    e0_img_pill_timer_started = false;
+    e0_img_pill_timer_prev_elapsed_ms = 0;
+}
+
+void f0_img_ring_preset_animation_reset(void)
+{
+    f0_img_ring_timer_start_ms = 0;
+    f0_img_ring_timer_started = false;
+    f0_img_ring_timer_prev_elapsed_ms = 0;
+}
+
+void g0_img_rec_dot_preset_animation_reset(void)
+{
+    g0_img_rec_dot_timer_start_ms = 0;
+    g0_img_rec_dot_timer_started = false;
+    g0_img_rec_dot_timer_prev_elapsed_ms = 0;
+}
+
+void g1_img_rec_dot_preset_animation_reset(void)
+{
+    g1_img_rec_dot_timer_start_ms = 0;
+    g1_img_rec_dot_timer_started = false;
+    g1_img_rec_dot_timer_prev_elapsed_ms = 0;
+}
+
+void g2_img_rec_dot_preset_animation_reset(void)
+{
+    g2_img_rec_dot_timer_start_ms = 0;
+    g2_img_rec_dot_timer_started = false;
+    g2_img_rec_dot_timer_prev_elapsed_ms = 0;
+}
+
+// Was the segment boundary at at_ms crossed within (prev_ms, now_ms]?
+static bool preset_anim_boundary_crossed(uint32_t at_ms, uint32_t prev_ms, uint32_t now_ms, bool cycle_wrapped, bool cycle_skipped)
+{
+    if (cycle_skipped)
+    {
+        // At least one whole cycle elapsed since the previous sample
+        return true;
+    }
+    if (cycle_wrapped)
+    {
+        return (at_ms > prev_ms) || (at_ms <= now_ms);
+    }
+    return (at_ms > prev_ms) && (at_ms <= now_ms);
+}
+
 // Event callback function implementations
+
+// Preset timer callback functions
+
+/**
+ * Spinner
+ * Component: a0_img_spinner
+ * Mode: Preset actions, driven by real elapsed time (gui_ms_get)
+ * Timeline: 1 segment(s), 1200 ms total, looping
+ */
+void a0_img_spinner_seq_cb(void *obj)
+{
+    gui_obj_t *target = (gui_obj_t *)obj;
+
+    // Timeline boundaries in real milliseconds
+    const uint32_t total_duration_ms = 1200u;
+    const uint32_t seg0_start_ms = 0u;
+    const uint32_t seg0_end_ms = 1200u;
+
+    uint32_t now_ms = gui_ms_get();
+
+    // The time origin is established by the first callback of a run
+    if (!a0_img_spinner_timer_started)
+    {
+        a0_img_spinner_timer_started = true;
+        a0_img_spinner_timer_start_ms = now_ms;
+        a0_img_spinner_timer_prev_elapsed_ms = 0;
+    }
+
+    // Unsigned subtraction stays correct across uint32_t clock wrap
+    uint32_t total_elapsed_ms = now_ms - a0_img_spinner_timer_start_ms;
+    a0_img_spinner_timer_prev_elapsed_ms = total_elapsed_ms;
+
+    // Loop against the original origin so frame error cannot accumulate
+    uint32_t timeline_ms = total_elapsed_ms % total_duration_ms;
+
+    // Sampled state of the segment the timeline is currently inside
+    // Segment 1: 1200 ms
+    float progress = (float)(timeline_ms - seg0_start_ms) / (float)(seg0_end_ms - seg0_start_ms);
+    if (progress > 1.0f)
+    {
+        progress = 1.0f;
+    }
+    // Image sequence animation: 15 images
+    const void *img_data_array[15] = {
+        "/elements/inactive_ic_ring_01.bin",
+        "/elements/inactive_ic_ring_02.bin",
+        "/elements/inactive_ic_ring_03.bin",
+        "/elements/inactive_ic_ring_04.bin",
+        "/elements/inactive_ic_ring_05.bin",
+        "/elements/inactive_ic_ring_06.bin",
+        "/elements/inactive_ic_ring_07.bin",
+        "/elements/inactive_ic_ring_08.bin",
+        "/elements/inactive_ic_ring_09.bin",
+        "/elements/inactive_ic_ring_10.bin",
+        "/elements/inactive_ic_ring_11.bin",
+        "/elements/inactive_ic_ring_12.bin",
+        "/elements/inactive_ic_ring_13.bin",
+        "/elements/inactive_ic_ring_14.bin",
+        "/elements/inactive_ic_ring_15.bin"
+    };
+    uint16_t index = (uint16_t)((15 - 1) * progress);
+    if (index >= 15)
+    {
+        index = 15 - 1;
+    }
+    gui_img_set_src((gui_img_t *)target, (const uint8_t *)img_data_array[index], IMG_SRC_FILESYS);
+    gui_img_refresh_size((gui_img_t *)target);
+
+
+}
+
+
+/**
+ * REC blink
+ * Component: c0_img_rec_dot
+ * Mode: Preset actions, driven by real elapsed time (gui_ms_get)
+ * Timeline: 2 segment(s), 1000 ms total, looping
+ */
+void c0_img_rec_dot_blink_cb(void *obj)
+{
+    gui_obj_t *target = (gui_obj_t *)obj;
+
+    // Timeline boundaries in real milliseconds
+    const uint32_t total_duration_ms = 1000u;
+    const uint32_t seg0_start_ms = 0u;
+    const uint32_t seg0_end_ms = 500u;
+    const uint32_t seg1_start_ms = 500u;
+    const uint32_t seg1_end_ms = 1000u;
+
+    uint32_t now_ms = gui_ms_get();
+
+    // The time origin is established by the first callback of a run
+    if (!c0_img_rec_dot_timer_started)
+    {
+        c0_img_rec_dot_timer_started = true;
+        c0_img_rec_dot_timer_start_ms = now_ms;
+        c0_img_rec_dot_timer_prev_elapsed_ms = 0;
+    }
+
+    // Unsigned subtraction stays correct across uint32_t clock wrap
+    uint32_t total_elapsed_ms = now_ms - c0_img_rec_dot_timer_start_ms;
+    c0_img_rec_dot_timer_prev_elapsed_ms = total_elapsed_ms;
+
+    // Loop against the original origin so frame error cannot accumulate
+    uint32_t timeline_ms = total_elapsed_ms % total_duration_ms;
+
+    // Sampled state of the segment the timeline is currently inside
+    if (timeline_ms < seg0_end_ms)
+    {
+        // Segment 1: 500 ms
+        float progress = (float)(timeline_ms - seg0_start_ms) / (float)(seg0_end_ms - seg0_start_ms);
+        // Adjust opacity: 255 -> 60
+        const uint8_t opacity_origin = 255;
+        const uint8_t opacity_target = 60;
+        int16_t opacity_cur = (int16_t)(opacity_origin + (opacity_target - opacity_origin) * progress);
+        gui_img_set_opacity((gui_img_t *)target, opacity_cur);
+
+    }
+    else
+    {
+        // Segment 2: 500 ms
+        float progress = (float)(timeline_ms - seg1_start_ms) / (float)(seg1_end_ms - seg1_start_ms);
+        if (progress > 1.0f)
+        {
+            progress = 1.0f;
+        }
+        // Adjust opacity: 60 -> 255
+        const uint8_t opacity_origin = 60;
+        const uint8_t opacity_target = 255;
+        int16_t opacity_cur = (int16_t)(opacity_origin + (opacity_target - opacity_origin) * progress);
+        gui_img_set_opacity((gui_img_t *)target, opacity_cur);
+
+    }
+
+}
+
+
+/**
+ * REC blink
+ * Component: c1_img_rec_dot
+ * Mode: Preset actions, driven by real elapsed time (gui_ms_get)
+ * Timeline: 2 segment(s), 1000 ms total, looping
+ */
+void c1_img_rec_dot_blink_cb(void *obj)
+{
+    gui_obj_t *target = (gui_obj_t *)obj;
+
+    // Timeline boundaries in real milliseconds
+    const uint32_t total_duration_ms = 1000u;
+    const uint32_t seg0_start_ms = 0u;
+    const uint32_t seg0_end_ms = 500u;
+    const uint32_t seg1_start_ms = 500u;
+    const uint32_t seg1_end_ms = 1000u;
+
+    uint32_t now_ms = gui_ms_get();
+
+    // The time origin is established by the first callback of a run
+    if (!c1_img_rec_dot_timer_started)
+    {
+        c1_img_rec_dot_timer_started = true;
+        c1_img_rec_dot_timer_start_ms = now_ms;
+        c1_img_rec_dot_timer_prev_elapsed_ms = 0;
+    }
+
+    // Unsigned subtraction stays correct across uint32_t clock wrap
+    uint32_t total_elapsed_ms = now_ms - c1_img_rec_dot_timer_start_ms;
+    c1_img_rec_dot_timer_prev_elapsed_ms = total_elapsed_ms;
+
+    // Loop against the original origin so frame error cannot accumulate
+    uint32_t timeline_ms = total_elapsed_ms % total_duration_ms;
+
+    // Sampled state of the segment the timeline is currently inside
+    if (timeline_ms < seg0_end_ms)
+    {
+        // Segment 1: 500 ms
+        float progress = (float)(timeline_ms - seg0_start_ms) / (float)(seg0_end_ms - seg0_start_ms);
+        // Adjust opacity: 255 -> 60
+        const uint8_t opacity_origin = 255;
+        const uint8_t opacity_target = 60;
+        int16_t opacity_cur = (int16_t)(opacity_origin + (opacity_target - opacity_origin) * progress);
+        gui_img_set_opacity((gui_img_t *)target, opacity_cur);
+
+    }
+    else
+    {
+        // Segment 2: 500 ms
+        float progress = (float)(timeline_ms - seg1_start_ms) / (float)(seg1_end_ms - seg1_start_ms);
+        if (progress > 1.0f)
+        {
+            progress = 1.0f;
+        }
+        // Adjust opacity: 60 -> 255
+        const uint8_t opacity_origin = 60;
+        const uint8_t opacity_target = 255;
+        int16_t opacity_cur = (int16_t)(opacity_origin + (opacity_target - opacity_origin) * progress);
+        gui_img_set_opacity((gui_img_t *)target, opacity_cur);
+
+    }
+
+}
+
+
+/**
+ * REC blink
+ * Component: c2_img_rec_dot
+ * Mode: Preset actions, driven by real elapsed time (gui_ms_get)
+ * Timeline: 2 segment(s), 1000 ms total, looping
+ */
+void c2_img_rec_dot_blink_cb(void *obj)
+{
+    gui_obj_t *target = (gui_obj_t *)obj;
+
+    // Timeline boundaries in real milliseconds
+    const uint32_t total_duration_ms = 1000u;
+    const uint32_t seg0_start_ms = 0u;
+    const uint32_t seg0_end_ms = 500u;
+    const uint32_t seg1_start_ms = 500u;
+    const uint32_t seg1_end_ms = 1000u;
+
+    uint32_t now_ms = gui_ms_get();
+
+    // The time origin is established by the first callback of a run
+    if (!c2_img_rec_dot_timer_started)
+    {
+        c2_img_rec_dot_timer_started = true;
+        c2_img_rec_dot_timer_start_ms = now_ms;
+        c2_img_rec_dot_timer_prev_elapsed_ms = 0;
+    }
+
+    // Unsigned subtraction stays correct across uint32_t clock wrap
+    uint32_t total_elapsed_ms = now_ms - c2_img_rec_dot_timer_start_ms;
+    c2_img_rec_dot_timer_prev_elapsed_ms = total_elapsed_ms;
+
+    // Loop against the original origin so frame error cannot accumulate
+    uint32_t timeline_ms = total_elapsed_ms % total_duration_ms;
+
+    // Sampled state of the segment the timeline is currently inside
+    if (timeline_ms < seg0_end_ms)
+    {
+        // Segment 1: 500 ms
+        float progress = (float)(timeline_ms - seg0_start_ms) / (float)(seg0_end_ms - seg0_start_ms);
+        // Adjust opacity: 255 -> 60
+        const uint8_t opacity_origin = 255;
+        const uint8_t opacity_target = 60;
+        int16_t opacity_cur = (int16_t)(opacity_origin + (opacity_target - opacity_origin) * progress);
+        gui_img_set_opacity((gui_img_t *)target, opacity_cur);
+
+    }
+    else
+    {
+        // Segment 2: 500 ms
+        float progress = (float)(timeline_ms - seg1_start_ms) / (float)(seg1_end_ms - seg1_start_ms);
+        if (progress > 1.0f)
+        {
+            progress = 1.0f;
+        }
+        // Adjust opacity: 60 -> 255
+        const uint8_t opacity_origin = 60;
+        const uint8_t opacity_target = 255;
+        int16_t opacity_cur = (int16_t)(opacity_origin + (opacity_target - opacity_origin) * progress);
+        gui_img_set_opacity((gui_img_t *)target, opacity_cur);
+
+    }
+
+}
+
+
+/**
+ * REC blink
+ * Component: d0_img_rec_dot
+ * Mode: Preset actions, driven by real elapsed time (gui_ms_get)
+ * Timeline: 2 segment(s), 1000 ms total, looping
+ */
+void d0_img_rec_dot_blink_cb(void *obj)
+{
+    gui_obj_t *target = (gui_obj_t *)obj;
+
+    // Timeline boundaries in real milliseconds
+    const uint32_t total_duration_ms = 1000u;
+    const uint32_t seg0_start_ms = 0u;
+    const uint32_t seg0_end_ms = 500u;
+    const uint32_t seg1_start_ms = 500u;
+    const uint32_t seg1_end_ms = 1000u;
+
+    uint32_t now_ms = gui_ms_get();
+
+    // The time origin is established by the first callback of a run
+    if (!d0_img_rec_dot_timer_started)
+    {
+        d0_img_rec_dot_timer_started = true;
+        d0_img_rec_dot_timer_start_ms = now_ms;
+        d0_img_rec_dot_timer_prev_elapsed_ms = 0;
+    }
+
+    // Unsigned subtraction stays correct across uint32_t clock wrap
+    uint32_t total_elapsed_ms = now_ms - d0_img_rec_dot_timer_start_ms;
+    d0_img_rec_dot_timer_prev_elapsed_ms = total_elapsed_ms;
+
+    // Loop against the original origin so frame error cannot accumulate
+    uint32_t timeline_ms = total_elapsed_ms % total_duration_ms;
+
+    // Sampled state of the segment the timeline is currently inside
+    if (timeline_ms < seg0_end_ms)
+    {
+        // Segment 1: 500 ms
+        float progress = (float)(timeline_ms - seg0_start_ms) / (float)(seg0_end_ms - seg0_start_ms);
+        // Adjust opacity: 255 -> 60
+        const uint8_t opacity_origin = 255;
+        const uint8_t opacity_target = 60;
+        int16_t opacity_cur = (int16_t)(opacity_origin + (opacity_target - opacity_origin) * progress);
+        gui_img_set_opacity((gui_img_t *)target, opacity_cur);
+
+    }
+    else
+    {
+        // Segment 2: 500 ms
+        float progress = (float)(timeline_ms - seg1_start_ms) / (float)(seg1_end_ms - seg1_start_ms);
+        if (progress > 1.0f)
+        {
+            progress = 1.0f;
+        }
+        // Adjust opacity: 60 -> 255
+        const uint8_t opacity_origin = 60;
+        const uint8_t opacity_target = 255;
+        int16_t opacity_cur = (int16_t)(opacity_origin + (opacity_target - opacity_origin) * progress);
+        gui_img_set_opacity((gui_img_t *)target, opacity_cur);
+
+    }
+
+}
+
+
+/**
+ * REC blink
+ * Component: d1_img_rec_dot
+ * Mode: Preset actions, driven by real elapsed time (gui_ms_get)
+ * Timeline: 2 segment(s), 1000 ms total, looping
+ */
+void d1_img_rec_dot_blink_cb(void *obj)
+{
+    gui_obj_t *target = (gui_obj_t *)obj;
+
+    // Timeline boundaries in real milliseconds
+    const uint32_t total_duration_ms = 1000u;
+    const uint32_t seg0_start_ms = 0u;
+    const uint32_t seg0_end_ms = 500u;
+    const uint32_t seg1_start_ms = 500u;
+    const uint32_t seg1_end_ms = 1000u;
+
+    uint32_t now_ms = gui_ms_get();
+
+    // The time origin is established by the first callback of a run
+    if (!d1_img_rec_dot_timer_started)
+    {
+        d1_img_rec_dot_timer_started = true;
+        d1_img_rec_dot_timer_start_ms = now_ms;
+        d1_img_rec_dot_timer_prev_elapsed_ms = 0;
+    }
+
+    // Unsigned subtraction stays correct across uint32_t clock wrap
+    uint32_t total_elapsed_ms = now_ms - d1_img_rec_dot_timer_start_ms;
+    d1_img_rec_dot_timer_prev_elapsed_ms = total_elapsed_ms;
+
+    // Loop against the original origin so frame error cannot accumulate
+    uint32_t timeline_ms = total_elapsed_ms % total_duration_ms;
+
+    // Sampled state of the segment the timeline is currently inside
+    if (timeline_ms < seg0_end_ms)
+    {
+        // Segment 1: 500 ms
+        float progress = (float)(timeline_ms - seg0_start_ms) / (float)(seg0_end_ms - seg0_start_ms);
+        // Adjust opacity: 255 -> 60
+        const uint8_t opacity_origin = 255;
+        const uint8_t opacity_target = 60;
+        int16_t opacity_cur = (int16_t)(opacity_origin + (opacity_target - opacity_origin) * progress);
+        gui_img_set_opacity((gui_img_t *)target, opacity_cur);
+
+    }
+    else
+    {
+        // Segment 2: 500 ms
+        float progress = (float)(timeline_ms - seg1_start_ms) / (float)(seg1_end_ms - seg1_start_ms);
+        if (progress > 1.0f)
+        {
+            progress = 1.0f;
+        }
+        // Adjust opacity: 60 -> 255
+        const uint8_t opacity_origin = 60;
+        const uint8_t opacity_target = 255;
+        int16_t opacity_cur = (int16_t)(opacity_origin + (opacity_target - opacity_origin) * progress);
+        gui_img_set_opacity((gui_img_t *)target, opacity_cur);
+
+    }
+
+}
+
+
+/**
+ * anim
+ * Component: e0_img_pill
+ * Mode: Preset actions, driven by real elapsed time (gui_ms_get)
+ * Timeline: 20 segment(s), 61600 ms total, looping
+ */
+void e0_img_pill_f_cb(void *obj)
+{
+    gui_obj_t *target = (gui_obj_t *)obj;
+
+    // Timeline boundaries in real milliseconds
+    const uint32_t total_duration_ms = 61600u;
+    const uint32_t seg0_start_ms = 0u;
+    const uint32_t seg1_start_ms = 120u;
+    const uint32_t seg2_start_ms = 240u;
+    const uint32_t seg3_start_ms = 360u;
+    const uint32_t seg4_start_ms = 480u;
+    const uint32_t seg5_start_ms = 600u;
+    const uint32_t seg6_start_ms = 1600u;
+    const uint32_t seg7_start_ms = 6600u;
+    const uint32_t seg8_start_ms = 10600u;
+    const uint32_t seg9_start_ms = 15600u;
+    const uint32_t seg10_start_ms = 19600u;
+    const uint32_t seg11_start_ms = 24600u;
+    const uint32_t seg12_start_ms = 28600u;
+    const uint32_t seg13_start_ms = 33600u;
+    const uint32_t seg14_start_ms = 37600u;
+    const uint32_t seg15_start_ms = 42600u;
+    const uint32_t seg16_start_ms = 46600u;
+    const uint32_t seg17_start_ms = 51600u;
+    const uint32_t seg18_start_ms = 55600u;
+    const uint32_t seg19_start_ms = 60600u;
+
+    uint32_t now_ms = gui_ms_get();
+    bool first_sample = false;
+
+    // The time origin is established by the first callback of a run
+    if (!e0_img_pill_timer_started)
+    {
+        e0_img_pill_timer_started = true;
+        e0_img_pill_timer_start_ms = now_ms;
+        e0_img_pill_timer_prev_elapsed_ms = 0;
+        first_sample = true;
+    }
+
+    // Unsigned subtraction stays correct across uint32_t clock wrap
+    uint32_t total_elapsed_ms = now_ms - e0_img_pill_timer_start_ms;
+    uint32_t prev_elapsed_ms = e0_img_pill_timer_prev_elapsed_ms;
+    e0_img_pill_timer_prev_elapsed_ms = total_elapsed_ms;
+
+    // Loop against the original origin so frame error cannot accumulate
+    uint32_t timeline_ms = total_elapsed_ms % total_duration_ms;
+    uint32_t prev_timeline_ms = prev_elapsed_ms % total_duration_ms;
+    bool cycle_skipped = (total_elapsed_ms - prev_elapsed_ms) >= total_duration_ms;
+    bool cycle_wrapped = cycle_skipped || (timeline_ms < prev_timeline_ms);
+
+    // Segment entry actions: fire once per entry, not once per frame
+    if (first_sample || preset_anim_boundary_crossed(seg0_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 1
+        // Change image: /elements/idea_pill_01.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/idea_pill_01.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg1_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 2
+        // Change image: /elements/idea_pill_02.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/idea_pill_02.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg2_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 3
+        // Change image: /elements/idea_pill_03.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/idea_pill_03.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg3_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 4
+        // Change image: /elements/idea_pill_04.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/idea_pill_04.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg4_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 5
+        // Change image: /elements/idea_pill_05.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/idea_pill_05.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg5_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 6
+        // Change image: /elements/idea_pill_06.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/idea_pill_06.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg6_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 7
+        // Change image: /elements/idea_pill_07.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/idea_pill_07.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg7_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 8
+        // Change image: /elements/idea_pill_08.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/idea_pill_08.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg8_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 9
+        // Change image: /elements/idea_pill_09.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/idea_pill_09.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg9_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 10
+        // Change image: /elements/idea_pill_10.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/idea_pill_10.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg10_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 11
+        // Change image: /elements/idea_pill_11.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/idea_pill_11.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg11_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 12
+        // Change image: /elements/idea_pill_12.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/idea_pill_12.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg12_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 13
+        // Change image: /elements/idea_pill_13.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/idea_pill_13.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg13_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 14
+        // Change image: /elements/idea_pill_14.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/idea_pill_14.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg14_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 15
+        // Change image: /elements/idea_pill_15.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/idea_pill_15.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg15_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 16
+        // Change image: /elements/idea_pill_16.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/idea_pill_16.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg16_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 17
+        // Change image: /elements/idea_pill_17.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/idea_pill_17.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg17_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 18
+        // Change image: /elements/idea_pill_18.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/idea_pill_18.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg18_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 19
+        // Change image: /elements/idea_pill_19.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/idea_pill_19.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg19_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 20
+        // Change image: /elements/idea_pill_20.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/idea_pill_20.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+}
+
+
+/**
+ * anim
+ * Component: f0_img_ring
+ * Mode: Preset actions, driven by real elapsed time (gui_ms_get)
+ * Timeline: 11 segment(s), 1100 ms total, looping
+ */
+void f0_img_ring_f_cb(void *obj)
+{
+    gui_obj_t *target = (gui_obj_t *)obj;
+
+    // Timeline boundaries in real milliseconds
+    const uint32_t total_duration_ms = 1100u;
+    const uint32_t seg0_start_ms = 0u;
+    const uint32_t seg1_start_ms = 100u;
+    const uint32_t seg2_start_ms = 200u;
+    const uint32_t seg3_start_ms = 300u;
+    const uint32_t seg4_start_ms = 400u;
+    const uint32_t seg5_start_ms = 500u;
+    const uint32_t seg6_start_ms = 600u;
+    const uint32_t seg7_start_ms = 700u;
+    const uint32_t seg8_start_ms = 800u;
+    const uint32_t seg9_start_ms = 900u;
+    const uint32_t seg10_start_ms = 1000u;
+
+    uint32_t now_ms = gui_ms_get();
+    bool first_sample = false;
+
+    // The time origin is established by the first callback of a run
+    if (!f0_img_ring_timer_started)
+    {
+        f0_img_ring_timer_started = true;
+        f0_img_ring_timer_start_ms = now_ms;
+        f0_img_ring_timer_prev_elapsed_ms = 0;
+        first_sample = true;
+    }
+
+    // Unsigned subtraction stays correct across uint32_t clock wrap
+    uint32_t total_elapsed_ms = now_ms - f0_img_ring_timer_start_ms;
+    uint32_t prev_elapsed_ms = f0_img_ring_timer_prev_elapsed_ms;
+    f0_img_ring_timer_prev_elapsed_ms = total_elapsed_ms;
+
+    // Loop against the original origin so frame error cannot accumulate
+    uint32_t timeline_ms = total_elapsed_ms % total_duration_ms;
+    uint32_t prev_timeline_ms = prev_elapsed_ms % total_duration_ms;
+    bool cycle_skipped = (total_elapsed_ms - prev_elapsed_ms) >= total_duration_ms;
+    bool cycle_wrapped = cycle_skipped || (timeline_ms < prev_timeline_ms);
+
+    // Segment entry actions: fire once per entry, not once per frame
+    if (first_sample || preset_anim_boundary_crossed(seg0_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 1
+        // Change image: /elements/upgc_ring_01.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/upgc_ring_01.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg1_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 2
+        // Change image: /elements/upgc_ring_02.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/upgc_ring_02.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg2_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 3
+        // Change image: /elements/upgc_ring_03.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/upgc_ring_03.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg3_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 4
+        // Change image: /elements/upgc_ring_04.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/upgc_ring_04.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg4_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 5
+        // Change image: /elements/upgc_ring_05.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/upgc_ring_05.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg5_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 6
+        // Change image: /elements/upgc_ring_06.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/upgc_ring_06.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg6_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 7
+        // Change image: /elements/upgc_ring_07.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/upgc_ring_07.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg7_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 8
+        // Change image: /elements/upgc_ring_08.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/upgc_ring_08.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg8_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 9
+        // Change image: /elements/upgc_ring_09.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/upgc_ring_09.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg9_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 10
+        // Change image: /elements/upgc_ring_10.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/upgc_ring_10.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+    if (preset_anim_boundary_crossed(seg10_start_ms, prev_timeline_ms, timeline_ms, cycle_wrapped, cycle_skipped))
+    {
+        // Segment 11
+        // Change image: /elements/upgc_ring_11.bin
+        gui_img_set_src((gui_img_t *)target, (const uint8_t *)"/elements/upgc_ring_11.bin", IMG_SRC_FILESYS);
+        gui_img_refresh_size((gui_img_t *)target);
+
+    }
+
+}
+
+
+/**
+ * REC blink
+ * Component: g0_img_rec_dot
+ * Mode: Preset actions, driven by real elapsed time (gui_ms_get)
+ * Timeline: 2 segment(s), 1000 ms total, looping
+ */
+void g0_img_rec_dot_blink_cb(void *obj)
+{
+    gui_obj_t *target = (gui_obj_t *)obj;
+
+    // Timeline boundaries in real milliseconds
+    const uint32_t total_duration_ms = 1000u;
+    const uint32_t seg0_start_ms = 0u;
+    const uint32_t seg0_end_ms = 500u;
+    const uint32_t seg1_start_ms = 500u;
+    const uint32_t seg1_end_ms = 1000u;
+
+    uint32_t now_ms = gui_ms_get();
+
+    // The time origin is established by the first callback of a run
+    if (!g0_img_rec_dot_timer_started)
+    {
+        g0_img_rec_dot_timer_started = true;
+        g0_img_rec_dot_timer_start_ms = now_ms;
+        g0_img_rec_dot_timer_prev_elapsed_ms = 0;
+    }
+
+    // Unsigned subtraction stays correct across uint32_t clock wrap
+    uint32_t total_elapsed_ms = now_ms - g0_img_rec_dot_timer_start_ms;
+    g0_img_rec_dot_timer_prev_elapsed_ms = total_elapsed_ms;
+
+    // Loop against the original origin so frame error cannot accumulate
+    uint32_t timeline_ms = total_elapsed_ms % total_duration_ms;
+
+    // Sampled state of the segment the timeline is currently inside
+    if (timeline_ms < seg0_end_ms)
+    {
+        // Segment 1: 500 ms
+        float progress = (float)(timeline_ms - seg0_start_ms) / (float)(seg0_end_ms - seg0_start_ms);
+        // Adjust opacity: 255 -> 60
+        const uint8_t opacity_origin = 255;
+        const uint8_t opacity_target = 60;
+        int16_t opacity_cur = (int16_t)(opacity_origin + (opacity_target - opacity_origin) * progress);
+        gui_img_set_opacity((gui_img_t *)target, opacity_cur);
+
+    }
+    else
+    {
+        // Segment 2: 500 ms
+        float progress = (float)(timeline_ms - seg1_start_ms) / (float)(seg1_end_ms - seg1_start_ms);
+        if (progress > 1.0f)
+        {
+            progress = 1.0f;
+        }
+        // Adjust opacity: 60 -> 255
+        const uint8_t opacity_origin = 60;
+        const uint8_t opacity_target = 255;
+        int16_t opacity_cur = (int16_t)(opacity_origin + (opacity_target - opacity_origin) * progress);
+        gui_img_set_opacity((gui_img_t *)target, opacity_cur);
+
+    }
+
+}
+
+
+/**
+ * REC blink
+ * Component: g1_img_rec_dot
+ * Mode: Preset actions, driven by real elapsed time (gui_ms_get)
+ * Timeline: 2 segment(s), 1000 ms total, looping
+ */
+void g1_img_rec_dot_blink_cb(void *obj)
+{
+    gui_obj_t *target = (gui_obj_t *)obj;
+
+    // Timeline boundaries in real milliseconds
+    const uint32_t total_duration_ms = 1000u;
+    const uint32_t seg0_start_ms = 0u;
+    const uint32_t seg0_end_ms = 500u;
+    const uint32_t seg1_start_ms = 500u;
+    const uint32_t seg1_end_ms = 1000u;
+
+    uint32_t now_ms = gui_ms_get();
+
+    // The time origin is established by the first callback of a run
+    if (!g1_img_rec_dot_timer_started)
+    {
+        g1_img_rec_dot_timer_started = true;
+        g1_img_rec_dot_timer_start_ms = now_ms;
+        g1_img_rec_dot_timer_prev_elapsed_ms = 0;
+    }
+
+    // Unsigned subtraction stays correct across uint32_t clock wrap
+    uint32_t total_elapsed_ms = now_ms - g1_img_rec_dot_timer_start_ms;
+    g1_img_rec_dot_timer_prev_elapsed_ms = total_elapsed_ms;
+
+    // Loop against the original origin so frame error cannot accumulate
+    uint32_t timeline_ms = total_elapsed_ms % total_duration_ms;
+
+    // Sampled state of the segment the timeline is currently inside
+    if (timeline_ms < seg0_end_ms)
+    {
+        // Segment 1: 500 ms
+        float progress = (float)(timeline_ms - seg0_start_ms) / (float)(seg0_end_ms - seg0_start_ms);
+        // Adjust opacity: 255 -> 60
+        const uint8_t opacity_origin = 255;
+        const uint8_t opacity_target = 60;
+        int16_t opacity_cur = (int16_t)(opacity_origin + (opacity_target - opacity_origin) * progress);
+        gui_img_set_opacity((gui_img_t *)target, opacity_cur);
+
+    }
+    else
+    {
+        // Segment 2: 500 ms
+        float progress = (float)(timeline_ms - seg1_start_ms) / (float)(seg1_end_ms - seg1_start_ms);
+        if (progress > 1.0f)
+        {
+            progress = 1.0f;
+        }
+        // Adjust opacity: 60 -> 255
+        const uint8_t opacity_origin = 60;
+        const uint8_t opacity_target = 255;
+        int16_t opacity_cur = (int16_t)(opacity_origin + (opacity_target - opacity_origin) * progress);
+        gui_img_set_opacity((gui_img_t *)target, opacity_cur);
+
+    }
+
+}
+
+
+/**
+ * REC blink
+ * Component: g2_img_rec_dot
+ * Mode: Preset actions, driven by real elapsed time (gui_ms_get)
+ * Timeline: 2 segment(s), 1000 ms total, looping
+ */
+void g2_img_rec_dot_blink_cb(void *obj)
+{
+    gui_obj_t *target = (gui_obj_t *)obj;
+
+    // Timeline boundaries in real milliseconds
+    const uint32_t total_duration_ms = 1000u;
+    const uint32_t seg0_start_ms = 0u;
+    const uint32_t seg0_end_ms = 500u;
+    const uint32_t seg1_start_ms = 500u;
+    const uint32_t seg1_end_ms = 1000u;
+
+    uint32_t now_ms = gui_ms_get();
+
+    // The time origin is established by the first callback of a run
+    if (!g2_img_rec_dot_timer_started)
+    {
+        g2_img_rec_dot_timer_started = true;
+        g2_img_rec_dot_timer_start_ms = now_ms;
+        g2_img_rec_dot_timer_prev_elapsed_ms = 0;
+    }
+
+    // Unsigned subtraction stays correct across uint32_t clock wrap
+    uint32_t total_elapsed_ms = now_ms - g2_img_rec_dot_timer_start_ms;
+    g2_img_rec_dot_timer_prev_elapsed_ms = total_elapsed_ms;
+
+    // Loop against the original origin so frame error cannot accumulate
+    uint32_t timeline_ms = total_elapsed_ms % total_duration_ms;
+
+    // Sampled state of the segment the timeline is currently inside
+    if (timeline_ms < seg0_end_ms)
+    {
+        // Segment 1: 500 ms
+        float progress = (float)(timeline_ms - seg0_start_ms) / (float)(seg0_end_ms - seg0_start_ms);
+        // Adjust opacity: 255 -> 60
+        const uint8_t opacity_origin = 255;
+        const uint8_t opacity_target = 60;
+        int16_t opacity_cur = (int16_t)(opacity_origin + (opacity_target - opacity_origin) * progress);
+        gui_img_set_opacity((gui_img_t *)target, opacity_cur);
+
+    }
+    else
+    {
+        // Segment 2: 500 ms
+        float progress = (float)(timeline_ms - seg1_start_ms) / (float)(seg1_end_ms - seg1_start_ms);
+        if (progress > 1.0f)
+        {
+            progress = 1.0f;
+        }
+        // Adjust opacity: 60 -> 255
+        const uint8_t opacity_origin = 60;
+        const uint8_t opacity_target = 255;
+        int16_t opacity_cur = (int16_t)(opacity_origin + (opacity_target - opacity_origin) * progress);
+        gui_img_set_opacity((gui_img_t *)target, opacity_cur);
+
+    }
+
+}
+
 
 /* @protected start custom_functions */
 // Custom functions

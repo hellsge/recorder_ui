@@ -8,16 +8,6 @@
     "videoQuality": 5
   },
   "items": {
-    "recorder2.png": {
-      "format": "RGB565",
-      "compression": "rle",
-      "dither": true
-    },
-    "switch2.png": {
-      "format": "RGB565",
-      "compression": "rle",
-      "dither": true
-    },
     "elements": {
       "compression": "rle",
       "format": "RGB565"

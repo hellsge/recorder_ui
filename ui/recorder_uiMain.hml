@@ -5,21 +5,544 @@
         <author name="Anonymous" />
     </meta>
     <view>
-        <hg_view id="recorder_uiMainView" x="0" y="0" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+        <hg_view id="view_a0_connecting" x="0" y="0" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+            <hg_image id="a0_img_spinner" x="48" y="13" width="48" height="48" src="assets/elements/inactive_ic_ring_01.png" zIndex="1" timers="[{&quot;id&quot;:&quot;seq&quot;,&quot;name&quot;:&quot;Spinner&quot;,&quot;enabled&quot;:true,&quot;reload&quot;:true,&quot;stopOnComplete&quot;:false,&quot;interval&quot;:50,&quot;mode&quot;:&quot;preset&quot;,&quot;segments&quot;:[{&quot;duration&quot;:1200,&quot;actions&quot;:[{&quot;type&quot;:&quot;imageSequence&quot;,&quot;imageSequence&quot;:[&quot;assets/elements/inactive_ic_ring_01.png&quot;,&quot;assets/elements/inactive_ic_ring_02.png&quot;,&quot;assets/elements/inactive_ic_ring_03.png&quot;,&quot;assets/elements/inactive_ic_ring_04.png&quot;,&quot;assets/elements/inactive_ic_ring_05.png&quot;,&quot;assets/elements/inactive_ic_ring_06.png&quot;,&quot;assets/elements/inactive_ic_ring_07.png&quot;,&quot;assets/elements/inactive_ic_ring_08.png&quot;,&quot;assets/elements/inactive_ic_ring_09.png&quot;,&quot;assets/elements/inactive_ic_ring_10.png&quot;,&quot;assets/elements/inactive_ic_ring_11.png&quot;,&quot;assets/elements/inactive_ic_ring_12.png&quot;,&quot;assets/elements/inactive_ic_ring_13.png&quot;,&quot;assets/elements/inactive_ic_ring_14.png&quot;,&quot;assets/elements/inactive_ic_ring_15.png&quot;]}]}]}]" />
             <events>
-                <event type="onSwipeLeft">
-                    <action type="switchView" target="recorder_uiSecondView" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_b0_standby" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_g0_low_battery" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_a1_pairing" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_a3_pairing_failed" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
                 </event>
             </events>
-            <hg_image id="img_1" x="0" y="0" width="450" height="390" src="assets/recorder2.png" zIndex="1" />
+            <hg_label id="a0_lbl_connecting" x="108" y="21" width="180" height="34" color="#ffffff" text="Connecting..." fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="2" />
+            <hg_image id="a0_img_laptop" x="322" y="25" width="28" height="24" src="assets/elements/inactive_ic_laptop_off.png" zIndex="5" />
+            <hg_image id="a0_img_battery" x="360" y="25" width="40" height="21" src="assets/elements/inactive_ic_battery_full.png" zIndex="6" />
         </hg_view>
-        <hg_view id="recorder_uiSecondView" x="563" y="0" width="450" height="390" backgroundColor="#000000" zIndex="0">
+        <hg_view id="view_a1_pairing" x="0" y="440" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
             <events>
-                <event type="onSwipeRight">
-                    <action type="switchView" target="recorder_uiMainView" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_b0_standby" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_g0_low_battery" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_a2_connected" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_a0_connecting" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
                 </event>
             </events>
-            <hg_image id="img_2" x="0" y="0" width="450" height="390" src="assets/switch2.png" zIndex="1" />
+            <hg_image id="a1_img_bg" x="0" y="0" width="450" height="390" src="assets/elements/bg_main.png" zIndex="0" />
+            <hg_image id="a1_img_laptop_chat" x="144" y="74" width="162" height="162" src="assets/elements/lidopen_ic_laptop_chat.png" zIndex="1" />
+            <hg_label id="a1_lbl_year" x="46" y="7" width="80" height="30" color="#ffffff" text="2026" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="2" />
+            <hg_label id="a1_lbl_date" x="46" y="33" width="100" height="30" color="#ffffff" text="OCT 15" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="3" />
+            <hg_image id="a1_img_laptop" x="320" y="24" width="28" height="24" src="assets/elements/inactive_ic_laptop_off.png" zIndex="5" />
+            <hg_image id="a1_img_battery" x="358" y="25" width="40" height="21" src="assets/elements/inactive_ic_battery_full.png" zIndex="6" />
+            <hg_label id="a1_lbl_pairing" x="164" y="254" width="140" height="48" color="#ffffff" text="Pairing" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="37" renderMode="4" zIndex="7" />
+            <hg_label id="a1_lbl_hint" x="60" y="315" width="340" height="36" color="#d5d5d5" text="Search in Baseus AI app" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="28" renderMode="4" zIndex="8" />
+        </hg_view>
+        <hg_view id="view_a2_connected" x="0" y="880" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+            <events>
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_b0_standby" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_g0_low_battery" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_a3_pairing_failed" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_a1_pairing" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+            </events>
+            <hg_image id="a2_img_bg" x="0" y="0" width="450" height="390" src="assets/elements/bg_main.png" zIndex="0" />
+            <hg_image id="a2_img_laptop_ok" x="144" y="74" width="162" height="162" src="assets/elements/lidopen_ic_laptop_ok.png" zIndex="1" />
+            <hg_label id="a2_lbl_year" x="46" y="7" width="80" height="30" color="#ffffff" text="2026" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="2" />
+            <hg_label id="a2_lbl_date" x="46" y="33" width="100" height="30" color="#ffffff" text="OCT 15" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="3" />
+            <hg_image id="a2_img_laptop" x="320" y="24" width="28" height="24" src="assets/elements/inactive_ic_laptop_on.png" zIndex="5" />
+            <hg_image id="a2_img_battery" x="358" y="25" width="40" height="21" src="assets/elements/inactive_ic_battery_full.png" zIndex="6" />
+            <hg_label id="a2_lbl_title" x="127" y="254" width="220" height="48" color="#ffffff" text="Connected" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="37" renderMode="4" zIndex="7" />
+            <hg_label id="a2_lbl_hint" x="50" y="314" width="360" height="36" color="#d5d5d5" text="Close,then open to record" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="28" renderMode="4" zIndex="8" />
+        </hg_view>
+        <hg_view id="view_a3_pairing_failed" x="0" y="1320" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+            <events>
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_b0_standby" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_g0_low_battery" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_a0_connecting" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_a2_connected" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+            </events>
+            <hg_image id="a3_img_bg" x="0" y="0" width="450" height="390" src="assets/elements/bg_main.png" zIndex="0" />
+            <hg_image id="a3_img_headset_fail" x="128" y="81" width="213" height="157" src="assets/elements/lidopen_ic_headset_fail.png" zIndex="1" />
+            <hg_label id="a3_lbl_year" x="45" y="8" width="80" height="30" color="#ffffff" text="2026" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="2" />
+            <hg_label id="a3_lbl_date" x="45" y="34" width="100" height="30" color="#ffffff" text="OCT 15" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="3" />
+            <hg_image id="a3_img_laptop" x="320" y="25" width="28" height="24" src="assets/elements/inactive_ic_laptop_on.png" zIndex="5" />
+            <hg_image id="a3_img_battery" x="358" y="26" width="40" height="21" src="assets/elements/inactive_ic_battery_full.png" zIndex="6" />
+            <hg_label id="a3_lbl_title" x="108" y="254" width="240" height="48" color="#ffffff" text="Pairing failed" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="37" renderMode="4" zIndex="7" />
+            <hg_label id="a3_lbl_hint" x="110" y="314" width="240" height="36" color="#d5d5d5" text="Pair again in app" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="28" renderMode="4" zIndex="8" />
+        </hg_view>
+        <hg_view id="view_b0_standby" x="500" y="0" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+            <events>
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_c0_recording" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_a0_connecting" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_b1_storage_warn" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_b2_uploading" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+            </events>
+            <hg_image id="b0_img_bubble" x="48" y="6" width="62" height="62" src="assets/elements/idea_ic_bubble.png" zIndex="1" />
+            <hg_label id="b0_lbl_year" x="121" y="8" width="80" height="30" color="#ffffff" text="2026" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="2" />
+            <hg_label id="b0_lbl_date" x="121" y="34" width="100" height="30" color="#ffffff" text="OCT 15" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="3" />
+            <hg_image id="b0_img_laptop" x="263" y="25" width="28" height="24" src="assets/elements/inactive_ic_laptop_off.png" zIndex="4" />
+            <hg_image id="b0_img_battery" x="301" y="25" width="40" height="21" src="assets/elements/inactive_ic_battery_full.png" zIndex="5" />
+            <hg_image id="b0_img_cloud" x="351" y="26" width="26" height="19" src="assets/elements/common_ic_cloud.png" zIndex="6" />
+            <hg_label id="b0_lbl_cloud_count" x="384" y="20" width="30" height="30" color="#ffffff" text="2" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="7" />
+        </hg_view>
+        <hg_view id="view_b1_storage_warn" x="500" y="440" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+            <events>
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_c0_recording" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_a0_connecting" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_b2_uploading" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_b0_standby" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+            </events>
+            <hg_label id="b1_lbl_year" x="47" y="9" width="80" height="30" color="#ffffff" text="2026" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="2" />
+            <hg_label id="b1_lbl_date" x="47" y="35" width="100" height="30" color="#ffffff" text="OCT 15" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="3" />
+            <hg_image id="b1_img_device" x="210" y="22" width="30" height="32" src="assets/elements/lidclosed_ic_device_amber.png" zIndex="5" />
+            <hg_image id="b1_img_laptop" x="267" y="25" width="28" height="24" src="assets/elements/inactive_ic_laptop_on.png" zIndex="6" />
+            <hg_image id="b1_img_battery" x="305" y="25" width="40" height="21" src="assets/elements/inactive_ic_battery_full.png" zIndex="7" />
+            <hg_image id="b1_img_cloud" x="354" y="26" width="26" height="19" src="assets/elements/common_ic_cloud.png" zIndex="8" />
+            <hg_label id="b1_lbl_cloud_count" x="386" y="21" width="30" height="30" color="#ffffff" text="1" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="9" />
+        </hg_view>
+        <hg_view id="view_b2_uploading" x="500" y="880" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+            <events>
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_c0_recording" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_a0_connecting" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_b0_standby" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_b1_storage_warn" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+            </events>
+            <hg_label id="b2_lbl_year" x="48" y="10" width="80" height="30" color="#ffffff" text="2026" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="2" />
+            <hg_label id="b2_lbl_date" x="48" y="36" width="100" height="30" color="#ffffff" text="OCT 15" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="3" />
+            <hg_image id="b2_img_upload" x="206" y="21" width="38" height="38" src="assets/elements/lidclosed_ic_upload_white.png" zIndex="5" />
+            <hg_image id="b2_img_laptop" x="263" y="26" width="28" height="24" src="assets/elements/inactive_ic_laptop_on.png" zIndex="6" />
+            <hg_image id="b2_img_battery" x="301" y="26" width="40" height="21" src="assets/elements/inactive_ic_battery_full.png" zIndex="7" />
+            <hg_image id="b2_img_cloud" x="350" y="27" width="26" height="19" src="assets/elements/common_ic_cloud.png" zIndex="8" />
+            <hg_label id="b2_lbl_cloud_count" x="384" y="22" width="30" height="30" color="#ffffff" text="2" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="9" />
+        </hg_view>
+        <hg_view id="view_c0_recording" x="1000" y="0" width="450" height="390" backgroundColor="#000000" entry="true" zIndex="0">
+            <events>
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_d0_meeting_b" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_b0_standby" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_c1_mark_saved" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_c3_saved" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+            </events>
+            <hg_image id="c0_img_bg" x="0" y="0" width="450" height="390" src="assets/elements/bg_main.png" zIndex="0" />
+            <hg_image id="c0_img_rec_dot" x="47" y="27" width="18" height="19" src="assets/elements/common_ic_rec_dot.png" zIndex="1" timers="[{&quot;id&quot;:&quot;blink&quot;,&quot;name&quot;:&quot;REC blink&quot;,&quot;enabled&quot;:true,&quot;reload&quot;:true,&quot;stopOnComplete&quot;:false,&quot;interval&quot;:50,&quot;mode&quot;:&quot;preset&quot;,&quot;segments&quot;:[{&quot;duration&quot;:500,&quot;actions&quot;:[{&quot;type&quot;:&quot;opacity&quot;,&quot;from&quot;:255,&quot;to&quot;:60}]},{&quot;duration&quot;:500,&quot;actions&quot;:[{&quot;type&quot;:&quot;opacity&quot;,&quot;from&quot;:60,&quot;to&quot;:255}]}]}]" />
+            <hg_label id="c0_lbl_rec" x="76" y="20" width="70" height="30" color="#ffffff" text="REC" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="1" />
+            <hg_image id="c0_img_laptop" x="266" y="24" width="28" height="24" src="assets/elements/inactive_ic_laptop_on.png" zIndex="1" />
+            <hg_image id="c0_img_battery" x="304" y="25" width="40" height="21" src="assets/elements/inactive_ic_battery_full.png" zIndex="1" />
+            <hg_image id="c0_img_cloud" x="354" y="26" width="26" height="19" src="assets/elements/common_ic_cloud.png" zIndex="1" />
+            <hg_label id="c0_lbl_cloud_count" x="384" y="20" width="30" height="30" color="#ffffff" text="2" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="1" />
+            <hg_image id="c0_img_wave" x="35" y="132" width="381" height="80" src="assets/elements/common_ic_wave_color.png" zIndex="1" />
+            <hg_image id="c0_img_mark" x="47" y="273" width="30" height="30" src="assets/elements/common_ic_arrow.png" zIndex="1" />
+            <hg_label id="c0_lbl_mark_num" x="78" y="269" width="30" height="32" color="#ffffff" text="2" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="27" renderMode="4" zIndex="1" />
+            <hg_label id="c0_lbl_mode" x="46" y="306" width="120" height="30" color="#ffffff" text="Mode A" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="1" />
+            <hg_timer_label id="c0_lbl_timer" x="172" y="272" width="270" height="55" color="#ffffff" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="52" renderMode="4" timerType="stopwatch" timerFormat="HH:MM:SS" timerInitialValue="1458000" timerAutoStart="true" characterSets="[{&quot;type&quot;:&quot;string&quot;,&quot;value&quot;:&quot;0123456789:&quot;}]" zIndex="1" />
+        </hg_view>
+        <hg_view id="view_c1_mark_saved" x="1000" y="440" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+            <events>
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_d0_meeting_b" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_b0_standby" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_c2_mic_lost" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_c0_recording" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+            </events>
+            <hg_image id="c1_img_bg" x="0" y="0" width="450" height="390" src="assets/elements/bg_main.png" zIndex="0" />
+            <hg_image id="c1_img_rec_dot" x="47" y="27" width="18" height="19" src="assets/elements/common_ic_rec_dot.png" zIndex="5" timers="[{&quot;id&quot;:&quot;blink&quot;,&quot;name&quot;:&quot;REC blink&quot;,&quot;enabled&quot;:true,&quot;reload&quot;:true,&quot;stopOnComplete&quot;:false,&quot;interval&quot;:50,&quot;mode&quot;:&quot;preset&quot;,&quot;segments&quot;:[{&quot;duration&quot;:500,&quot;actions&quot;:[{&quot;type&quot;:&quot;opacity&quot;,&quot;from&quot;:255,&quot;to&quot;:60}]},{&quot;duration&quot;:500,&quot;actions&quot;:[{&quot;type&quot;:&quot;opacity&quot;,&quot;from&quot;:60,&quot;to&quot;:255}]}]}]" />
+            <hg_label id="c1_lbl_rec" x="76" y="20" width="70" height="30" color="#ffffff" text="REC" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="6" />
+            <hg_image id="c1_img_laptop" x="266" y="24" width="28" height="24" src="assets/elements/inactive_ic_laptop_on.png" zIndex="7" />
+            <hg_image id="c1_img_battery" x="304" y="25" width="40" height="21" src="assets/elements/inactive_ic_battery_full.png" zIndex="8" />
+            <hg_image id="c1_img_cloud" x="353" y="26" width="26" height="19" src="assets/elements/common_ic_cloud.png" zIndex="9" />
+            <hg_label id="c1_lbl_cloud_count" x="384" y="20" width="30" height="30" color="#ffffff" text="2" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="10" />
+            <hg_label id="c1_lbl_prompt" x="37" y="85" width="400" height="36" color="#f3bb63" text="Mark saved · no screenshot" characterSets="[{&quot;type&quot;:&quot;string&quot;,&quot;value&quot;:&quot;·&quot;}]" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="29" renderMode="4" zIndex="11" />
+            <hg_image id="c1_img_wave" x="31" y="155" width="381" height="80" src="assets/elements/common_ic_wave_color.png" zIndex="12" />
+            <hg_image id="c1_img_mark" x="47" y="273" width="30" height="30" src="assets/elements/common_ic_arrow.png" zIndex="12" />
+            <hg_label id="c1_lbl_mark_num" x="80" y="271" width="30" height="32" color="#ffffff" text="2" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="27" renderMode="4" zIndex="13" />
+            <hg_label id="c1_lbl_mode" x="46" y="306" width="120" height="30" color="#ffffff" text="Mode A" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="14" />
+            <hg_timer_label id="c1_lbl_timer" x="172" y="272" width="270" height="55" color="#ffffff" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="52" renderMode="4" timerType="stopwatch" timerFormat="HH:MM:SS" timerInitialValue="1458000" timerAutoStart="true" characterSets="[{&quot;type&quot;:&quot;string&quot;,&quot;value&quot;:&quot;0123456789:&quot;}]" zIndex="15" />
+        </hg_view>
+        <hg_view id="view_c2_mic_lost" x="1000" y="880" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+            <events>
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_d0_meeting_b" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_b0_standby" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_c3_saved" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_c1_mark_saved" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+            </events>
+            <hg_image id="c2_img_bg" x="0" y="0" width="450" height="390" src="assets/elements/bg_main.png" zIndex="0" />
+            <hg_image id="c2_img_rec_dot" x="47" y="27" width="18" height="19" src="assets/elements/common_ic_rec_dot.png" zIndex="5" timers="[{&quot;id&quot;:&quot;blink&quot;,&quot;name&quot;:&quot;REC blink&quot;,&quot;enabled&quot;:true,&quot;reload&quot;:true,&quot;stopOnComplete&quot;:false,&quot;interval&quot;:50,&quot;mode&quot;:&quot;preset&quot;,&quot;segments&quot;:[{&quot;duration&quot;:500,&quot;actions&quot;:[{&quot;type&quot;:&quot;opacity&quot;,&quot;from&quot;:255,&quot;to&quot;:60}]},{&quot;duration&quot;:500,&quot;actions&quot;:[{&quot;type&quot;:&quot;opacity&quot;,&quot;from&quot;:60,&quot;to&quot;:255}]}]}]" />
+            <hg_label id="c2_lbl_rec" x="76" y="20" width="70" height="30" color="#ffffff" text="REC" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="6" />
+            <hg_image id="c2_img_mic" x="229" y="21" width="29" height="29" src="assets/elements/record_ic_mic_muted.png" zIndex="7" />
+            <hg_image id="c2_img_laptop" x="266" y="24" width="28" height="24" src="assets/elements/inactive_ic_laptop_off.png" zIndex="8" />
+            <hg_image id="c2_img_battery" x="304" y="25" width="40" height="21" src="assets/elements/inactive_ic_battery_full.png" zIndex="9" />
+            <hg_image id="c2_img_cloud" x="354" y="26" width="26" height="19" src="assets/elements/common_ic_cloud.png" zIndex="10" />
+            <hg_label id="c2_lbl_cloud_count" x="384" y="20" width="30" height="30" color="#ffffff" text="2" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="11" />
+            <hg_image id="c2_img_wave" x="52" y="136" width="351" height="67" src="assets/elements/record_ic_wave_flat.png" zIndex="12" />
+            <hg_image id="c2_img_mark" x="49" y="273" width="30" height="30" src="assets/elements/common_ic_arrow.png" zIndex="12" />
+            <hg_label id="c2_lbl_mark_num" x="82" y="271" width="30" height="32" color="#ffffff" text="2" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="27" renderMode="4" zIndex="13" />
+            <hg_label id="c2_lbl_mode" x="46" y="304" width="120" height="30" color="#ffffff" text="Mode A" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="14" />
+            <hg_timer_label id="c2_lbl_timer" x="172" y="272" width="270" height="55" color="#ffffff" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="52" renderMode="4" timerType="stopwatch" timerFormat="HH:MM:SS" timerInitialValue="1458000" timerAutoStart="true" characterSets="[{&quot;type&quot;:&quot;string&quot;,&quot;value&quot;:&quot;0123456789:&quot;}]" zIndex="15" />
+        </hg_view>
+        <hg_view id="view_c3_saved" x="1000" y="1320" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+            <events>
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_d0_meeting_b" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_b0_standby" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_c0_recording" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_c2_mic_lost" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+            </events>
+            <hg_image id="c3_img_bg" x="0" y="0" width="450" height="390" src="assets/elements/bg_main.png" zIndex="0" />
+            <hg_image id="c3_img_check" x="48" y="12" width="48" height="48" src="assets/elements/inactive_ic_check.png" zIndex="5" />
+            <hg_label id="c3_lbl_saved" x="107" y="20" width="120" height="34" color="#ffffff" text="Saved" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="27" renderMode="4" zIndex="6" />
+            <hg_image id="c3_img_laptop" x="266" y="24" width="28" height="24" src="assets/elements/inactive_ic_laptop_on.png" zIndex="7" />
+            <hg_image id="c3_img_battery" x="304" y="25" width="40" height="21" src="assets/elements/inactive_ic_battery_full.png" zIndex="8" />
+            <hg_image id="c3_img_cloud" x="354" y="26" width="26" height="19" src="assets/elements/common_ic_cloud.png" zIndex="9" />
+            <hg_label id="c3_lbl_cloud_count" x="384" y="20" width="30" height="30" color="#ffffff" text="2" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="10" />
+        </hg_view>
+        <hg_view id="view_d0_meeting_b" x="1500" y="0" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+            <events>
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_e0_island" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_c0_recording" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_d1_meeting_c" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_d1_meeting_c" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+            </events>
+            <hg_image id="d0_img_bg" x="0" y="0" width="450" height="390" src="assets/elements/bg_main.png" zIndex="0" />
+            <hg_image id="d0_img_dial" x="-132" y="0" width="282" height="390" src="assets/elements/meeting_ic_dial_b.png" zIndex="1" />
+            <hg_image id="d0_img_wave" x="150" y="135" width="261" height="87" src="assets/elements/meeting_ic_wave_mid.png" zIndex="2" />
+            <hg_image id="d0_img_rec_dot" x="48" y="27" width="18" height="19" src="assets/elements/common_ic_rec_dot.png" zIndex="5" timers="[{&quot;id&quot;:&quot;blink&quot;,&quot;name&quot;:&quot;REC blink&quot;,&quot;enabled&quot;:true,&quot;reload&quot;:true,&quot;stopOnComplete&quot;:false,&quot;interval&quot;:50,&quot;mode&quot;:&quot;preset&quot;,&quot;segments&quot;:[{&quot;duration&quot;:500,&quot;actions&quot;:[{&quot;type&quot;:&quot;opacity&quot;,&quot;from&quot;:255,&quot;to&quot;:60}]},{&quot;duration&quot;:500,&quot;actions&quot;:[{&quot;type&quot;:&quot;opacity&quot;,&quot;from&quot;:60,&quot;to&quot;:255}]}]}]" />
+            <hg_label id="d0_lbl_rec" x="78" y="20" width="70" height="30" color="#ffffff" text="REC" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="6" />
+            <hg_image id="d0_img_laptop" x="269" y="24" width="28" height="24" src="assets/elements/inactive_ic_laptop_on.png" zIndex="7" />
+            <hg_image id="d0_img_battery" x="307" y="25" width="40" height="21" src="assets/elements/inactive_ic_battery_full.png" zIndex="8" />
+            <hg_image id="d0_img_cloud" x="357" y="26" width="26" height="19" src="assets/elements/common_ic_cloud.png" zIndex="9" />
+            <hg_label id="d0_lbl_cloud_count" x="386" y="20" width="30" height="30" color="#ffffff" text="2" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="10" />
+            <hg_timer_label id="d0_lbl_timer" x="180" y="275" width="260" height="55" color="#ffffff" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="52" renderMode="4" timerType="stopwatch" timerFormat="HH:MM:SS" timerInitialValue="0" timerAutoStart="true" characterSets="[{&quot;type&quot;:&quot;string&quot;,&quot;value&quot;:&quot;0123456789:&quot;}]" zIndex="11" />
+        </hg_view>
+        <hg_view id="view_d1_meeting_c" x="1500" y="440" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+            <events>
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_e0_island" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_c0_recording" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_d0_meeting_b" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_d0_meeting_b" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+            </events>
+            <hg_image id="d1_img_bg" x="0" y="0" width="450" height="390" src="assets/elements/bg_main.png" zIndex="0" />
+            <hg_image id="d1_img_dial" x="-132" y="0" width="282" height="390" src="assets/elements/meeting_ic_dial_c.png" zIndex="1" />
+            <hg_image id="d1_img_wave" x="150" y="135" width="261" height="87" src="assets/elements/meeting_ic_wave_mid.png" zIndex="2" />
+            <hg_image id="d1_img_rec_dot" x="47" y="27" width="18" height="19" src="assets/elements/common_ic_rec_dot.png" zIndex="5" timers="[{&quot;id&quot;:&quot;blink&quot;,&quot;name&quot;:&quot;REC blink&quot;,&quot;enabled&quot;:true,&quot;reload&quot;:true,&quot;stopOnComplete&quot;:false,&quot;interval&quot;:50,&quot;mode&quot;:&quot;preset&quot;,&quot;segments&quot;:[{&quot;duration&quot;:500,&quot;actions&quot;:[{&quot;type&quot;:&quot;opacity&quot;,&quot;from&quot;:255,&quot;to&quot;:60}]},{&quot;duration&quot;:500,&quot;actions&quot;:[{&quot;type&quot;:&quot;opacity&quot;,&quot;from&quot;:60,&quot;to&quot;:255}]}]}]" />
+            <hg_label id="d1_lbl_rec" x="76" y="20" width="70" height="30" color="#ffffff" text="REC" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="6" />
+            <hg_image id="d1_img_laptop" x="269" y="24" width="28" height="24" src="assets/elements/inactive_ic_laptop_on.png" zIndex="7" />
+            <hg_image id="d1_img_battery" x="307" y="25" width="40" height="21" src="assets/elements/inactive_ic_battery_full.png" zIndex="8" />
+            <hg_image id="d1_img_cloud" x="357" y="26" width="26" height="19" src="assets/elements/common_ic_cloud.png" zIndex="9" />
+            <hg_label id="d1_lbl_cloud_count" x="386" y="20" width="30" height="30" color="#ffffff" text="2" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="10" />
+            <hg_timer_label id="d1_lbl_timer" x="180" y="275" width="270" height="55" color="#ffffff" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="52" renderMode="4" timerType="stopwatch" timerFormat="HH:MM:SS" timerInitialValue="0" timerAutoStart="true" characterSets="[{&quot;type&quot;:&quot;string&quot;,&quot;value&quot;:&quot;0123456789:&quot;}]" zIndex="11" />
+        </hg_view>
+        <hg_view id="view_e0_island" x="2000" y="0" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+            <hg_image id="e0_img_pill" x="43" y="2" width="364" height="70" src="assets/elements/idea_pill_01.png" zIndex="1" timers="[{&quot;id&quot;:&quot;f&quot;,&quot;name&quot;:&quot;anim&quot;,&quot;enabled&quot;:true,&quot;reload&quot;:true,&quot;stopOnComplete&quot;:false,&quot;interval&quot;:40,&quot;mode&quot;:&quot;preset&quot;,&quot;segments&quot;:[{&quot;duration&quot;:120,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/idea_pill_01.png&quot;}]},{&quot;duration&quot;:120,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/idea_pill_02.png&quot;}]},{&quot;duration&quot;:120,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/idea_pill_03.png&quot;}]},{&quot;duration&quot;:120,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/idea_pill_04.png&quot;}]},{&quot;duration&quot;:120,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/idea_pill_05.png&quot;}]},{&quot;duration&quot;:1000,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/idea_pill_06.png&quot;}]},{&quot;duration&quot;:5000,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/idea_pill_07.png&quot;}]},{&quot;duration&quot;:4000,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/idea_pill_08.png&quot;}]},{&quot;duration&quot;:5000,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/idea_pill_09.png&quot;}]},{&quot;duration&quot;:4000,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/idea_pill_10.png&quot;}]},{&quot;duration&quot;:5000,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/idea_pill_11.png&quot;}]},{&quot;duration&quot;:4000,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/idea_pill_12.png&quot;}]},{&quot;duration&quot;:5000,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/idea_pill_13.png&quot;}]},{&quot;duration&quot;:4000,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/idea_pill_14.png&quot;}]},{&quot;duration&quot;:5000,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/idea_pill_15.png&quot;}]},{&quot;duration&quot;:4000,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/idea_pill_16.png&quot;}]},{&quot;duration&quot;:5000,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/idea_pill_17.png&quot;}]},{&quot;duration&quot;:4000,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/idea_pill_18.png&quot;}]},{&quot;duration&quot;:5000,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/idea_pill_19.png&quot;}]},{&quot;duration&quot;:1000,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/idea_pill_20.png&quot;}]}]}]" />
+
+            <events>
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_f0_progress" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_d0_meeting_b" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_e1_pill" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_e1_pill" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+            </events>
+        </hg_view>
+        <hg_view id="view_e1_pill" x="2000" y="440" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+            <events>
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_f0_progress" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_d0_meeting_b" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_e0_island" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_e0_island" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+            </events>
+            <hg_image id="e1_img_bubble" x="46" y="5" width="62" height="62" src="assets/elements/idea_ic_bubble.png" zIndex="1" />
+            <hg_label id="e1_lbl_year" x="120" y="7" width="80" height="30" color="#ffffff" text="2026" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="2" />
+            <hg_label id="e1_lbl_date" x="120" y="33" width="100" height="30" color="#ffffff" text="OCT 15" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="3" />
+            <hg_image id="e1_img_laptop" x="266" y="25" width="28" height="24" src="assets/elements/inactive_ic_laptop_on.png" zIndex="5" />
+            <hg_image id="e1_img_battery" x="304" y="26" width="40" height="21" src="assets/elements/inactive_ic_battery_full.png" zIndex="6" />
+            <hg_image id="e1_img_cloud" x="354" y="28" width="26" height="19" src="assets/elements/common_ic_cloud.png" zIndex="7" />
+            <hg_label id="e1_lbl_cloud_count" x="384" y="22" width="30" height="30" color="#ffffff" text="3" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="8" />
+        </hg_view>
+        <hg_view id="view_f0_progress" x="2500" y="0" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+            <hg_image id="f0_img_ring" x="142" y="82" width="165" height="170" src="assets/elements/upgc_ring_01.png" zIndex="1" timers="[{&quot;id&quot;:&quot;f&quot;,&quot;name&quot;:&quot;anim&quot;,&quot;enabled&quot;:true,&quot;reload&quot;:true,&quot;stopOnComplete&quot;:false,&quot;interval&quot;:40,&quot;mode&quot;:&quot;preset&quot;,&quot;segments&quot;:[{&quot;duration&quot;:100,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/upgc_ring_01.png&quot;}]},{&quot;duration&quot;:100,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/upgc_ring_02.png&quot;}]},{&quot;duration&quot;:100,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/upgc_ring_03.png&quot;}]},{&quot;duration&quot;:100,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/upgc_ring_04.png&quot;}]},{&quot;duration&quot;:100,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/upgc_ring_05.png&quot;}]},{&quot;duration&quot;:100,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/upgc_ring_06.png&quot;}]},{&quot;duration&quot;:100,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/upgc_ring_07.png&quot;}]},{&quot;duration&quot;:100,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/upgc_ring_08.png&quot;}]},{&quot;duration&quot;:100,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/upgc_ring_09.png&quot;}]},{&quot;duration&quot;:100,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/upgc_ring_10.png&quot;}]},{&quot;duration&quot;:100,&quot;actions&quot;:[{&quot;type&quot;:&quot;changeImage&quot;,&quot;imagePath&quot;:&quot;assets/elements/upgc_ring_11.png&quot;}]}]}]" />
+
+            <events>
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_g0_low_battery" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_e0_island" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_f1_failed" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_f3_updated" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+            </events>
+            <hg_image id="f0_img_bg" x="0" y="0" width="450" height="390" src="assets/elements/bg_main.png" zIndex="0" />
+            <hg_label id="f0_lbl_year" x="48" y="7" width="80" height="30" color="#ffffff" text="2026" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="2" />
+            <hg_label id="f0_lbl_date" x="48" y="33" width="100" height="30" color="#ffffff" text="OCT 15" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="3" />
+            <hg_image id="f0_img_laptop" x="322" y="24" width="28" height="24" src="assets/elements/inactive_ic_laptop_on.png" zIndex="5" />
+            <hg_image id="f0_img_battery" x="360" y="25" width="40" height="21" src="assets/elements/inactive_ic_battery_full.png" zIndex="6" />
+            <hg_label id="f0_lbl_title" x="79" y="262" width="300" height="44" color="#ffffff" text="Updating firmware" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="32" renderMode="4" zIndex="7" />
+            <hg_label id="f0_lbl_hint" x="104" y="317" width="330" height="34" color="#808080" text="keep USB connected" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="25" renderMode="4" zIndex="8" />
+        </hg_view>
+        <hg_view id="view_f1_failed" x="2500" y="440" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+            <events>
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_g0_low_battery" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_e0_island" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_f2_updating" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_f0_progress" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+            </events>
+            <hg_image id="f1_img_bg" x="0" y="0" width="450" height="390" src="assets/elements/bg_main.png" zIndex="0" />
+            <hg_image id="f1_img_alert" x="149" y="90" width="151" height="154" src="assets/elements/upgc_ic_alert.png" zIndex="1" />
+            <hg_label id="f1_lbl_year" x="48" y="7" width="80" height="30" color="#ffffff" text="2026" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="2" />
+            <hg_label id="f1_lbl_date" x="48" y="33" width="100" height="30" color="#ffffff" text="OCT 15" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="3" />
+            <hg_image id="f1_img_laptop" x="322" y="24" width="28" height="24" src="assets/elements/inactive_ic_laptop_on.png" zIndex="5" />
+            <hg_image id="f1_img_battery" x="360" y="25" width="40" height="21" src="assets/elements/inactive_ic_battery_full.png" zIndex="6" />
+            <hg_label id="f1_lbl_title" x="132" y="263" width="220" height="44" color="#ffffff" text="Update failed" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="29" renderMode="4" zIndex="7" />
+            <hg_label id="f1_lbl_hint" x="105" y="313" width="260" height="34" color="#808080" text="keep USB connected" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="25" renderMode="4" zIndex="8" />
+        </hg_view>
+        <hg_view id="view_f2_updating" x="2500" y="880" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+            <events>
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_g0_low_battery" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_e0_island" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_f3_updated" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_f1_failed" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+            </events>
+            <hg_image id="f2_img_bar" x="39" y="64" width="372" height="26" src="assets/elements/upgrade_bar_track.png" zIndex="1" />
+            <hg_label id="f2_lbl_updating" x="48" y="20" width="180" height="34" color="#ffffff" text="Updating..." fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="27" renderMode="4" zIndex="2" />
+            <hg_label id="f2_lbl_pct" x="350" y="21" width="70" height="30" color="#ffffff" text="56%" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="27" renderMode="4" zIndex="3" />
+        </hg_view>
+        <hg_view id="view_f3_updated" x="2500" y="1320" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+            <events>
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_g0_low_battery" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_e0_island" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_f0_progress" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_f2_updating" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+            </events>
+            <hg_image id="f3_img_check" x="48" y="13" width="48" height="48" src="assets/elements/inactive_ic_check.png" zIndex="5" />
+            <hg_label id="f3_lbl_updated" x="108" y="22" width="140" height="34" color="#ffffff" text="Updated" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="6" />
+            <hg_image id="f3_img_laptop" x="322" y="25" width="28" height="24" src="assets/elements/inactive_ic_laptop_on.png" zIndex="7" />
+            <hg_image id="f3_img_battery" x="360" y="26" width="40" height="21" src="assets/elements/inactive_ic_battery_full.png" zIndex="8" />
+        </hg_view>
+        <hg_view id="view_g0_low_battery" x="3000" y="0" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+            <events>
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_a0_connecting" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_f0_progress" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_g1_storage_full" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_g2_no_sound" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+            </events>
+            <hg_image id="g0_img_bg" x="0" y="0" width="450" height="390" src="assets/elements/bg_main.png" zIndex="0" />
+            <hg_image id="g0_img_wave" x="33" y="155" width="381" height="80" src="assets/elements/common_ic_wave_color.png" zIndex="1" />
+            <hg_image id="g0_img_rec_dot" x="47" y="27" width="18" height="19" src="assets/elements/common_ic_rec_dot.png" zIndex="5" timers="[{&quot;id&quot;:&quot;blink&quot;,&quot;name&quot;:&quot;REC blink&quot;,&quot;enabled&quot;:true,&quot;reload&quot;:true,&quot;stopOnComplete&quot;:false,&quot;interval&quot;:50,&quot;mode&quot;:&quot;preset&quot;,&quot;segments&quot;:[{&quot;duration&quot;:500,&quot;actions&quot;:[{&quot;type&quot;:&quot;opacity&quot;,&quot;from&quot;:255,&quot;to&quot;:60}]},{&quot;duration&quot;:500,&quot;actions&quot;:[{&quot;type&quot;:&quot;opacity&quot;,&quot;from&quot;:60,&quot;to&quot;:255}]}]}]" />
+            <hg_label id="g0_lbl_rec" x="76" y="20" width="70" height="30" color="#ffffff" text="REC" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="6" />
+            <hg_image id="g0_img_laptop" x="267" y="25" width="28" height="24" src="assets/elements/inactive_ic_laptop_on.png" zIndex="7" />
+            <hg_image id="g0_img_battery" x="304" y="26" width="40" height="21" src="assets/elements/inactive_ic_battery_low_red.png" zIndex="8" />
+            <hg_image id="g0_img_cloud" x="355" y="26" width="26" height="19" src="assets/elements/common_ic_cloud.png" zIndex="9" />
+            <hg_label id="g0_lbl_cloud_count" x="384" y="20" width="30" height="30" color="#ffffff" text="2" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="10" />
+            <hg_label id="g0_lbl_warning" x="143" y="84" width="180" height="36" color="#ff3141" text="Low battery" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="28" renderMode="4" zIndex="11" />
+            <hg_image id="g0_img_mark" x="47" y="273" width="30" height="30" src="assets/elements/common_ic_arrow.png" zIndex="12" />
+            <hg_label id="g0_lbl_mark_num" x="81" y="272" width="30" height="32" color="#ffffff" text="2" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="27" renderMode="4" zIndex="13" />
+            <hg_label id="g0_lbl_mode" x="46" y="306" width="120" height="30" color="#ffffff" text="Mode A" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="14" />
+            <hg_timer_label id="g0_lbl_timer" x="172" y="272" width="270" height="55" color="#ffffff" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="52" renderMode="4" timerType="stopwatch" timerFormat="HH:MM:SS" timerInitialValue="1458000" timerAutoStart="true" characterSets="[{&quot;type&quot;:&quot;string&quot;,&quot;value&quot;:&quot;0123456789:&quot;}]" zIndex="15" />
+        </hg_view>
+        <hg_view id="view_g1_storage_full" x="3000" y="440" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+            <events>
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_a0_connecting" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_f0_progress" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_g2_no_sound" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_g0_low_battery" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+            </events>
+            <hg_image id="g1_img_bg" x="0" y="0" width="450" height="390" src="assets/elements/bg_main.png" zIndex="0" />
+            <hg_image id="g1_img_rec_dot" x="47" y="27" width="18" height="19" src="assets/elements/common_ic_rec_dot.png" zIndex="5" timers="[{&quot;id&quot;:&quot;blink&quot;,&quot;name&quot;:&quot;REC blink&quot;,&quot;enabled&quot;:true,&quot;reload&quot;:true,&quot;stopOnComplete&quot;:false,&quot;interval&quot;:50,&quot;mode&quot;:&quot;preset&quot;,&quot;segments&quot;:[{&quot;duration&quot;:500,&quot;actions&quot;:[{&quot;type&quot;:&quot;opacity&quot;,&quot;from&quot;:255,&quot;to&quot;:60}]},{&quot;duration&quot;:500,&quot;actions&quot;:[{&quot;type&quot;:&quot;opacity&quot;,&quot;from&quot;:60,&quot;to&quot;:255}]}]}]" />
+            <hg_label id="g1_lbl_rec" x="76" y="20" width="70" height="30" color="#ffffff" text="REC" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="6" />
+            <hg_image id="g1_img_device" x="211" y="22" width="28" height="31" src="assets/elements/error_ic_device_red.png" zIndex="7" />
+            <hg_image id="g1_img_laptop" x="267" y="25" width="28" height="24" src="assets/elements/inactive_ic_laptop_off.png" zIndex="8" />
+            <hg_image id="g1_img_battery" x="305" y="26" width="40" height="21" src="assets/elements/inactive_ic_battery_full.png" zIndex="9" />
+            <hg_image id="g1_img_cloud" x="355" y="27" width="26" height="19" src="assets/elements/common_ic_cloud.png" zIndex="10" />
+            <hg_label id="g1_lbl_cloud_count" x="384" y="21" width="30" height="30" color="#ffffff" text="2" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="11" />
+            <hg_label id="g1_lbl_warning" x="107" y="84" width="260" height="38" color="#ff3141" text="Local storage full" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="29" renderMode="4" zIndex="12" />
+            <hg_image id="g1_img_wave" x="50" y="160" width="351" height="67" src="assets/elements/error_ic_wave_flat.png" zIndex="13" />
+            <hg_image id="g1_img_mark" x="47" y="273" width="30" height="30" src="assets/elements/common_ic_arrow.png" zIndex="12" />
+            <hg_label id="g1_lbl_mark_num" x="80" y="271" width="30" height="32" color="#ffffff" text="2" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="27" renderMode="4" zIndex="13" />
+            <hg_label id="g1_lbl_mode" x="46" y="306" width="120" height="30" color="#ffffff" text="Mode A" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="14" />
+            <hg_timer_label id="g1_lbl_timer" x="172" y="272" width="270" height="55" color="#ffffff" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="52" renderMode="4" timerType="stopwatch" timerFormat="HH:MM:SS" timerInitialValue="1458000" timerAutoStart="true" characterSets="[{&quot;type&quot;:&quot;string&quot;,&quot;value&quot;:&quot;0123456789:&quot;}]" zIndex="15" />
+        </hg_view>
+        <hg_view id="view_g2_no_sound" x="3000" y="880" width="450" height="390" backgroundColor="#000000" entry="false" zIndex="0">
+            <events>
+                <event type="onSwipeLeftQuick">
+                    <action type="switchView" target="view_a0_connecting" switchOutStyle="SWITCH_OUT_TO_LEFT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_RIGHT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeRightQuick">
+                    <action type="switchView" target="view_f0_progress" switchOutStyle="SWITCH_OUT_TO_RIGHT_USE_TRANSLATION" switchInStyle="SWITCH_IN_FROM_LEFT_USE_TRANSLATION" />
+                </event>
+                <event type="onSwipeUpQuick">
+                    <action type="switchView" target="view_g0_low_battery" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+                <event type="onSwipeDownQuick">
+                    <action type="switchView" target="view_g1_storage_full" switchOutStyle="SWITCH_OUT_ANIMATION_FADE" switchInStyle="SWITCH_IN_ANIMATION_FADE" />
+                </event>
+            </events>
+            <hg_image id="g2_img_bg" x="0" y="0" width="450" height="390" src="assets/elements/bg_main.png" zIndex="0" />
+            <hg_image id="g2_img_rec_dot" x="47" y="27" width="18" height="19" src="assets/elements/common_ic_rec_dot.png" zIndex="5" timers="[{&quot;id&quot;:&quot;blink&quot;,&quot;name&quot;:&quot;REC blink&quot;,&quot;enabled&quot;:true,&quot;reload&quot;:true,&quot;stopOnComplete&quot;:false,&quot;interval&quot;:50,&quot;mode&quot;:&quot;preset&quot;,&quot;segments&quot;:[{&quot;duration&quot;:500,&quot;actions&quot;:[{&quot;type&quot;:&quot;opacity&quot;,&quot;from&quot;:255,&quot;to&quot;:60}]},{&quot;duration&quot;:500,&quot;actions&quot;:[{&quot;type&quot;:&quot;opacity&quot;,&quot;from&quot;:60,&quot;to&quot;:255}]}]}]" />
+            <hg_label id="g2_lbl_rec" x="76" y="20" width="70" height="30" color="#ffffff" text="REC" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="6" />
+            <hg_image id="g2_img_laptop" x="267" y="25" width="28" height="24" src="assets/elements/inactive_ic_laptop_on.png" zIndex="7" />
+            <hg_image id="g2_img_battery" x="305" y="26" width="40" height="21" src="assets/elements/inactive_ic_battery_full.png" zIndex="8" />
+            <hg_image id="g2_img_cloud" x="355" y="27" width="26" height="19" src="assets/elements/common_ic_cloud.png" zIndex="9" />
+            <hg_label id="g2_lbl_cloud_count" x="384" y="21" width="30" height="30" color="#ffffff" text="2" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="10" />
+            <hg_label id="g2_lbl_warning" x="94" y="85" width="280" height="36" color="#f3bb63" text="No sound detected" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="29" renderMode="4" zIndex="11" />
+            <hg_image id="g2_img_wave" x="50" y="160" width="351" height="67" src="assets/elements/error_ic_wave_flat.png" zIndex="12" />
+            <hg_image id="g2_img_mark" x="47" y="273" width="30" height="30" src="assets/elements/common_ic_arrow.png" zIndex="13" />
+            <hg_label id="g2_lbl_mark_num" x="80" y="271" width="30" height="32" color="#ffffff" text="2" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="27" renderMode="4" zIndex="14" />
+            <hg_label id="g2_lbl_mode" x="46" y="306" width="120" height="30" color="#ffffff" text="Mode A" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="26" renderMode="4" zIndex="15" />
+            <hg_timer_label id="g2_lbl_timer" x="169" y="272" width="270" height="55" color="#ffffff" fontFile="/Inter-SemiBold.ttf" fontType="vector" fontSize="52" renderMode="4" timerType="stopwatch" timerFormat="HH:MM:SS" timerInitialValue="198000" timerAutoStart="true" characterSets="[{&quot;type&quot;:&quot;string&quot;,&quot;value&quot;:&quot;0123456789:&quot;}]" zIndex="16" />
         </hg_view>
     </view>
 </hml>

@@ -65,7 +65,7 @@
 | --- | --- | --- |
 | `ic` | 单个图标 | `inactive_ic_check.png` 48x48 |
 | `ring` | 加载/进度环逐帧 | `inactive_ic_ring_01–15`、`upgc_ring_01–11` |
-| `bar` | 升级进度条逐帧 | `upgrade_bar_01–11`、`upgrade_bar_track` |
+| `bar` | 升级进度条 | `upgrade_bar_track`（成品帧，非底轨） |
 | `pill` | 灵动岛胶囊逐帧 01–20 | `idea_pill_01.png` 364x70 |
 | `dial` | 模式盘选中态 | `meeting_ic_dial_b.png` 282x390 |
 
@@ -93,7 +93,7 @@
 | 录音波形（彩色） | `common_ic_wave_color` | 381x80 |
 | 会议波形 | `meeting_ic_wave_mid` | 261x87 |
 | 细波形（录音/异常） | `record_ic_wave_flat` / `error_ic_wave_flat` | 351x67 |
-| 进度条（升级页） | `upgrade_bar_*` | 372x49 |
+| 进度条（升级页） | `upgrade_bar_track` | 372x26 |
 | 进度环（合盖） | `upgc_ring_*` | 165x170 |
 
 ## 已知事项
@@ -103,6 +103,16 @@
 - 三张「图标 + 文字」复合图已把文字裁掉，只留图标并按 `<前缀>_ic_<名称>` 改名：`upgrade_ic_badge_fail.png`（45x45，紫环红叉）、`upgrade_ic_badge_ok.png`（45x46，紫环绿勾）、`common_ic_rec_dot.png`（18x19，红点）。对应的文案改用字体渲染。
 - `common_ic_rec_dot.png` 是原图直接裁出来的红点，左边缘在原稿里就被裁掉了一点，画圆不完整；要更规整可以用控件画个圆。
 - 工作区根目录的 `ui_assets/wave_anim/` 是竖屏 390x450 出的录音波形逐帧包，与横屏画布方向不一致，尚未导入。
+- `meeting_ic_dial_b/_c.png`（282x390）在效果图里是**按 1:1 绘制、左侧被屏边裁掉 132 px**，HML 用 `x="-132"`。
+  不要写成缩放 transform：缩放后盘面上的 A/B/C 和 `Mode` 文字位置与效果图对不上（字在图内）。
+- `idea_ic_bubble.png` 源文件 55x55，效果图里是 62x62，HML 直接声明 62x62 由 ImageGenerator 自动放大。
+- `·`（U+00B7）之类非 ASCII 字形**必须写真实字符**并在该标签上给 `characterSets`
+  （`[{&quot;type&quot;:&quot;string&quot;,&quot;value&quot;:&quot;·&quot;}]`）：写成 `&#183;` 会被当字面量画出来，
+  而且字体子集默认只打包 HML 里出现过的字符，不加 `characterSets` 会缺字。
+- 逐帧动画的帧素材（`inactive_ic_ring_*`、`idea_pill_*`、`upgc_ring_01–11`）在 HML 里是
+  **一个 `hg_image` 运行时换 `src`**（A0 用 `imageSequence`，F0/E0 每帧一段 `changeImage`）。
+  `changeImage` 只在段入口触发一次，所以一帧必须占一段。这些帧必须全部留在 `conversion.json` 里。
+  sim 没有 XIP，大图换 `src` 会因反复 malloc 一整帧而停在第一帧，帧动画的观感只能上板确认。
 
 ## 处理记录
 

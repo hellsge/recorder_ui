@@ -11,10 +11,237 @@
 #include "gui_components_init.h"
 #include "gui_view.h"
 #include "gui_view_instance.h"
+#include "draw_font.h"
+#include "font_types.h"
 #include "gui_img.h"
+#include "gui_text.h"
 
 // Component handle declarations
-extern gui_img_t *img_1;
-extern gui_img_t *img_2;
+extern gui_img_t *a0_img_spinner;
+extern gui_text_t *a0_lbl_connecting;
+extern gui_img_t *a0_img_laptop;
+extern gui_img_t *a0_img_battery;
+extern gui_img_t *a1_img_bg;
+extern gui_img_t *a1_img_laptop_chat;
+extern gui_text_t *a1_lbl_year;
+extern gui_text_t *a1_lbl_date;
+extern gui_img_t *a1_img_laptop;
+extern gui_img_t *a1_img_battery;
+extern gui_text_t *a1_lbl_pairing;
+extern gui_text_t *a1_lbl_hint;
+extern gui_img_t *a2_img_bg;
+extern gui_img_t *a2_img_laptop_ok;
+extern gui_text_t *a2_lbl_year;
+extern gui_text_t *a2_lbl_date;
+extern gui_img_t *a2_img_laptop;
+extern gui_img_t *a2_img_battery;
+extern gui_text_t *a2_lbl_title;
+extern gui_text_t *a2_lbl_hint;
+extern gui_img_t *a3_img_bg;
+extern gui_img_t *a3_img_headset_fail;
+extern gui_text_t *a3_lbl_year;
+extern gui_text_t *a3_lbl_date;
+extern gui_img_t *a3_img_laptop;
+extern gui_img_t *a3_img_battery;
+extern gui_text_t *a3_lbl_title;
+extern gui_text_t *a3_lbl_hint;
+extern gui_img_t *b0_img_bubble;
+extern gui_text_t *b0_lbl_year;
+extern gui_text_t *b0_lbl_date;
+extern gui_img_t *b0_img_laptop;
+extern gui_img_t *b0_img_battery;
+extern gui_img_t *b0_img_cloud;
+extern gui_text_t *b0_lbl_cloud_count;
+extern gui_text_t *b1_lbl_year;
+extern gui_text_t *b1_lbl_date;
+extern gui_img_t *b1_img_device;
+extern gui_img_t *b1_img_laptop;
+extern gui_img_t *b1_img_battery;
+extern gui_img_t *b1_img_cloud;
+extern gui_text_t *b1_lbl_cloud_count;
+extern gui_text_t *b2_lbl_year;
+extern gui_text_t *b2_lbl_date;
+extern gui_img_t *b2_img_upload;
+extern gui_img_t *b2_img_laptop;
+extern gui_img_t *b2_img_battery;
+extern gui_img_t *b2_img_cloud;
+extern gui_text_t *b2_lbl_cloud_count;
+extern gui_img_t *c0_img_bg;
+extern gui_img_t *c0_img_rec_dot;
+extern gui_text_t *c0_lbl_rec;
+extern gui_img_t *c0_img_laptop;
+extern gui_img_t *c0_img_battery;
+extern gui_img_t *c0_img_cloud;
+extern gui_text_t *c0_lbl_cloud_count;
+extern gui_img_t *c0_img_wave;
+extern gui_img_t *c0_img_mark;
+extern gui_text_t *c0_lbl_mark_num;
+extern gui_text_t *c0_lbl_mode;
+extern gui_text_t *c0_lbl_timer;
+extern gui_img_t *c1_img_bg;
+extern gui_img_t *c1_img_rec_dot;
+extern gui_text_t *c1_lbl_rec;
+extern gui_img_t *c1_img_laptop;
+extern gui_img_t *c1_img_battery;
+extern gui_img_t *c1_img_cloud;
+extern gui_text_t *c1_lbl_cloud_count;
+extern gui_text_t *c1_lbl_prompt;
+extern gui_img_t *c1_img_wave;
+extern gui_img_t *c1_img_mark;
+extern gui_text_t *c1_lbl_mark_num;
+extern gui_text_t *c1_lbl_mode;
+extern gui_text_t *c1_lbl_timer;
+extern gui_img_t *c2_img_bg;
+extern gui_img_t *c2_img_rec_dot;
+extern gui_text_t *c2_lbl_rec;
+extern gui_img_t *c2_img_mic;
+extern gui_img_t *c2_img_laptop;
+extern gui_img_t *c2_img_battery;
+extern gui_img_t *c2_img_cloud;
+extern gui_text_t *c2_lbl_cloud_count;
+extern gui_img_t *c2_img_wave;
+extern gui_img_t *c2_img_mark;
+extern gui_text_t *c2_lbl_mark_num;
+extern gui_text_t *c2_lbl_mode;
+extern gui_text_t *c2_lbl_timer;
+extern gui_img_t *c3_img_bg;
+extern gui_img_t *c3_img_check;
+extern gui_text_t *c3_lbl_saved;
+extern gui_img_t *c3_img_laptop;
+extern gui_img_t *c3_img_battery;
+extern gui_img_t *c3_img_cloud;
+extern gui_text_t *c3_lbl_cloud_count;
+extern gui_img_t *d0_img_bg;
+extern gui_img_t *d0_img_dial;
+extern gui_img_t *d0_img_wave;
+extern gui_img_t *d0_img_rec_dot;
+extern gui_text_t *d0_lbl_rec;
+extern gui_img_t *d0_img_laptop;
+extern gui_img_t *d0_img_battery;
+extern gui_img_t *d0_img_cloud;
+extern gui_text_t *d0_lbl_cloud_count;
+extern gui_text_t *d0_lbl_timer;
+extern gui_img_t *d1_img_bg;
+extern gui_img_t *d1_img_dial;
+extern gui_img_t *d1_img_wave;
+extern gui_img_t *d1_img_rec_dot;
+extern gui_text_t *d1_lbl_rec;
+extern gui_img_t *d1_img_laptop;
+extern gui_img_t *d1_img_battery;
+extern gui_img_t *d1_img_cloud;
+extern gui_text_t *d1_lbl_cloud_count;
+extern gui_text_t *d1_lbl_timer;
+extern gui_img_t *e0_img_pill;
+extern gui_img_t *e1_img_bubble;
+extern gui_text_t *e1_lbl_year;
+extern gui_text_t *e1_lbl_date;
+extern gui_img_t *e1_img_laptop;
+extern gui_img_t *e1_img_battery;
+extern gui_img_t *e1_img_cloud;
+extern gui_text_t *e1_lbl_cloud_count;
+extern gui_img_t *f0_img_ring;
+extern gui_img_t *f0_img_bg;
+extern gui_text_t *f0_lbl_year;
+extern gui_text_t *f0_lbl_date;
+extern gui_img_t *f0_img_laptop;
+extern gui_img_t *f0_img_battery;
+extern gui_text_t *f0_lbl_title;
+extern gui_text_t *f0_lbl_hint;
+extern gui_img_t *f1_img_bg;
+extern gui_img_t *f1_img_alert;
+extern gui_text_t *f1_lbl_year;
+extern gui_text_t *f1_lbl_date;
+extern gui_img_t *f1_img_laptop;
+extern gui_img_t *f1_img_battery;
+extern gui_text_t *f1_lbl_title;
+extern gui_text_t *f1_lbl_hint;
+extern gui_img_t *f2_img_bar;
+extern gui_text_t *f2_lbl_updating;
+extern gui_text_t *f2_lbl_pct;
+extern gui_img_t *f3_img_check;
+extern gui_text_t *f3_lbl_updated;
+extern gui_img_t *f3_img_laptop;
+extern gui_img_t *f3_img_battery;
+extern gui_img_t *g0_img_bg;
+extern gui_img_t *g0_img_wave;
+extern gui_img_t *g0_img_rec_dot;
+extern gui_text_t *g0_lbl_rec;
+extern gui_img_t *g0_img_laptop;
+extern gui_img_t *g0_img_battery;
+extern gui_img_t *g0_img_cloud;
+extern gui_text_t *g0_lbl_cloud_count;
+extern gui_text_t *g0_lbl_warning;
+extern gui_img_t *g0_img_mark;
+extern gui_text_t *g0_lbl_mark_num;
+extern gui_text_t *g0_lbl_mode;
+extern gui_text_t *g0_lbl_timer;
+extern gui_img_t *g1_img_bg;
+extern gui_img_t *g1_img_rec_dot;
+extern gui_text_t *g1_lbl_rec;
+extern gui_img_t *g1_img_device;
+extern gui_img_t *g1_img_laptop;
+extern gui_img_t *g1_img_battery;
+extern gui_img_t *g1_img_cloud;
+extern gui_text_t *g1_lbl_cloud_count;
+extern gui_text_t *g1_lbl_warning;
+extern gui_img_t *g1_img_wave;
+extern gui_img_t *g1_img_mark;
+extern gui_text_t *g1_lbl_mark_num;
+extern gui_text_t *g1_lbl_mode;
+extern gui_text_t *g1_lbl_timer;
+extern gui_img_t *g2_img_bg;
+extern gui_img_t *g2_img_rec_dot;
+extern gui_text_t *g2_lbl_rec;
+extern gui_img_t *g2_img_laptop;
+extern gui_img_t *g2_img_battery;
+extern gui_img_t *g2_img_cloud;
+extern gui_text_t *g2_lbl_cloud_count;
+extern gui_text_t *g2_lbl_warning;
+extern gui_img_t *g2_img_wave;
+extern gui_img_t *g2_img_mark;
+extern gui_text_t *g2_lbl_mark_num;
+extern gui_text_t *g2_lbl_mode;
+extern gui_text_t *g2_lbl_timer;
+
+// c0_lbl_timer timer control functions
+void c0_lbl_timer_start(void);
+void c0_lbl_timer_stop(void);
+void c0_lbl_timer_reset(void);
+
+// c1_lbl_timer timer control functions
+void c1_lbl_timer_start(void);
+void c1_lbl_timer_stop(void);
+void c1_lbl_timer_reset(void);
+
+// c2_lbl_timer timer control functions
+void c2_lbl_timer_start(void);
+void c2_lbl_timer_stop(void);
+void c2_lbl_timer_reset(void);
+
+// d0_lbl_timer timer control functions
+void d0_lbl_timer_start(void);
+void d0_lbl_timer_stop(void);
+void d0_lbl_timer_reset(void);
+
+// d1_lbl_timer timer control functions
+void d1_lbl_timer_start(void);
+void d1_lbl_timer_stop(void);
+void d1_lbl_timer_reset(void);
+
+// g0_lbl_timer timer control functions
+void g0_lbl_timer_start(void);
+void g0_lbl_timer_stop(void);
+void g0_lbl_timer_reset(void);
+
+// g1_lbl_timer timer control functions
+void g1_lbl_timer_start(void);
+void g1_lbl_timer_stop(void);
+void g1_lbl_timer_reset(void);
+
+// g2_lbl_timer timer control functions
+void g2_lbl_timer_start(void);
+void g2_lbl_timer_stop(void);
+void g2_lbl_timer_reset(void);
+
 
 #endif // RECORDER_UIMAIN_UI_H

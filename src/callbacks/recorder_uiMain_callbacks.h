@@ -11,7 +11,34 @@
 #include "gui_obj_focus.h"
 #include "../generated/auto_generated_bindings.h"
 
+// Stable preset animation control API
+// Call before creating or starting the object timer to replay from the beginning.
+void a0_img_spinner_preset_animation_reset(void);
+void c0_img_rec_dot_preset_animation_reset(void);
+void c1_img_rec_dot_preset_animation_reset(void);
+void c2_img_rec_dot_preset_animation_reset(void);
+void d0_img_rec_dot_preset_animation_reset(void);
+void d1_img_rec_dot_preset_animation_reset(void);
+void e0_img_pill_preset_animation_reset(void);
+void f0_img_ring_preset_animation_reset(void);
+void g0_img_rec_dot_preset_animation_reset(void);
+void g1_img_rec_dot_preset_animation_reset(void);
+void g2_img_rec_dot_preset_animation_reset(void);
+
 // Event callback function declarations
+
+// User-configured timer callback function declarations
+void a0_img_spinner_seq_cb(void *obj);
+void c0_img_rec_dot_blink_cb(void *obj);
+void c1_img_rec_dot_blink_cb(void *obj);
+void c2_img_rec_dot_blink_cb(void *obj);
+void d0_img_rec_dot_blink_cb(void *obj);
+void d1_img_rec_dot_blink_cb(void *obj);
+void e0_img_pill_f_cb(void *obj);
+void f0_img_ring_f_cb(void *obj);
+void g0_img_rec_dot_blink_cb(void *obj);
+void g1_img_rec_dot_blink_cb(void *obj);
+void g2_img_rec_dot_blink_cb(void *obj);
 
 /* @protected start custom_functions */
 // Custom declarations

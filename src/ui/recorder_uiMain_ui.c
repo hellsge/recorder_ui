@@ -11,19 +11,613 @@
 #  endif
 #endif
 #include <stddef.h>
+#include <stdio.h>
+#include <string.h>
 
 // Component handle definitions
-gui_img_t *img_1 = NULL;
-gui_img_t *img_2 = NULL;
+gui_img_t *a0_img_spinner = NULL;
+gui_text_t *a0_lbl_connecting = NULL;
+gui_img_t *a0_img_laptop = NULL;
+gui_img_t *a0_img_battery = NULL;
+gui_img_t *a1_img_bg = NULL;
+gui_img_t *a1_img_laptop_chat = NULL;
+gui_text_t *a1_lbl_year = NULL;
+gui_text_t *a1_lbl_date = NULL;
+gui_img_t *a1_img_laptop = NULL;
+gui_img_t *a1_img_battery = NULL;
+gui_text_t *a1_lbl_pairing = NULL;
+gui_text_t *a1_lbl_hint = NULL;
+gui_img_t *a2_img_bg = NULL;
+gui_img_t *a2_img_laptop_ok = NULL;
+gui_text_t *a2_lbl_year = NULL;
+gui_text_t *a2_lbl_date = NULL;
+gui_img_t *a2_img_laptop = NULL;
+gui_img_t *a2_img_battery = NULL;
+gui_text_t *a2_lbl_title = NULL;
+gui_text_t *a2_lbl_hint = NULL;
+gui_img_t *a3_img_bg = NULL;
+gui_img_t *a3_img_headset_fail = NULL;
+gui_text_t *a3_lbl_year = NULL;
+gui_text_t *a3_lbl_date = NULL;
+gui_img_t *a3_img_laptop = NULL;
+gui_img_t *a3_img_battery = NULL;
+gui_text_t *a3_lbl_title = NULL;
+gui_text_t *a3_lbl_hint = NULL;
+gui_img_t *b0_img_bubble = NULL;
+gui_text_t *b0_lbl_year = NULL;
+gui_text_t *b0_lbl_date = NULL;
+gui_img_t *b0_img_laptop = NULL;
+gui_img_t *b0_img_battery = NULL;
+gui_img_t *b0_img_cloud = NULL;
+gui_text_t *b0_lbl_cloud_count = NULL;
+gui_text_t *b1_lbl_year = NULL;
+gui_text_t *b1_lbl_date = NULL;
+gui_img_t *b1_img_device = NULL;
+gui_img_t *b1_img_laptop = NULL;
+gui_img_t *b1_img_battery = NULL;
+gui_img_t *b1_img_cloud = NULL;
+gui_text_t *b1_lbl_cloud_count = NULL;
+gui_text_t *b2_lbl_year = NULL;
+gui_text_t *b2_lbl_date = NULL;
+gui_img_t *b2_img_upload = NULL;
+gui_img_t *b2_img_laptop = NULL;
+gui_img_t *b2_img_battery = NULL;
+gui_img_t *b2_img_cloud = NULL;
+gui_text_t *b2_lbl_cloud_count = NULL;
+gui_img_t *c0_img_bg = NULL;
+gui_img_t *c0_img_rec_dot = NULL;
+gui_text_t *c0_lbl_rec = NULL;
+gui_img_t *c0_img_laptop = NULL;
+gui_img_t *c0_img_battery = NULL;
+gui_img_t *c0_img_cloud = NULL;
+gui_text_t *c0_lbl_cloud_count = NULL;
+gui_img_t *c0_img_wave = NULL;
+gui_img_t *c0_img_mark = NULL;
+gui_text_t *c0_lbl_mark_num = NULL;
+gui_text_t *c0_lbl_mode = NULL;
+gui_text_t *c0_lbl_timer = NULL;
+gui_img_t *c1_img_bg = NULL;
+gui_img_t *c1_img_rec_dot = NULL;
+gui_text_t *c1_lbl_rec = NULL;
+gui_img_t *c1_img_laptop = NULL;
+gui_img_t *c1_img_battery = NULL;
+gui_img_t *c1_img_cloud = NULL;
+gui_text_t *c1_lbl_cloud_count = NULL;
+gui_text_t *c1_lbl_prompt = NULL;
+gui_img_t *c1_img_wave = NULL;
+gui_img_t *c1_img_mark = NULL;
+gui_text_t *c1_lbl_mark_num = NULL;
+gui_text_t *c1_lbl_mode = NULL;
+gui_text_t *c1_lbl_timer = NULL;
+gui_img_t *c2_img_bg = NULL;
+gui_img_t *c2_img_rec_dot = NULL;
+gui_text_t *c2_lbl_rec = NULL;
+gui_img_t *c2_img_mic = NULL;
+gui_img_t *c2_img_laptop = NULL;
+gui_img_t *c2_img_battery = NULL;
+gui_img_t *c2_img_cloud = NULL;
+gui_text_t *c2_lbl_cloud_count = NULL;
+gui_img_t *c2_img_wave = NULL;
+gui_img_t *c2_img_mark = NULL;
+gui_text_t *c2_lbl_mark_num = NULL;
+gui_text_t *c2_lbl_mode = NULL;
+gui_text_t *c2_lbl_timer = NULL;
+gui_img_t *c3_img_bg = NULL;
+gui_img_t *c3_img_check = NULL;
+gui_text_t *c3_lbl_saved = NULL;
+gui_img_t *c3_img_laptop = NULL;
+gui_img_t *c3_img_battery = NULL;
+gui_img_t *c3_img_cloud = NULL;
+gui_text_t *c3_lbl_cloud_count = NULL;
+gui_img_t *d0_img_bg = NULL;
+gui_img_t *d0_img_dial = NULL;
+gui_img_t *d0_img_wave = NULL;
+gui_img_t *d0_img_rec_dot = NULL;
+gui_text_t *d0_lbl_rec = NULL;
+gui_img_t *d0_img_laptop = NULL;
+gui_img_t *d0_img_battery = NULL;
+gui_img_t *d0_img_cloud = NULL;
+gui_text_t *d0_lbl_cloud_count = NULL;
+gui_text_t *d0_lbl_timer = NULL;
+gui_img_t *d1_img_bg = NULL;
+gui_img_t *d1_img_dial = NULL;
+gui_img_t *d1_img_wave = NULL;
+gui_img_t *d1_img_rec_dot = NULL;
+gui_text_t *d1_lbl_rec = NULL;
+gui_img_t *d1_img_laptop = NULL;
+gui_img_t *d1_img_battery = NULL;
+gui_img_t *d1_img_cloud = NULL;
+gui_text_t *d1_lbl_cloud_count = NULL;
+gui_text_t *d1_lbl_timer = NULL;
+gui_img_t *e0_img_pill = NULL;
+gui_img_t *e1_img_bubble = NULL;
+gui_text_t *e1_lbl_year = NULL;
+gui_text_t *e1_lbl_date = NULL;
+gui_img_t *e1_img_laptop = NULL;
+gui_img_t *e1_img_battery = NULL;
+gui_img_t *e1_img_cloud = NULL;
+gui_text_t *e1_lbl_cloud_count = NULL;
+gui_img_t *f0_img_ring = NULL;
+gui_img_t *f0_img_bg = NULL;
+gui_text_t *f0_lbl_year = NULL;
+gui_text_t *f0_lbl_date = NULL;
+gui_img_t *f0_img_laptop = NULL;
+gui_img_t *f0_img_battery = NULL;
+gui_text_t *f0_lbl_title = NULL;
+gui_text_t *f0_lbl_hint = NULL;
+gui_img_t *f1_img_bg = NULL;
+gui_img_t *f1_img_alert = NULL;
+gui_text_t *f1_lbl_year = NULL;
+gui_text_t *f1_lbl_date = NULL;
+gui_img_t *f1_img_laptop = NULL;
+gui_img_t *f1_img_battery = NULL;
+gui_text_t *f1_lbl_title = NULL;
+gui_text_t *f1_lbl_hint = NULL;
+gui_img_t *f2_img_bar = NULL;
+gui_text_t *f2_lbl_updating = NULL;
+gui_text_t *f2_lbl_pct = NULL;
+gui_img_t *f3_img_check = NULL;
+gui_text_t *f3_lbl_updated = NULL;
+gui_img_t *f3_img_laptop = NULL;
+gui_img_t *f3_img_battery = NULL;
+gui_img_t *g0_img_bg = NULL;
+gui_img_t *g0_img_wave = NULL;
+gui_img_t *g0_img_rec_dot = NULL;
+gui_text_t *g0_lbl_rec = NULL;
+gui_img_t *g0_img_laptop = NULL;
+gui_img_t *g0_img_battery = NULL;
+gui_img_t *g0_img_cloud = NULL;
+gui_text_t *g0_lbl_cloud_count = NULL;
+gui_text_t *g0_lbl_warning = NULL;
+gui_img_t *g0_img_mark = NULL;
+gui_text_t *g0_lbl_mark_num = NULL;
+gui_text_t *g0_lbl_mode = NULL;
+gui_text_t *g0_lbl_timer = NULL;
+gui_img_t *g1_img_bg = NULL;
+gui_img_t *g1_img_rec_dot = NULL;
+gui_text_t *g1_lbl_rec = NULL;
+gui_img_t *g1_img_device = NULL;
+gui_img_t *g1_img_laptop = NULL;
+gui_img_t *g1_img_battery = NULL;
+gui_img_t *g1_img_cloud = NULL;
+gui_text_t *g1_lbl_cloud_count = NULL;
+gui_text_t *g1_lbl_warning = NULL;
+gui_img_t *g1_img_wave = NULL;
+gui_img_t *g1_img_mark = NULL;
+gui_text_t *g1_lbl_mark_num = NULL;
+gui_text_t *g1_lbl_mode = NULL;
+gui_text_t *g1_lbl_timer = NULL;
+gui_img_t *g2_img_bg = NULL;
+gui_img_t *g2_img_rec_dot = NULL;
+gui_text_t *g2_lbl_rec = NULL;
+gui_img_t *g2_img_laptop = NULL;
+gui_img_t *g2_img_battery = NULL;
+gui_img_t *g2_img_cloud = NULL;
+gui_text_t *g2_lbl_cloud_count = NULL;
+gui_text_t *g2_lbl_warning = NULL;
+gui_img_t *g2_img_wave = NULL;
+gui_img_t *g2_img_mark = NULL;
+gui_text_t *g2_lbl_mark_num = NULL;
+gui_text_t *g2_lbl_mode = NULL;
+gui_text_t *g2_lbl_timer = NULL;
+
+// c0_lbl_timer timer global variables
+static uint32_t c0_lbl_timer_time_count = 1458000; // milliseconds
+static bool c0_lbl_timer_timer_running = false;
+static char c0_lbl_timer_time_str[16] = "00:24:18";
+
+// c0_lbl_timer format time string
+static void c0_lbl_timer_format_time(void)
+{
+    uint32_t hours = c0_lbl_timer_time_count / 3600000;
+    uint32_t minutes = (c0_lbl_timer_time_count % 3600000) / 60000;
+    uint32_t seconds = (c0_lbl_timer_time_count % 60000) / 1000;
+    snprintf(c0_lbl_timer_time_str, sizeof(c0_lbl_timer_time_str), "%02u:%02u:%02u", hours, minutes, seconds);
+}
+
+// c0_lbl_timer timer callback (called every 10ms)
+static void c0_lbl_timer_timer_cb(void *obj)
+{
+    if (!c0_lbl_timer_timer_running) {
+        return;
+    }
+
+    // Count-up mode
+    c0_lbl_timer_time_count += 10;
+
+    c0_lbl_timer_format_time();
+    gui_text_content_set((gui_text_t *)obj, c0_lbl_timer_time_str, strlen(c0_lbl_timer_time_str));
+}
+
+// c0_lbl_timer start timer
+void c0_lbl_timer_start(void)
+{
+    c0_lbl_timer_timer_running = true;
+    gui_obj_start_timer((gui_obj_t *)c0_lbl_timer);
+}
+
+// c0_lbl_timer stop timer
+void c0_lbl_timer_stop(void)
+{
+    c0_lbl_timer_timer_running = false;
+    gui_obj_stop_timer((gui_obj_t *)c0_lbl_timer);
+}
+
+// c0_lbl_timer reset timer
+void c0_lbl_timer_reset(void)
+{
+    c0_lbl_timer_time_count = 1458000;
+    c0_lbl_timer_timer_running = false;
+    c0_lbl_timer_format_time();
+    gui_text_content_set((gui_text_t *)c0_lbl_timer, c0_lbl_timer_time_str, strlen(c0_lbl_timer_time_str));
+}
+
+// c1_lbl_timer timer global variables
+static uint32_t c1_lbl_timer_time_count = 1458000; // milliseconds
+static bool c1_lbl_timer_timer_running = false;
+static char c1_lbl_timer_time_str[16] = "00:24:18";
+
+// c1_lbl_timer format time string
+static void c1_lbl_timer_format_time(void)
+{
+    uint32_t hours = c1_lbl_timer_time_count / 3600000;
+    uint32_t minutes = (c1_lbl_timer_time_count % 3600000) / 60000;
+    uint32_t seconds = (c1_lbl_timer_time_count % 60000) / 1000;
+    snprintf(c1_lbl_timer_time_str, sizeof(c1_lbl_timer_time_str), "%02u:%02u:%02u", hours, minutes, seconds);
+}
+
+// c1_lbl_timer timer callback (called every 10ms)
+static void c1_lbl_timer_timer_cb(void *obj)
+{
+    if (!c1_lbl_timer_timer_running) {
+        return;
+    }
+
+    // Count-up mode
+    c1_lbl_timer_time_count += 10;
+
+    c1_lbl_timer_format_time();
+    gui_text_content_set((gui_text_t *)obj, c1_lbl_timer_time_str, strlen(c1_lbl_timer_time_str));
+}
+
+// c1_lbl_timer start timer
+void c1_lbl_timer_start(void)
+{
+    c1_lbl_timer_timer_running = true;
+    gui_obj_start_timer((gui_obj_t *)c1_lbl_timer);
+}
+
+// c1_lbl_timer stop timer
+void c1_lbl_timer_stop(void)
+{
+    c1_lbl_timer_timer_running = false;
+    gui_obj_stop_timer((gui_obj_t *)c1_lbl_timer);
+}
+
+// c1_lbl_timer reset timer
+void c1_lbl_timer_reset(void)
+{
+    c1_lbl_timer_time_count = 1458000;
+    c1_lbl_timer_timer_running = false;
+    c1_lbl_timer_format_time();
+    gui_text_content_set((gui_text_t *)c1_lbl_timer, c1_lbl_timer_time_str, strlen(c1_lbl_timer_time_str));
+}
+
+// c2_lbl_timer timer global variables
+static uint32_t c2_lbl_timer_time_count = 1458000; // milliseconds
+static bool c2_lbl_timer_timer_running = false;
+static char c2_lbl_timer_time_str[16] = "00:24:18";
+
+// c2_lbl_timer format time string
+static void c2_lbl_timer_format_time(void)
+{
+    uint32_t hours = c2_lbl_timer_time_count / 3600000;
+    uint32_t minutes = (c2_lbl_timer_time_count % 3600000) / 60000;
+    uint32_t seconds = (c2_lbl_timer_time_count % 60000) / 1000;
+    snprintf(c2_lbl_timer_time_str, sizeof(c2_lbl_timer_time_str), "%02u:%02u:%02u", hours, minutes, seconds);
+}
+
+// c2_lbl_timer timer callback (called every 10ms)
+static void c2_lbl_timer_timer_cb(void *obj)
+{
+    if (!c2_lbl_timer_timer_running) {
+        return;
+    }
+
+    // Count-up mode
+    c2_lbl_timer_time_count += 10;
+
+    c2_lbl_timer_format_time();
+    gui_text_content_set((gui_text_t *)obj, c2_lbl_timer_time_str, strlen(c2_lbl_timer_time_str));
+}
+
+// c2_lbl_timer start timer
+void c2_lbl_timer_start(void)
+{
+    c2_lbl_timer_timer_running = true;
+    gui_obj_start_timer((gui_obj_t *)c2_lbl_timer);
+}
+
+// c2_lbl_timer stop timer
+void c2_lbl_timer_stop(void)
+{
+    c2_lbl_timer_timer_running = false;
+    gui_obj_stop_timer((gui_obj_t *)c2_lbl_timer);
+}
+
+// c2_lbl_timer reset timer
+void c2_lbl_timer_reset(void)
+{
+    c2_lbl_timer_time_count = 1458000;
+    c2_lbl_timer_timer_running = false;
+    c2_lbl_timer_format_time();
+    gui_text_content_set((gui_text_t *)c2_lbl_timer, c2_lbl_timer_time_str, strlen(c2_lbl_timer_time_str));
+}
+
+// d0_lbl_timer timer global variables
+static uint32_t d0_lbl_timer_time_count = 0; // milliseconds
+static bool d0_lbl_timer_timer_running = false;
+static char d0_lbl_timer_time_str[16] = "00:00:00";
+
+// d0_lbl_timer format time string
+static void d0_lbl_timer_format_time(void)
+{
+    uint32_t hours = d0_lbl_timer_time_count / 3600000;
+    uint32_t minutes = (d0_lbl_timer_time_count % 3600000) / 60000;
+    uint32_t seconds = (d0_lbl_timer_time_count % 60000) / 1000;
+    snprintf(d0_lbl_timer_time_str, sizeof(d0_lbl_timer_time_str), "%02u:%02u:%02u", hours, minutes, seconds);
+}
+
+// d0_lbl_timer timer callback (called every 10ms)
+static void d0_lbl_timer_timer_cb(void *obj)
+{
+    if (!d0_lbl_timer_timer_running) {
+        return;
+    }
+
+    // Count-up mode
+    d0_lbl_timer_time_count += 10;
+
+    d0_lbl_timer_format_time();
+    gui_text_content_set((gui_text_t *)obj, d0_lbl_timer_time_str, strlen(d0_lbl_timer_time_str));
+}
+
+// d0_lbl_timer start timer
+void d0_lbl_timer_start(void)
+{
+    d0_lbl_timer_timer_running = true;
+    gui_obj_start_timer((gui_obj_t *)d0_lbl_timer);
+}
+
+// d0_lbl_timer stop timer
+void d0_lbl_timer_stop(void)
+{
+    d0_lbl_timer_timer_running = false;
+    gui_obj_stop_timer((gui_obj_t *)d0_lbl_timer);
+}
+
+// d0_lbl_timer reset timer
+void d0_lbl_timer_reset(void)
+{
+    d0_lbl_timer_time_count = 0;
+    d0_lbl_timer_timer_running = false;
+    d0_lbl_timer_format_time();
+    gui_text_content_set((gui_text_t *)d0_lbl_timer, d0_lbl_timer_time_str, strlen(d0_lbl_timer_time_str));
+}
+
+// d1_lbl_timer timer global variables
+static uint32_t d1_lbl_timer_time_count = 0; // milliseconds
+static bool d1_lbl_timer_timer_running = false;
+static char d1_lbl_timer_time_str[16] = "00:00:00";
+
+// d1_lbl_timer format time string
+static void d1_lbl_timer_format_time(void)
+{
+    uint32_t hours = d1_lbl_timer_time_count / 3600000;
+    uint32_t minutes = (d1_lbl_timer_time_count % 3600000) / 60000;
+    uint32_t seconds = (d1_lbl_timer_time_count % 60000) / 1000;
+    snprintf(d1_lbl_timer_time_str, sizeof(d1_lbl_timer_time_str), "%02u:%02u:%02u", hours, minutes, seconds);
+}
+
+// d1_lbl_timer timer callback (called every 10ms)
+static void d1_lbl_timer_timer_cb(void *obj)
+{
+    if (!d1_lbl_timer_timer_running) {
+        return;
+    }
+
+    // Count-up mode
+    d1_lbl_timer_time_count += 10;
+
+    d1_lbl_timer_format_time();
+    gui_text_content_set((gui_text_t *)obj, d1_lbl_timer_time_str, strlen(d1_lbl_timer_time_str));
+}
+
+// d1_lbl_timer start timer
+void d1_lbl_timer_start(void)
+{
+    d1_lbl_timer_timer_running = true;
+    gui_obj_start_timer((gui_obj_t *)d1_lbl_timer);
+}
+
+// d1_lbl_timer stop timer
+void d1_lbl_timer_stop(void)
+{
+    d1_lbl_timer_timer_running = false;
+    gui_obj_stop_timer((gui_obj_t *)d1_lbl_timer);
+}
+
+// d1_lbl_timer reset timer
+void d1_lbl_timer_reset(void)
+{
+    d1_lbl_timer_time_count = 0;
+    d1_lbl_timer_timer_running = false;
+    d1_lbl_timer_format_time();
+    gui_text_content_set((gui_text_t *)d1_lbl_timer, d1_lbl_timer_time_str, strlen(d1_lbl_timer_time_str));
+}
+
+// g0_lbl_timer timer global variables
+static uint32_t g0_lbl_timer_time_count = 1458000; // milliseconds
+static bool g0_lbl_timer_timer_running = false;
+static char g0_lbl_timer_time_str[16] = "00:24:18";
+
+// g0_lbl_timer format time string
+static void g0_lbl_timer_format_time(void)
+{
+    uint32_t hours = g0_lbl_timer_time_count / 3600000;
+    uint32_t minutes = (g0_lbl_timer_time_count % 3600000) / 60000;
+    uint32_t seconds = (g0_lbl_timer_time_count % 60000) / 1000;
+    snprintf(g0_lbl_timer_time_str, sizeof(g0_lbl_timer_time_str), "%02u:%02u:%02u", hours, minutes, seconds);
+}
+
+// g0_lbl_timer timer callback (called every 10ms)
+static void g0_lbl_timer_timer_cb(void *obj)
+{
+    if (!g0_lbl_timer_timer_running) {
+        return;
+    }
+
+    // Count-up mode
+    g0_lbl_timer_time_count += 10;
+
+    g0_lbl_timer_format_time();
+    gui_text_content_set((gui_text_t *)obj, g0_lbl_timer_time_str, strlen(g0_lbl_timer_time_str));
+}
+
+// g0_lbl_timer start timer
+void g0_lbl_timer_start(void)
+{
+    g0_lbl_timer_timer_running = true;
+    gui_obj_start_timer((gui_obj_t *)g0_lbl_timer);
+}
+
+// g0_lbl_timer stop timer
+void g0_lbl_timer_stop(void)
+{
+    g0_lbl_timer_timer_running = false;
+    gui_obj_stop_timer((gui_obj_t *)g0_lbl_timer);
+}
+
+// g0_lbl_timer reset timer
+void g0_lbl_timer_reset(void)
+{
+    g0_lbl_timer_time_count = 1458000;
+    g0_lbl_timer_timer_running = false;
+    g0_lbl_timer_format_time();
+    gui_text_content_set((gui_text_t *)g0_lbl_timer, g0_lbl_timer_time_str, strlen(g0_lbl_timer_time_str));
+}
+
+// g1_lbl_timer timer global variables
+static uint32_t g1_lbl_timer_time_count = 1458000; // milliseconds
+static bool g1_lbl_timer_timer_running = false;
+static char g1_lbl_timer_time_str[16] = "00:24:18";
+
+// g1_lbl_timer format time string
+static void g1_lbl_timer_format_time(void)
+{
+    uint32_t hours = g1_lbl_timer_time_count / 3600000;
+    uint32_t minutes = (g1_lbl_timer_time_count % 3600000) / 60000;
+    uint32_t seconds = (g1_lbl_timer_time_count % 60000) / 1000;
+    snprintf(g1_lbl_timer_time_str, sizeof(g1_lbl_timer_time_str), "%02u:%02u:%02u", hours, minutes, seconds);
+}
+
+// g1_lbl_timer timer callback (called every 10ms)
+static void g1_lbl_timer_timer_cb(void *obj)
+{
+    if (!g1_lbl_timer_timer_running) {
+        return;
+    }
+
+    // Count-up mode
+    g1_lbl_timer_time_count += 10;
+
+    g1_lbl_timer_format_time();
+    gui_text_content_set((gui_text_t *)obj, g1_lbl_timer_time_str, strlen(g1_lbl_timer_time_str));
+}
+
+// g1_lbl_timer start timer
+void g1_lbl_timer_start(void)
+{
+    g1_lbl_timer_timer_running = true;
+    gui_obj_start_timer((gui_obj_t *)g1_lbl_timer);
+}
+
+// g1_lbl_timer stop timer
+void g1_lbl_timer_stop(void)
+{
+    g1_lbl_timer_timer_running = false;
+    gui_obj_stop_timer((gui_obj_t *)g1_lbl_timer);
+}
+
+// g1_lbl_timer reset timer
+void g1_lbl_timer_reset(void)
+{
+    g1_lbl_timer_time_count = 1458000;
+    g1_lbl_timer_timer_running = false;
+    g1_lbl_timer_format_time();
+    gui_text_content_set((gui_text_t *)g1_lbl_timer, g1_lbl_timer_time_str, strlen(g1_lbl_timer_time_str));
+}
+
+// g2_lbl_timer timer global variables
+static uint32_t g2_lbl_timer_time_count = 198000; // milliseconds
+static bool g2_lbl_timer_timer_running = false;
+static char g2_lbl_timer_time_str[16] = "00:03:18";
+
+// g2_lbl_timer format time string
+static void g2_lbl_timer_format_time(void)
+{
+    uint32_t hours = g2_lbl_timer_time_count / 3600000;
+    uint32_t minutes = (g2_lbl_timer_time_count % 3600000) / 60000;
+    uint32_t seconds = (g2_lbl_timer_time_count % 60000) / 1000;
+    snprintf(g2_lbl_timer_time_str, sizeof(g2_lbl_timer_time_str), "%02u:%02u:%02u", hours, minutes, seconds);
+}
+
+// g2_lbl_timer timer callback (called every 10ms)
+static void g2_lbl_timer_timer_cb(void *obj)
+{
+    if (!g2_lbl_timer_timer_running) {
+        return;
+    }
+
+    // Count-up mode
+    g2_lbl_timer_time_count += 10;
+
+    g2_lbl_timer_format_time();
+    gui_text_content_set((gui_text_t *)obj, g2_lbl_timer_time_str, strlen(g2_lbl_timer_time_str));
+}
+
+// g2_lbl_timer start timer
+void g2_lbl_timer_start(void)
+{
+    g2_lbl_timer_timer_running = true;
+    gui_obj_start_timer((gui_obj_t *)g2_lbl_timer);
+}
+
+// g2_lbl_timer stop timer
+void g2_lbl_timer_stop(void)
+{
+    g2_lbl_timer_timer_running = false;
+    gui_obj_stop_timer((gui_obj_t *)g2_lbl_timer);
+}
+
+// g2_lbl_timer reset timer
+void g2_lbl_timer_reset(void)
+{
+    g2_lbl_timer_time_count = 198000;
+    g2_lbl_timer_timer_running = false;
+    g2_lbl_timer_format_time();
+    gui_text_content_set((gui_text_t *)g2_lbl_timer, g2_lbl_timer_time_str, strlen(g2_lbl_timer_time_str));
+}
 
 
-// Create recorder_uiMainView (hg_view)
-static void recorder_uiMainView_switch_out(gui_view_t *view)
+
+// Create view_a0_connecting (hg_view)
+static void view_a0_connecting_switch_out(gui_view_t *view)
 {
     GUI_UNUSED(view);
 }
 
-static void recorder_uiMainView_switch_in(gui_view_t *view)
+static void view_a0_connecting_switch_in(gui_view_t *view)
 {
     // Set animation step
     gui_view_set_animate_step(view, 39);
@@ -34,21 +628,39 @@ static void recorder_uiMainView_switch_in(gui_view_t *view)
     // Set background color
     gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
 
-    gui_view_switch_on_event(view, "recorder_uiSecondView", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_MOVE_LEFT);
+    gui_view_switch_on_event(view, "view_b0_standby", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_g0_low_battery", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_a1_pairing", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_a3_pairing_failed", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
 
 
-    // Create img_1 (hg_image)
-    img_1 = gui_img_create_from_fs((gui_obj_t *)view, "img_1", "/recorder2.bin", 0, 0, 450, 390);
+    // Create a0_img_spinner (hg_image)
+    a0_img_spinner = gui_img_create_from_fs((gui_obj_t *)view, "a0_img_spinner", "/elements/inactive_ic_ring_01.bin", 48, 13, 48, 48);
+    // Bind timer: Spinner
+    gui_obj_create_timer((gui_obj_t *)a0_img_spinner, 50, true, a0_img_spinner_seq_cb);
+    gui_obj_start_timer((gui_obj_t *)a0_img_spinner);
+
+    // Create a0_lbl_connecting (hg_label)
+    a0_lbl_connecting = gui_text_create((gui_obj_t *)view, "a0_lbl_connecting", 108, 21, 180, 34);
+    gui_text_set((gui_text_t *)a0_lbl_connecting, "Connecting...", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 13, 26);
+    gui_text_type_set((gui_text_t *)a0_lbl_connecting, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)a0_lbl_connecting, LEFT);
+
+    // Create a0_img_laptop (hg_image)
+    a0_img_laptop = gui_img_create_from_fs((gui_obj_t *)view, "a0_img_laptop", "/elements/inactive_ic_laptop_off.bin", 322, 25, 28, 24);
+
+    // Create a0_img_battery (hg_image)
+    a0_img_battery = gui_img_create_from_fs((gui_obj_t *)view, "a0_img_battery", "/elements/inactive_ic_battery_full.bin", 360, 25, 40, 21);
 }
-GUI_VIEW_INSTANCE("recorder_uiMainView", false, recorder_uiMainView_switch_in, recorder_uiMainView_switch_out, false);
+GUI_VIEW_INSTANCE("view_a0_connecting", false, view_a0_connecting_switch_in, view_a0_connecting_switch_out, false);
 
-// Create recorder_uiSecondView (hg_view)
-static void recorder_uiSecondView_switch_out(gui_view_t *view)
+// Create view_a1_pairing (hg_view)
+static void view_a1_pairing_switch_out(gui_view_t *view)
 {
     GUI_UNUSED(view);
 }
 
-static void recorder_uiSecondView_switch_in(gui_view_t *view)
+static void view_a1_pairing_switch_in(gui_view_t *view)
 {
     // Set animation step
     gui_view_set_animate_step(view, 39);
@@ -59,10 +671,1340 @@ static void recorder_uiSecondView_switch_in(gui_view_t *view)
     // Set background color
     gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
 
-    gui_view_switch_on_event(view, "recorder_uiMainView", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_MOVE_RIGHT);
+    gui_view_switch_on_event(view, "view_b0_standby", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_g0_low_battery", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_a2_connected", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_a0_connecting", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
 
 
-    // Create img_2 (hg_image)
-    img_2 = gui_img_create_from_fs((gui_obj_t *)view, "img_2", "/switch2.bin", 0, 0, 450, 390);
+    // Create a1_img_bg (hg_image)
+    a1_img_bg = gui_img_create_from_fs((gui_obj_t *)view, "a1_img_bg", "/elements/bg_main.bin", 0, 0, 450, 390);
+
+    // Create a1_img_laptop_chat (hg_image)
+    a1_img_laptop_chat = gui_img_create_from_fs((gui_obj_t *)view, "a1_img_laptop_chat", "/elements/lidopen_ic_laptop_chat.bin", 144, 74, 162, 162);
+
+    // Create a1_lbl_year (hg_label)
+    a1_lbl_year = gui_text_create((gui_obj_t *)view, "a1_lbl_year", 46, 7, 80, 30);
+    gui_text_set((gui_text_t *)a1_lbl_year, "2026", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 4, 26);
+    gui_text_type_set((gui_text_t *)a1_lbl_year, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)a1_lbl_year, LEFT);
+
+    // Create a1_lbl_date (hg_label)
+    a1_lbl_date = gui_text_create((gui_obj_t *)view, "a1_lbl_date", 46, 33, 100, 30);
+    gui_text_set((gui_text_t *)a1_lbl_date, "OCT 15", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 6, 26);
+    gui_text_type_set((gui_text_t *)a1_lbl_date, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)a1_lbl_date, LEFT);
+
+    // Create a1_img_laptop (hg_image)
+    a1_img_laptop = gui_img_create_from_fs((gui_obj_t *)view, "a1_img_laptop", "/elements/inactive_ic_laptop_off.bin", 320, 24, 28, 24);
+
+    // Create a1_img_battery (hg_image)
+    a1_img_battery = gui_img_create_from_fs((gui_obj_t *)view, "a1_img_battery", "/elements/inactive_ic_battery_full.bin", 358, 25, 40, 21);
+
+    // Create a1_lbl_pairing (hg_label)
+    a1_lbl_pairing = gui_text_create((gui_obj_t *)view, "a1_lbl_pairing", 164, 254, 140, 48);
+    gui_text_set((gui_text_t *)a1_lbl_pairing, "Pairing", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 7, 37);
+    gui_text_type_set((gui_text_t *)a1_lbl_pairing, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)a1_lbl_pairing, LEFT);
+
+    // Create a1_lbl_hint (hg_label)
+    a1_lbl_hint = gui_text_create((gui_obj_t *)view, "a1_lbl_hint", 60, 315, 340, 36);
+    gui_text_set((gui_text_t *)a1_lbl_hint, "Search in Baseus AI app", GUI_FONT_SRC_TTF, gui_rgb(213, 213, 213), 23, 28);
+    gui_text_type_set((gui_text_t *)a1_lbl_hint, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)a1_lbl_hint, LEFT);
 }
-GUI_VIEW_INSTANCE("recorder_uiSecondView", false, recorder_uiSecondView_switch_in, recorder_uiSecondView_switch_out, false);
+GUI_VIEW_INSTANCE("view_a1_pairing", false, view_a1_pairing_switch_in, view_a1_pairing_switch_out, false);
+
+// Create view_a2_connected (hg_view)
+static void view_a2_connected_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void view_a2_connected_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "view_b0_standby", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_g0_low_battery", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_a3_pairing_failed", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_a1_pairing", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
+
+
+    // Create a2_img_bg (hg_image)
+    a2_img_bg = gui_img_create_from_fs((gui_obj_t *)view, "a2_img_bg", "/elements/bg_main.bin", 0, 0, 450, 390);
+
+    // Create a2_img_laptop_ok (hg_image)
+    a2_img_laptop_ok = gui_img_create_from_fs((gui_obj_t *)view, "a2_img_laptop_ok", "/elements/lidopen_ic_laptop_ok.bin", 144, 74, 162, 162);
+
+    // Create a2_lbl_year (hg_label)
+    a2_lbl_year = gui_text_create((gui_obj_t *)view, "a2_lbl_year", 46, 7, 80, 30);
+    gui_text_set((gui_text_t *)a2_lbl_year, "2026", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 4, 26);
+    gui_text_type_set((gui_text_t *)a2_lbl_year, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)a2_lbl_year, LEFT);
+
+    // Create a2_lbl_date (hg_label)
+    a2_lbl_date = gui_text_create((gui_obj_t *)view, "a2_lbl_date", 46, 33, 100, 30);
+    gui_text_set((gui_text_t *)a2_lbl_date, "OCT 15", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 6, 26);
+    gui_text_type_set((gui_text_t *)a2_lbl_date, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)a2_lbl_date, LEFT);
+
+    // Create a2_img_laptop (hg_image)
+    a2_img_laptop = gui_img_create_from_fs((gui_obj_t *)view, "a2_img_laptop", "/elements/inactive_ic_laptop_on.bin", 320, 24, 28, 24);
+
+    // Create a2_img_battery (hg_image)
+    a2_img_battery = gui_img_create_from_fs((gui_obj_t *)view, "a2_img_battery", "/elements/inactive_ic_battery_full.bin", 358, 25, 40, 21);
+
+    // Create a2_lbl_title (hg_label)
+    a2_lbl_title = gui_text_create((gui_obj_t *)view, "a2_lbl_title", 127, 254, 220, 48);
+    gui_text_set((gui_text_t *)a2_lbl_title, "Connected", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 9, 37);
+    gui_text_type_set((gui_text_t *)a2_lbl_title, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)a2_lbl_title, LEFT);
+
+    // Create a2_lbl_hint (hg_label)
+    a2_lbl_hint = gui_text_create((gui_obj_t *)view, "a2_lbl_hint", 50, 314, 360, 36);
+    gui_text_set((gui_text_t *)a2_lbl_hint, "Close,then open to record", GUI_FONT_SRC_TTF, gui_rgb(213, 213, 213), 25, 28);
+    gui_text_type_set((gui_text_t *)a2_lbl_hint, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)a2_lbl_hint, LEFT);
+}
+GUI_VIEW_INSTANCE("view_a2_connected", false, view_a2_connected_switch_in, view_a2_connected_switch_out, false);
+
+// Create view_a3_pairing_failed (hg_view)
+static void view_a3_pairing_failed_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void view_a3_pairing_failed_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "view_b0_standby", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_g0_low_battery", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_a0_connecting", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_a2_connected", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
+
+
+    // Create a3_img_bg (hg_image)
+    a3_img_bg = gui_img_create_from_fs((gui_obj_t *)view, "a3_img_bg", "/elements/bg_main.bin", 0, 0, 450, 390);
+
+    // Create a3_img_headset_fail (hg_image)
+    a3_img_headset_fail = gui_img_create_from_fs((gui_obj_t *)view, "a3_img_headset_fail", "/elements/lidopen_ic_headset_fail.bin", 128, 81, 213, 157);
+
+    // Create a3_lbl_year (hg_label)
+    a3_lbl_year = gui_text_create((gui_obj_t *)view, "a3_lbl_year", 45, 8, 80, 30);
+    gui_text_set((gui_text_t *)a3_lbl_year, "2026", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 4, 26);
+    gui_text_type_set((gui_text_t *)a3_lbl_year, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)a3_lbl_year, LEFT);
+
+    // Create a3_lbl_date (hg_label)
+    a3_lbl_date = gui_text_create((gui_obj_t *)view, "a3_lbl_date", 45, 34, 100, 30);
+    gui_text_set((gui_text_t *)a3_lbl_date, "OCT 15", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 6, 26);
+    gui_text_type_set((gui_text_t *)a3_lbl_date, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)a3_lbl_date, LEFT);
+
+    // Create a3_img_laptop (hg_image)
+    a3_img_laptop = gui_img_create_from_fs((gui_obj_t *)view, "a3_img_laptop", "/elements/inactive_ic_laptop_on.bin", 320, 25, 28, 24);
+
+    // Create a3_img_battery (hg_image)
+    a3_img_battery = gui_img_create_from_fs((gui_obj_t *)view, "a3_img_battery", "/elements/inactive_ic_battery_full.bin", 358, 26, 40, 21);
+
+    // Create a3_lbl_title (hg_label)
+    a3_lbl_title = gui_text_create((gui_obj_t *)view, "a3_lbl_title", 108, 254, 240, 48);
+    gui_text_set((gui_text_t *)a3_lbl_title, "Pairing failed", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 14, 37);
+    gui_text_type_set((gui_text_t *)a3_lbl_title, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)a3_lbl_title, LEFT);
+
+    // Create a3_lbl_hint (hg_label)
+    a3_lbl_hint = gui_text_create((gui_obj_t *)view, "a3_lbl_hint", 110, 314, 240, 36);
+    gui_text_set((gui_text_t *)a3_lbl_hint, "Pair again in app", GUI_FONT_SRC_TTF, gui_rgb(213, 213, 213), 17, 28);
+    gui_text_type_set((gui_text_t *)a3_lbl_hint, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)a3_lbl_hint, LEFT);
+}
+GUI_VIEW_INSTANCE("view_a3_pairing_failed", false, view_a3_pairing_failed_switch_in, view_a3_pairing_failed_switch_out, false);
+
+// Create view_b0_standby (hg_view)
+static void view_b0_standby_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void view_b0_standby_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "view_c0_recording", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_a0_connecting", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_b1_storage_warn", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_b2_uploading", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
+
+
+    // Create b0_img_bubble (hg_image)
+    b0_img_bubble = gui_img_create_from_fs((gui_obj_t *)view, "b0_img_bubble", "/elements/idea_ic_bubble.bin", 48, 6, 62, 62);
+    gui_img_scale((gui_img_t *)b0_img_bubble, 1.127273f, 1.127273f);
+
+    // Create b0_lbl_year (hg_label)
+    b0_lbl_year = gui_text_create((gui_obj_t *)view, "b0_lbl_year", 121, 8, 80, 30);
+    gui_text_set((gui_text_t *)b0_lbl_year, "2026", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 4, 26);
+    gui_text_type_set((gui_text_t *)b0_lbl_year, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)b0_lbl_year, LEFT);
+
+    // Create b0_lbl_date (hg_label)
+    b0_lbl_date = gui_text_create((gui_obj_t *)view, "b0_lbl_date", 121, 34, 100, 30);
+    gui_text_set((gui_text_t *)b0_lbl_date, "OCT 15", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 6, 26);
+    gui_text_type_set((gui_text_t *)b0_lbl_date, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)b0_lbl_date, LEFT);
+
+    // Create b0_img_laptop (hg_image)
+    b0_img_laptop = gui_img_create_from_fs((gui_obj_t *)view, "b0_img_laptop", "/elements/inactive_ic_laptop_off.bin", 263, 25, 28, 24);
+
+    // Create b0_img_battery (hg_image)
+    b0_img_battery = gui_img_create_from_fs((gui_obj_t *)view, "b0_img_battery", "/elements/inactive_ic_battery_full.bin", 301, 25, 40, 21);
+
+    // Create b0_img_cloud (hg_image)
+    b0_img_cloud = gui_img_create_from_fs((gui_obj_t *)view, "b0_img_cloud", "/elements/common_ic_cloud.bin", 351, 26, 26, 19);
+
+    // Create b0_lbl_cloud_count (hg_label)
+    b0_lbl_cloud_count = gui_text_create((gui_obj_t *)view, "b0_lbl_cloud_count", 384, 20, 30, 30);
+    gui_text_set((gui_text_t *)b0_lbl_cloud_count, "2", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 1, 26);
+    gui_text_type_set((gui_text_t *)b0_lbl_cloud_count, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)b0_lbl_cloud_count, LEFT);
+}
+GUI_VIEW_INSTANCE("view_b0_standby", false, view_b0_standby_switch_in, view_b0_standby_switch_out, false);
+
+// Create view_b1_storage_warn (hg_view)
+static void view_b1_storage_warn_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void view_b1_storage_warn_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "view_c0_recording", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_a0_connecting", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_b2_uploading", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_b0_standby", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
+
+
+    // Create b1_lbl_year (hg_label)
+    b1_lbl_year = gui_text_create((gui_obj_t *)view, "b1_lbl_year", 47, 9, 80, 30);
+    gui_text_set((gui_text_t *)b1_lbl_year, "2026", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 4, 26);
+    gui_text_type_set((gui_text_t *)b1_lbl_year, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)b1_lbl_year, LEFT);
+
+    // Create b1_lbl_date (hg_label)
+    b1_lbl_date = gui_text_create((gui_obj_t *)view, "b1_lbl_date", 47, 35, 100, 30);
+    gui_text_set((gui_text_t *)b1_lbl_date, "OCT 15", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 6, 26);
+    gui_text_type_set((gui_text_t *)b1_lbl_date, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)b1_lbl_date, LEFT);
+
+    // Create b1_img_device (hg_image)
+    b1_img_device = gui_img_create_from_fs((gui_obj_t *)view, "b1_img_device", "/elements/lidclosed_ic_device_amber.bin", 210, 22, 30, 32);
+
+    // Create b1_img_laptop (hg_image)
+    b1_img_laptop = gui_img_create_from_fs((gui_obj_t *)view, "b1_img_laptop", "/elements/inactive_ic_laptop_on.bin", 267, 25, 28, 24);
+
+    // Create b1_img_battery (hg_image)
+    b1_img_battery = gui_img_create_from_fs((gui_obj_t *)view, "b1_img_battery", "/elements/inactive_ic_battery_full.bin", 305, 25, 40, 21);
+
+    // Create b1_img_cloud (hg_image)
+    b1_img_cloud = gui_img_create_from_fs((gui_obj_t *)view, "b1_img_cloud", "/elements/common_ic_cloud.bin", 354, 26, 26, 19);
+
+    // Create b1_lbl_cloud_count (hg_label)
+    b1_lbl_cloud_count = gui_text_create((gui_obj_t *)view, "b1_lbl_cloud_count", 386, 21, 30, 30);
+    gui_text_set((gui_text_t *)b1_lbl_cloud_count, "1", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 1, 26);
+    gui_text_type_set((gui_text_t *)b1_lbl_cloud_count, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)b1_lbl_cloud_count, LEFT);
+}
+GUI_VIEW_INSTANCE("view_b1_storage_warn", false, view_b1_storage_warn_switch_in, view_b1_storage_warn_switch_out, false);
+
+// Create view_b2_uploading (hg_view)
+static void view_b2_uploading_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void view_b2_uploading_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "view_c0_recording", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_a0_connecting", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_b0_standby", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_b1_storage_warn", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
+
+
+    // Create b2_lbl_year (hg_label)
+    b2_lbl_year = gui_text_create((gui_obj_t *)view, "b2_lbl_year", 48, 10, 80, 30);
+    gui_text_set((gui_text_t *)b2_lbl_year, "2026", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 4, 26);
+    gui_text_type_set((gui_text_t *)b2_lbl_year, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)b2_lbl_year, LEFT);
+
+    // Create b2_lbl_date (hg_label)
+    b2_lbl_date = gui_text_create((gui_obj_t *)view, "b2_lbl_date", 48, 36, 100, 30);
+    gui_text_set((gui_text_t *)b2_lbl_date, "OCT 15", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 6, 26);
+    gui_text_type_set((gui_text_t *)b2_lbl_date, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)b2_lbl_date, LEFT);
+
+    // Create b2_img_upload (hg_image)
+    b2_img_upload = gui_img_create_from_fs((gui_obj_t *)view, "b2_img_upload", "/elements/lidclosed_ic_upload_white.bin", 206, 21, 38, 38);
+
+    // Create b2_img_laptop (hg_image)
+    b2_img_laptop = gui_img_create_from_fs((gui_obj_t *)view, "b2_img_laptop", "/elements/inactive_ic_laptop_on.bin", 263, 26, 28, 24);
+
+    // Create b2_img_battery (hg_image)
+    b2_img_battery = gui_img_create_from_fs((gui_obj_t *)view, "b2_img_battery", "/elements/inactive_ic_battery_full.bin", 301, 26, 40, 21);
+
+    // Create b2_img_cloud (hg_image)
+    b2_img_cloud = gui_img_create_from_fs((gui_obj_t *)view, "b2_img_cloud", "/elements/common_ic_cloud.bin", 350, 27, 26, 19);
+
+    // Create b2_lbl_cloud_count (hg_label)
+    b2_lbl_cloud_count = gui_text_create((gui_obj_t *)view, "b2_lbl_cloud_count", 384, 22, 30, 30);
+    gui_text_set((gui_text_t *)b2_lbl_cloud_count, "2", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 1, 26);
+    gui_text_type_set((gui_text_t *)b2_lbl_cloud_count, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)b2_lbl_cloud_count, LEFT);
+}
+GUI_VIEW_INSTANCE("view_b2_uploading", false, view_b2_uploading_switch_in, view_b2_uploading_switch_out, false);
+
+// Create view_c0_recording (hg_view)
+static void view_c0_recording_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void view_c0_recording_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "view_d0_meeting_b", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_b0_standby", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_c1_mark_saved", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_c3_saved", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
+
+
+    // Create c0_img_bg (hg_image)
+    c0_img_bg = gui_img_create_from_fs((gui_obj_t *)view, "c0_img_bg", "/elements/bg_main.bin", 0, 0, 450, 390);
+
+    // Create c0_img_rec_dot (hg_image)
+    c0_img_rec_dot = gui_img_create_from_fs((gui_obj_t *)view, "c0_img_rec_dot", "/elements/common_ic_rec_dot.bin", 47, 27, 18, 19);
+    // Bind timer: REC blink
+    gui_obj_create_timer((gui_obj_t *)c0_img_rec_dot, 50, true, c0_img_rec_dot_blink_cb);
+    gui_obj_start_timer((gui_obj_t *)c0_img_rec_dot);
+
+    // Create c0_lbl_rec (hg_label)
+    c0_lbl_rec = gui_text_create((gui_obj_t *)view, "c0_lbl_rec", 76, 20, 70, 30);
+    gui_text_set((gui_text_t *)c0_lbl_rec, "REC", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 3, 26);
+    gui_text_type_set((gui_text_t *)c0_lbl_rec, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)c0_lbl_rec, LEFT);
+
+    // Create c0_img_laptop (hg_image)
+    c0_img_laptop = gui_img_create_from_fs((gui_obj_t *)view, "c0_img_laptop", "/elements/inactive_ic_laptop_on.bin", 266, 24, 28, 24);
+
+    // Create c0_img_battery (hg_image)
+    c0_img_battery = gui_img_create_from_fs((gui_obj_t *)view, "c0_img_battery", "/elements/inactive_ic_battery_full.bin", 304, 25, 40, 21);
+
+    // Create c0_img_cloud (hg_image)
+    c0_img_cloud = gui_img_create_from_fs((gui_obj_t *)view, "c0_img_cloud", "/elements/common_ic_cloud.bin", 354, 26, 26, 19);
+
+    // Create c0_lbl_cloud_count (hg_label)
+    c0_lbl_cloud_count = gui_text_create((gui_obj_t *)view, "c0_lbl_cloud_count", 384, 20, 30, 30);
+    gui_text_set((gui_text_t *)c0_lbl_cloud_count, "2", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 1, 26);
+    gui_text_type_set((gui_text_t *)c0_lbl_cloud_count, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)c0_lbl_cloud_count, LEFT);
+
+    // Create c0_img_wave (hg_image)
+    c0_img_wave = gui_img_create_from_fs((gui_obj_t *)view, "c0_img_wave", "/elements/common_ic_wave_color.bin", 35, 132, 381, 80);
+
+    // Create c0_img_mark (hg_image)
+    c0_img_mark = gui_img_create_from_fs((gui_obj_t *)view, "c0_img_mark", "/elements/common_ic_arrow.bin", 47, 273, 30, 30);
+
+    // Create c0_lbl_mark_num (hg_label)
+    c0_lbl_mark_num = gui_text_create((gui_obj_t *)view, "c0_lbl_mark_num", 78, 269, 30, 32);
+    gui_text_set((gui_text_t *)c0_lbl_mark_num, "2", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 1, 27);
+    gui_text_type_set((gui_text_t *)c0_lbl_mark_num, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)c0_lbl_mark_num, LEFT);
+
+    // Create c0_lbl_mode (hg_label)
+    c0_lbl_mode = gui_text_create((gui_obj_t *)view, "c0_lbl_mode", 46, 306, 120, 30);
+    gui_text_set((gui_text_t *)c0_lbl_mode, "Mode A", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 6, 26);
+    gui_text_type_set((gui_text_t *)c0_lbl_mode, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)c0_lbl_mode, LEFT);
+
+    // Create c0_lbl_timer (hg_timer_label)
+    c0_lbl_timer = gui_text_create((gui_obj_t *)view, "c0_lbl_timer", 172, 272, 270, 55);
+    gui_text_set((gui_text_t *)c0_lbl_timer, c0_lbl_timer_time_str, GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), strlen(c0_lbl_timer_time_str), 52);
+    gui_text_type_set((gui_text_t *)c0_lbl_timer, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)c0_lbl_timer, LEFT);
+    // Create timer (interval 10ms, infinite loop)
+    gui_obj_create_timer((gui_obj_t *)c0_lbl_timer, 10, -1, c0_lbl_timer_timer_cb);
+    c0_lbl_timer_start();
+}
+GUI_VIEW_INSTANCE("view_c0_recording", false, view_c0_recording_switch_in, view_c0_recording_switch_out, false);
+
+// Create view_c1_mark_saved (hg_view)
+static void view_c1_mark_saved_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void view_c1_mark_saved_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "view_d0_meeting_b", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_b0_standby", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_c2_mic_lost", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_c0_recording", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
+
+
+    // Create c1_img_bg (hg_image)
+    c1_img_bg = gui_img_create_from_fs((gui_obj_t *)view, "c1_img_bg", "/elements/bg_main.bin", 0, 0, 450, 390);
+
+    // Create c1_img_rec_dot (hg_image)
+    c1_img_rec_dot = gui_img_create_from_fs((gui_obj_t *)view, "c1_img_rec_dot", "/elements/common_ic_rec_dot.bin", 47, 27, 18, 19);
+    // Bind timer: REC blink
+    gui_obj_create_timer((gui_obj_t *)c1_img_rec_dot, 50, true, c1_img_rec_dot_blink_cb);
+    gui_obj_start_timer((gui_obj_t *)c1_img_rec_dot);
+
+    // Create c1_lbl_rec (hg_label)
+    c1_lbl_rec = gui_text_create((gui_obj_t *)view, "c1_lbl_rec", 76, 20, 70, 30);
+    gui_text_set((gui_text_t *)c1_lbl_rec, "REC", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 3, 26);
+    gui_text_type_set((gui_text_t *)c1_lbl_rec, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)c1_lbl_rec, LEFT);
+
+    // Create c1_img_laptop (hg_image)
+    c1_img_laptop = gui_img_create_from_fs((gui_obj_t *)view, "c1_img_laptop", "/elements/inactive_ic_laptop_on.bin", 266, 24, 28, 24);
+
+    // Create c1_img_battery (hg_image)
+    c1_img_battery = gui_img_create_from_fs((gui_obj_t *)view, "c1_img_battery", "/elements/inactive_ic_battery_full.bin", 304, 25, 40, 21);
+
+    // Create c1_img_cloud (hg_image)
+    c1_img_cloud = gui_img_create_from_fs((gui_obj_t *)view, "c1_img_cloud", "/elements/common_ic_cloud.bin", 353, 26, 26, 19);
+
+    // Create c1_lbl_cloud_count (hg_label)
+    c1_lbl_cloud_count = gui_text_create((gui_obj_t *)view, "c1_lbl_cloud_count", 384, 20, 30, 30);
+    gui_text_set((gui_text_t *)c1_lbl_cloud_count, "2", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 1, 26);
+    gui_text_type_set((gui_text_t *)c1_lbl_cloud_count, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)c1_lbl_cloud_count, LEFT);
+
+    // Create c1_lbl_prompt (hg_label)
+    c1_lbl_prompt = gui_text_create((gui_obj_t *)view, "c1_lbl_prompt", 37, 85, 400, 36);
+    gui_text_set((gui_text_t *)c1_lbl_prompt, "Mark saved · no screenshot", GUI_FONT_SRC_TTF, gui_rgb(243, 187, 99), 27, 29);
+    gui_text_type_set((gui_text_t *)c1_lbl_prompt, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)c1_lbl_prompt, LEFT);
+
+    // Create c1_img_wave (hg_image)
+    c1_img_wave = gui_img_create_from_fs((gui_obj_t *)view, "c1_img_wave", "/elements/common_ic_wave_color.bin", 31, 155, 381, 80);
+
+    // Create c1_img_mark (hg_image)
+    c1_img_mark = gui_img_create_from_fs((gui_obj_t *)view, "c1_img_mark", "/elements/common_ic_arrow.bin", 47, 273, 30, 30);
+
+    // Create c1_lbl_mark_num (hg_label)
+    c1_lbl_mark_num = gui_text_create((gui_obj_t *)view, "c1_lbl_mark_num", 80, 271, 30, 32);
+    gui_text_set((gui_text_t *)c1_lbl_mark_num, "2", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 1, 27);
+    gui_text_type_set((gui_text_t *)c1_lbl_mark_num, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)c1_lbl_mark_num, LEFT);
+
+    // Create c1_lbl_mode (hg_label)
+    c1_lbl_mode = gui_text_create((gui_obj_t *)view, "c1_lbl_mode", 46, 306, 120, 30);
+    gui_text_set((gui_text_t *)c1_lbl_mode, "Mode A", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 6, 26);
+    gui_text_type_set((gui_text_t *)c1_lbl_mode, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)c1_lbl_mode, LEFT);
+
+    // Create c1_lbl_timer (hg_timer_label)
+    c1_lbl_timer = gui_text_create((gui_obj_t *)view, "c1_lbl_timer", 172, 272, 270, 55);
+    gui_text_set((gui_text_t *)c1_lbl_timer, c1_lbl_timer_time_str, GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), strlen(c1_lbl_timer_time_str), 52);
+    gui_text_type_set((gui_text_t *)c1_lbl_timer, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)c1_lbl_timer, LEFT);
+    // Create timer (interval 10ms, infinite loop)
+    gui_obj_create_timer((gui_obj_t *)c1_lbl_timer, 10, -1, c1_lbl_timer_timer_cb);
+    c1_lbl_timer_start();
+}
+GUI_VIEW_INSTANCE("view_c1_mark_saved", false, view_c1_mark_saved_switch_in, view_c1_mark_saved_switch_out, false);
+
+// Create view_c2_mic_lost (hg_view)
+static void view_c2_mic_lost_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void view_c2_mic_lost_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "view_d0_meeting_b", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_b0_standby", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_c3_saved", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_c1_mark_saved", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
+
+
+    // Create c2_img_bg (hg_image)
+    c2_img_bg = gui_img_create_from_fs((gui_obj_t *)view, "c2_img_bg", "/elements/bg_main.bin", 0, 0, 450, 390);
+
+    // Create c2_img_rec_dot (hg_image)
+    c2_img_rec_dot = gui_img_create_from_fs((gui_obj_t *)view, "c2_img_rec_dot", "/elements/common_ic_rec_dot.bin", 47, 27, 18, 19);
+    // Bind timer: REC blink
+    gui_obj_create_timer((gui_obj_t *)c2_img_rec_dot, 50, true, c2_img_rec_dot_blink_cb);
+    gui_obj_start_timer((gui_obj_t *)c2_img_rec_dot);
+
+    // Create c2_lbl_rec (hg_label)
+    c2_lbl_rec = gui_text_create((gui_obj_t *)view, "c2_lbl_rec", 76, 20, 70, 30);
+    gui_text_set((gui_text_t *)c2_lbl_rec, "REC", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 3, 26);
+    gui_text_type_set((gui_text_t *)c2_lbl_rec, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)c2_lbl_rec, LEFT);
+
+    // Create c2_img_mic (hg_image)
+    c2_img_mic = gui_img_create_from_fs((gui_obj_t *)view, "c2_img_mic", "/elements/record_ic_mic_muted.bin", 229, 21, 29, 29);
+
+    // Create c2_img_laptop (hg_image)
+    c2_img_laptop = gui_img_create_from_fs((gui_obj_t *)view, "c2_img_laptop", "/elements/inactive_ic_laptop_off.bin", 266, 24, 28, 24);
+
+    // Create c2_img_battery (hg_image)
+    c2_img_battery = gui_img_create_from_fs((gui_obj_t *)view, "c2_img_battery", "/elements/inactive_ic_battery_full.bin", 304, 25, 40, 21);
+
+    // Create c2_img_cloud (hg_image)
+    c2_img_cloud = gui_img_create_from_fs((gui_obj_t *)view, "c2_img_cloud", "/elements/common_ic_cloud.bin", 354, 26, 26, 19);
+
+    // Create c2_lbl_cloud_count (hg_label)
+    c2_lbl_cloud_count = gui_text_create((gui_obj_t *)view, "c2_lbl_cloud_count", 384, 20, 30, 30);
+    gui_text_set((gui_text_t *)c2_lbl_cloud_count, "2", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 1, 26);
+    gui_text_type_set((gui_text_t *)c2_lbl_cloud_count, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)c2_lbl_cloud_count, LEFT);
+
+    // Create c2_img_wave (hg_image)
+    c2_img_wave = gui_img_create_from_fs((gui_obj_t *)view, "c2_img_wave", "/elements/record_ic_wave_flat.bin", 52, 136, 351, 67);
+
+    // Create c2_img_mark (hg_image)
+    c2_img_mark = gui_img_create_from_fs((gui_obj_t *)view, "c2_img_mark", "/elements/common_ic_arrow.bin", 49, 273, 30, 30);
+
+    // Create c2_lbl_mark_num (hg_label)
+    c2_lbl_mark_num = gui_text_create((gui_obj_t *)view, "c2_lbl_mark_num", 82, 271, 30, 32);
+    gui_text_set((gui_text_t *)c2_lbl_mark_num, "2", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 1, 27);
+    gui_text_type_set((gui_text_t *)c2_lbl_mark_num, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)c2_lbl_mark_num, LEFT);
+
+    // Create c2_lbl_mode (hg_label)
+    c2_lbl_mode = gui_text_create((gui_obj_t *)view, "c2_lbl_mode", 46, 304, 120, 30);
+    gui_text_set((gui_text_t *)c2_lbl_mode, "Mode A", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 6, 26);
+    gui_text_type_set((gui_text_t *)c2_lbl_mode, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)c2_lbl_mode, LEFT);
+
+    // Create c2_lbl_timer (hg_timer_label)
+    c2_lbl_timer = gui_text_create((gui_obj_t *)view, "c2_lbl_timer", 172, 272, 270, 55);
+    gui_text_set((gui_text_t *)c2_lbl_timer, c2_lbl_timer_time_str, GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), strlen(c2_lbl_timer_time_str), 52);
+    gui_text_type_set((gui_text_t *)c2_lbl_timer, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)c2_lbl_timer, LEFT);
+    // Create timer (interval 10ms, infinite loop)
+    gui_obj_create_timer((gui_obj_t *)c2_lbl_timer, 10, -1, c2_lbl_timer_timer_cb);
+    c2_lbl_timer_start();
+}
+GUI_VIEW_INSTANCE("view_c2_mic_lost", false, view_c2_mic_lost_switch_in, view_c2_mic_lost_switch_out, false);
+
+// Create view_c3_saved (hg_view)
+static void view_c3_saved_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void view_c3_saved_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "view_d0_meeting_b", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_b0_standby", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_c0_recording", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_c2_mic_lost", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
+
+
+    // Create c3_img_bg (hg_image)
+    c3_img_bg = gui_img_create_from_fs((gui_obj_t *)view, "c3_img_bg", "/elements/bg_main.bin", 0, 0, 450, 390);
+
+    // Create c3_img_check (hg_image)
+    c3_img_check = gui_img_create_from_fs((gui_obj_t *)view, "c3_img_check", "/elements/inactive_ic_check.bin", 48, 12, 48, 48);
+
+    // Create c3_lbl_saved (hg_label)
+    c3_lbl_saved = gui_text_create((gui_obj_t *)view, "c3_lbl_saved", 107, 20, 120, 34);
+    gui_text_set((gui_text_t *)c3_lbl_saved, "Saved", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 5, 27);
+    gui_text_type_set((gui_text_t *)c3_lbl_saved, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)c3_lbl_saved, LEFT);
+
+    // Create c3_img_laptop (hg_image)
+    c3_img_laptop = gui_img_create_from_fs((gui_obj_t *)view, "c3_img_laptop", "/elements/inactive_ic_laptop_on.bin", 266, 24, 28, 24);
+
+    // Create c3_img_battery (hg_image)
+    c3_img_battery = gui_img_create_from_fs((gui_obj_t *)view, "c3_img_battery", "/elements/inactive_ic_battery_full.bin", 304, 25, 40, 21);
+
+    // Create c3_img_cloud (hg_image)
+    c3_img_cloud = gui_img_create_from_fs((gui_obj_t *)view, "c3_img_cloud", "/elements/common_ic_cloud.bin", 354, 26, 26, 19);
+
+    // Create c3_lbl_cloud_count (hg_label)
+    c3_lbl_cloud_count = gui_text_create((gui_obj_t *)view, "c3_lbl_cloud_count", 384, 20, 30, 30);
+    gui_text_set((gui_text_t *)c3_lbl_cloud_count, "2", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 1, 26);
+    gui_text_type_set((gui_text_t *)c3_lbl_cloud_count, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)c3_lbl_cloud_count, LEFT);
+}
+GUI_VIEW_INSTANCE("view_c3_saved", false, view_c3_saved_switch_in, view_c3_saved_switch_out, false);
+
+// Create view_d0_meeting_b (hg_view)
+static void view_d0_meeting_b_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void view_d0_meeting_b_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "view_e0_island", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_c0_recording", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_d1_meeting_c", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_d1_meeting_c", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
+
+
+    // Create d0_img_bg (hg_image)
+    d0_img_bg = gui_img_create_from_fs((gui_obj_t *)view, "d0_img_bg", "/elements/bg_main.bin", 0, 0, 450, 390);
+
+    // Create d0_img_dial (hg_image)
+    d0_img_dial = gui_img_create_from_fs((gui_obj_t *)view, "d0_img_dial", "/elements/meeting_ic_dial_b.bin", -132, 0, 282, 390);
+
+    // Create d0_img_wave (hg_image)
+    d0_img_wave = gui_img_create_from_fs((gui_obj_t *)view, "d0_img_wave", "/elements/meeting_ic_wave_mid.bin", 150, 135, 261, 87);
+
+    // Create d0_img_rec_dot (hg_image)
+    d0_img_rec_dot = gui_img_create_from_fs((gui_obj_t *)view, "d0_img_rec_dot", "/elements/common_ic_rec_dot.bin", 48, 27, 18, 19);
+    // Bind timer: REC blink
+    gui_obj_create_timer((gui_obj_t *)d0_img_rec_dot, 50, true, d0_img_rec_dot_blink_cb);
+    gui_obj_start_timer((gui_obj_t *)d0_img_rec_dot);
+
+    // Create d0_lbl_rec (hg_label)
+    d0_lbl_rec = gui_text_create((gui_obj_t *)view, "d0_lbl_rec", 78, 20, 70, 30);
+    gui_text_set((gui_text_t *)d0_lbl_rec, "REC", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 3, 26);
+    gui_text_type_set((gui_text_t *)d0_lbl_rec, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)d0_lbl_rec, LEFT);
+
+    // Create d0_img_laptop (hg_image)
+    d0_img_laptop = gui_img_create_from_fs((gui_obj_t *)view, "d0_img_laptop", "/elements/inactive_ic_laptop_on.bin", 269, 24, 28, 24);
+
+    // Create d0_img_battery (hg_image)
+    d0_img_battery = gui_img_create_from_fs((gui_obj_t *)view, "d0_img_battery", "/elements/inactive_ic_battery_full.bin", 307, 25, 40, 21);
+
+    // Create d0_img_cloud (hg_image)
+    d0_img_cloud = gui_img_create_from_fs((gui_obj_t *)view, "d0_img_cloud", "/elements/common_ic_cloud.bin", 357, 26, 26, 19);
+
+    // Create d0_lbl_cloud_count (hg_label)
+    d0_lbl_cloud_count = gui_text_create((gui_obj_t *)view, "d0_lbl_cloud_count", 386, 20, 30, 30);
+    gui_text_set((gui_text_t *)d0_lbl_cloud_count, "2", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 1, 26);
+    gui_text_type_set((gui_text_t *)d0_lbl_cloud_count, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)d0_lbl_cloud_count, LEFT);
+
+    // Create d0_lbl_timer (hg_timer_label)
+    d0_lbl_timer = gui_text_create((gui_obj_t *)view, "d0_lbl_timer", 180, 275, 260, 55);
+    gui_text_set((gui_text_t *)d0_lbl_timer, d0_lbl_timer_time_str, GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), strlen(d0_lbl_timer_time_str), 52);
+    gui_text_type_set((gui_text_t *)d0_lbl_timer, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)d0_lbl_timer, LEFT);
+    // Create timer (interval 10ms, infinite loop)
+    gui_obj_create_timer((gui_obj_t *)d0_lbl_timer, 10, -1, d0_lbl_timer_timer_cb);
+    d0_lbl_timer_start();
+}
+GUI_VIEW_INSTANCE("view_d0_meeting_b", false, view_d0_meeting_b_switch_in, view_d0_meeting_b_switch_out, false);
+
+// Create view_d1_meeting_c (hg_view)
+static void view_d1_meeting_c_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void view_d1_meeting_c_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "view_e0_island", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_c0_recording", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_d0_meeting_b", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_d0_meeting_b", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
+
+
+    // Create d1_img_bg (hg_image)
+    d1_img_bg = gui_img_create_from_fs((gui_obj_t *)view, "d1_img_bg", "/elements/bg_main.bin", 0, 0, 450, 390);
+
+    // Create d1_img_dial (hg_image)
+    d1_img_dial = gui_img_create_from_fs((gui_obj_t *)view, "d1_img_dial", "/elements/meeting_ic_dial_c.bin", -132, 0, 282, 390);
+
+    // Create d1_img_wave (hg_image)
+    d1_img_wave = gui_img_create_from_fs((gui_obj_t *)view, "d1_img_wave", "/elements/meeting_ic_wave_mid.bin", 150, 135, 261, 87);
+
+    // Create d1_img_rec_dot (hg_image)
+    d1_img_rec_dot = gui_img_create_from_fs((gui_obj_t *)view, "d1_img_rec_dot", "/elements/common_ic_rec_dot.bin", 47, 27, 18, 19);
+    // Bind timer: REC blink
+    gui_obj_create_timer((gui_obj_t *)d1_img_rec_dot, 50, true, d1_img_rec_dot_blink_cb);
+    gui_obj_start_timer((gui_obj_t *)d1_img_rec_dot);
+
+    // Create d1_lbl_rec (hg_label)
+    d1_lbl_rec = gui_text_create((gui_obj_t *)view, "d1_lbl_rec", 76, 20, 70, 30);
+    gui_text_set((gui_text_t *)d1_lbl_rec, "REC", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 3, 26);
+    gui_text_type_set((gui_text_t *)d1_lbl_rec, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)d1_lbl_rec, LEFT);
+
+    // Create d1_img_laptop (hg_image)
+    d1_img_laptop = gui_img_create_from_fs((gui_obj_t *)view, "d1_img_laptop", "/elements/inactive_ic_laptop_on.bin", 269, 24, 28, 24);
+
+    // Create d1_img_battery (hg_image)
+    d1_img_battery = gui_img_create_from_fs((gui_obj_t *)view, "d1_img_battery", "/elements/inactive_ic_battery_full.bin", 307, 25, 40, 21);
+
+    // Create d1_img_cloud (hg_image)
+    d1_img_cloud = gui_img_create_from_fs((gui_obj_t *)view, "d1_img_cloud", "/elements/common_ic_cloud.bin", 357, 26, 26, 19);
+
+    // Create d1_lbl_cloud_count (hg_label)
+    d1_lbl_cloud_count = gui_text_create((gui_obj_t *)view, "d1_lbl_cloud_count", 386, 20, 30, 30);
+    gui_text_set((gui_text_t *)d1_lbl_cloud_count, "2", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 1, 26);
+    gui_text_type_set((gui_text_t *)d1_lbl_cloud_count, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)d1_lbl_cloud_count, LEFT);
+
+    // Create d1_lbl_timer (hg_timer_label)
+    d1_lbl_timer = gui_text_create((gui_obj_t *)view, "d1_lbl_timer", 180, 275, 270, 55);
+    gui_text_set((gui_text_t *)d1_lbl_timer, d1_lbl_timer_time_str, GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), strlen(d1_lbl_timer_time_str), 52);
+    gui_text_type_set((gui_text_t *)d1_lbl_timer, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)d1_lbl_timer, LEFT);
+    // Create timer (interval 10ms, infinite loop)
+    gui_obj_create_timer((gui_obj_t *)d1_lbl_timer, 10, -1, d1_lbl_timer_timer_cb);
+    d1_lbl_timer_start();
+}
+GUI_VIEW_INSTANCE("view_d1_meeting_c", false, view_d1_meeting_c_switch_in, view_d1_meeting_c_switch_out, false);
+
+// Create view_e0_island (hg_view)
+static void view_e0_island_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void view_e0_island_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "view_f0_progress", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_d0_meeting_b", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_e1_pill", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_e1_pill", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
+
+
+    // Create e0_img_pill (hg_image)
+    e0_img_pill = gui_img_create_from_fs((gui_obj_t *)view, "e0_img_pill", "/elements/idea_pill_01.bin", 43, 2, 364, 70);
+    // Bind timer: anim
+    gui_obj_create_timer((gui_obj_t *)e0_img_pill, 40, true, e0_img_pill_f_cb);
+    gui_obj_start_timer((gui_obj_t *)e0_img_pill);
+}
+GUI_VIEW_INSTANCE("view_e0_island", false, view_e0_island_switch_in, view_e0_island_switch_out, false);
+
+// Create view_e1_pill (hg_view)
+static void view_e1_pill_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void view_e1_pill_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "view_f0_progress", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_d0_meeting_b", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_e0_island", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_e0_island", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
+
+
+    // Create e1_img_bubble (hg_image)
+    e1_img_bubble = gui_img_create_from_fs((gui_obj_t *)view, "e1_img_bubble", "/elements/idea_ic_bubble.bin", 46, 5, 62, 62);
+    gui_img_scale((gui_img_t *)e1_img_bubble, 1.127273f, 1.127273f);
+
+    // Create e1_lbl_year (hg_label)
+    e1_lbl_year = gui_text_create((gui_obj_t *)view, "e1_lbl_year", 120, 7, 80, 30);
+    gui_text_set((gui_text_t *)e1_lbl_year, "2026", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 4, 26);
+    gui_text_type_set((gui_text_t *)e1_lbl_year, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)e1_lbl_year, LEFT);
+
+    // Create e1_lbl_date (hg_label)
+    e1_lbl_date = gui_text_create((gui_obj_t *)view, "e1_lbl_date", 120, 33, 100, 30);
+    gui_text_set((gui_text_t *)e1_lbl_date, "OCT 15", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 6, 26);
+    gui_text_type_set((gui_text_t *)e1_lbl_date, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)e1_lbl_date, LEFT);
+
+    // Create e1_img_laptop (hg_image)
+    e1_img_laptop = gui_img_create_from_fs((gui_obj_t *)view, "e1_img_laptop", "/elements/inactive_ic_laptop_on.bin", 266, 25, 28, 24);
+
+    // Create e1_img_battery (hg_image)
+    e1_img_battery = gui_img_create_from_fs((gui_obj_t *)view, "e1_img_battery", "/elements/inactive_ic_battery_full.bin", 304, 26, 40, 21);
+
+    // Create e1_img_cloud (hg_image)
+    e1_img_cloud = gui_img_create_from_fs((gui_obj_t *)view, "e1_img_cloud", "/elements/common_ic_cloud.bin", 354, 28, 26, 19);
+
+    // Create e1_lbl_cloud_count (hg_label)
+    e1_lbl_cloud_count = gui_text_create((gui_obj_t *)view, "e1_lbl_cloud_count", 384, 22, 30, 30);
+    gui_text_set((gui_text_t *)e1_lbl_cloud_count, "3", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 1, 26);
+    gui_text_type_set((gui_text_t *)e1_lbl_cloud_count, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)e1_lbl_cloud_count, LEFT);
+}
+GUI_VIEW_INSTANCE("view_e1_pill", false, view_e1_pill_switch_in, view_e1_pill_switch_out, false);
+
+// Create view_f0_progress (hg_view)
+static void view_f0_progress_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void view_f0_progress_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "view_g0_low_battery", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_e0_island", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_f1_failed", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_f3_updated", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
+
+
+    // Create f0_img_bg (hg_image)
+    f0_img_bg = gui_img_create_from_fs((gui_obj_t *)view, "f0_img_bg", "/elements/bg_main.bin", 0, 0, 450, 390);
+
+    // Create f0_img_ring (hg_image)
+    f0_img_ring = gui_img_create_from_fs((gui_obj_t *)view, "f0_img_ring", "/elements/upgc_ring_01.bin", 142, 82, 165, 170);
+    // Bind timer: anim
+    gui_obj_create_timer((gui_obj_t *)f0_img_ring, 40, true, f0_img_ring_f_cb);
+    gui_obj_start_timer((gui_obj_t *)f0_img_ring);
+
+    // Create f0_lbl_year (hg_label)
+    f0_lbl_year = gui_text_create((gui_obj_t *)view, "f0_lbl_year", 48, 7, 80, 30);
+    gui_text_set((gui_text_t *)f0_lbl_year, "2026", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 4, 26);
+    gui_text_type_set((gui_text_t *)f0_lbl_year, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)f0_lbl_year, LEFT);
+
+    // Create f0_lbl_date (hg_label)
+    f0_lbl_date = gui_text_create((gui_obj_t *)view, "f0_lbl_date", 48, 33, 100, 30);
+    gui_text_set((gui_text_t *)f0_lbl_date, "OCT 15", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 6, 26);
+    gui_text_type_set((gui_text_t *)f0_lbl_date, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)f0_lbl_date, LEFT);
+
+    // Create f0_img_laptop (hg_image)
+    f0_img_laptop = gui_img_create_from_fs((gui_obj_t *)view, "f0_img_laptop", "/elements/inactive_ic_laptop_on.bin", 322, 24, 28, 24);
+
+    // Create f0_img_battery (hg_image)
+    f0_img_battery = gui_img_create_from_fs((gui_obj_t *)view, "f0_img_battery", "/elements/inactive_ic_battery_full.bin", 360, 25, 40, 21);
+
+    // Create f0_lbl_title (hg_label)
+    f0_lbl_title = gui_text_create((gui_obj_t *)view, "f0_lbl_title", 79, 262, 300, 44);
+    gui_text_set((gui_text_t *)f0_lbl_title, "Updating firmware", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 17, 32);
+    gui_text_type_set((gui_text_t *)f0_lbl_title, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)f0_lbl_title, LEFT);
+
+    // Create f0_lbl_hint (hg_label)
+    f0_lbl_hint = gui_text_create((gui_obj_t *)view, "f0_lbl_hint", 104, 317, 330, 34);
+    gui_text_set((gui_text_t *)f0_lbl_hint, "keep USB connected", GUI_FONT_SRC_TTF, gui_rgb(128, 128, 128), 18, 25);
+    gui_text_type_set((gui_text_t *)f0_lbl_hint, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)f0_lbl_hint, LEFT);
+}
+GUI_VIEW_INSTANCE("view_f0_progress", false, view_f0_progress_switch_in, view_f0_progress_switch_out, false);
+
+// Create view_f1_failed (hg_view)
+static void view_f1_failed_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void view_f1_failed_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "view_g0_low_battery", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_e0_island", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_f2_updating", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_f0_progress", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
+
+
+    // Create f1_img_bg (hg_image)
+    f1_img_bg = gui_img_create_from_fs((gui_obj_t *)view, "f1_img_bg", "/elements/bg_main.bin", 0, 0, 450, 390);
+
+    // Create f1_img_alert (hg_image)
+    f1_img_alert = gui_img_create_from_fs((gui_obj_t *)view, "f1_img_alert", "/elements/upgc_ic_alert.bin", 149, 90, 151, 154);
+
+    // Create f1_lbl_year (hg_label)
+    f1_lbl_year = gui_text_create((gui_obj_t *)view, "f1_lbl_year", 48, 7, 80, 30);
+    gui_text_set((gui_text_t *)f1_lbl_year, "2026", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 4, 26);
+    gui_text_type_set((gui_text_t *)f1_lbl_year, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)f1_lbl_year, LEFT);
+
+    // Create f1_lbl_date (hg_label)
+    f1_lbl_date = gui_text_create((gui_obj_t *)view, "f1_lbl_date", 48, 33, 100, 30);
+    gui_text_set((gui_text_t *)f1_lbl_date, "OCT 15", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 6, 26);
+    gui_text_type_set((gui_text_t *)f1_lbl_date, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)f1_lbl_date, LEFT);
+
+    // Create f1_img_laptop (hg_image)
+    f1_img_laptop = gui_img_create_from_fs((gui_obj_t *)view, "f1_img_laptop", "/elements/inactive_ic_laptop_on.bin", 322, 24, 28, 24);
+
+    // Create f1_img_battery (hg_image)
+    f1_img_battery = gui_img_create_from_fs((gui_obj_t *)view, "f1_img_battery", "/elements/inactive_ic_battery_full.bin", 360, 25, 40, 21);
+
+    // Create f1_lbl_title (hg_label)
+    f1_lbl_title = gui_text_create((gui_obj_t *)view, "f1_lbl_title", 132, 263, 220, 44);
+    gui_text_set((gui_text_t *)f1_lbl_title, "Update failed", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 13, 29);
+    gui_text_type_set((gui_text_t *)f1_lbl_title, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)f1_lbl_title, LEFT);
+
+    // Create f1_lbl_hint (hg_label)
+    f1_lbl_hint = gui_text_create((gui_obj_t *)view, "f1_lbl_hint", 105, 313, 260, 34);
+    gui_text_set((gui_text_t *)f1_lbl_hint, "keep USB connected", GUI_FONT_SRC_TTF, gui_rgb(128, 128, 128), 18, 25);
+    gui_text_type_set((gui_text_t *)f1_lbl_hint, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)f1_lbl_hint, LEFT);
+}
+GUI_VIEW_INSTANCE("view_f1_failed", false, view_f1_failed_switch_in, view_f1_failed_switch_out, false);
+
+// Create view_f2_updating (hg_view)
+static void view_f2_updating_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void view_f2_updating_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "view_g0_low_battery", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_e0_island", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_f3_updated", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_f1_failed", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
+
+
+    // Create f2_img_bar (hg_image)
+    f2_img_bar = gui_img_create_from_fs((gui_obj_t *)view, "f2_img_bar", "/elements/upgrade_bar_track.bin", 39, 64, 372, 26);
+
+    // Create f2_lbl_updating (hg_label)
+    f2_lbl_updating = gui_text_create((gui_obj_t *)view, "f2_lbl_updating", 48, 20, 180, 34);
+    gui_text_set((gui_text_t *)f2_lbl_updating, "Updating...", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 11, 27);
+    gui_text_type_set((gui_text_t *)f2_lbl_updating, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)f2_lbl_updating, LEFT);
+
+    // Create f2_lbl_pct (hg_label)
+    f2_lbl_pct = gui_text_create((gui_obj_t *)view, "f2_lbl_pct", 350, 21, 70, 30);
+    gui_text_set((gui_text_t *)f2_lbl_pct, "56%", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 3, 27);
+    gui_text_type_set((gui_text_t *)f2_lbl_pct, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)f2_lbl_pct, LEFT);
+}
+GUI_VIEW_INSTANCE("view_f2_updating", false, view_f2_updating_switch_in, view_f2_updating_switch_out, false);
+
+// Create view_f3_updated (hg_view)
+static void view_f3_updated_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void view_f3_updated_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "view_g0_low_battery", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_e0_island", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_f0_progress", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_f2_updating", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
+
+
+    // Create f3_img_check (hg_image)
+    f3_img_check = gui_img_create_from_fs((gui_obj_t *)view, "f3_img_check", "/elements/inactive_ic_check.bin", 48, 13, 48, 48);
+
+    // Create f3_lbl_updated (hg_label)
+    f3_lbl_updated = gui_text_create((gui_obj_t *)view, "f3_lbl_updated", 108, 22, 140, 34);
+    gui_text_set((gui_text_t *)f3_lbl_updated, "Updated", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 7, 26);
+    gui_text_type_set((gui_text_t *)f3_lbl_updated, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)f3_lbl_updated, LEFT);
+
+    // Create f3_img_laptop (hg_image)
+    f3_img_laptop = gui_img_create_from_fs((gui_obj_t *)view, "f3_img_laptop", "/elements/inactive_ic_laptop_on.bin", 322, 25, 28, 24);
+
+    // Create f3_img_battery (hg_image)
+    f3_img_battery = gui_img_create_from_fs((gui_obj_t *)view, "f3_img_battery", "/elements/inactive_ic_battery_full.bin", 360, 26, 40, 21);
+}
+GUI_VIEW_INSTANCE("view_f3_updated", false, view_f3_updated_switch_in, view_f3_updated_switch_out, false);
+
+// Create view_g0_low_battery (hg_view)
+static void view_g0_low_battery_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void view_g0_low_battery_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "view_a0_connecting", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_f0_progress", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_g1_storage_full", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_g2_no_sound", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
+
+
+    // Create g0_img_bg (hg_image)
+    g0_img_bg = gui_img_create_from_fs((gui_obj_t *)view, "g0_img_bg", "/elements/bg_main.bin", 0, 0, 450, 390);
+
+    // Create g0_img_wave (hg_image)
+    g0_img_wave = gui_img_create_from_fs((gui_obj_t *)view, "g0_img_wave", "/elements/common_ic_wave_color.bin", 33, 155, 381, 80);
+
+    // Create g0_img_rec_dot (hg_image)
+    g0_img_rec_dot = gui_img_create_from_fs((gui_obj_t *)view, "g0_img_rec_dot", "/elements/common_ic_rec_dot.bin", 47, 27, 18, 19);
+    // Bind timer: REC blink
+    gui_obj_create_timer((gui_obj_t *)g0_img_rec_dot, 50, true, g0_img_rec_dot_blink_cb);
+    gui_obj_start_timer((gui_obj_t *)g0_img_rec_dot);
+
+    // Create g0_lbl_rec (hg_label)
+    g0_lbl_rec = gui_text_create((gui_obj_t *)view, "g0_lbl_rec", 76, 20, 70, 30);
+    gui_text_set((gui_text_t *)g0_lbl_rec, "REC", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 3, 26);
+    gui_text_type_set((gui_text_t *)g0_lbl_rec, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)g0_lbl_rec, LEFT);
+
+    // Create g0_img_laptop (hg_image)
+    g0_img_laptop = gui_img_create_from_fs((gui_obj_t *)view, "g0_img_laptop", "/elements/inactive_ic_laptop_on.bin", 267, 25, 28, 24);
+
+    // Create g0_img_battery (hg_image)
+    g0_img_battery = gui_img_create_from_fs((gui_obj_t *)view, "g0_img_battery", "/elements/inactive_ic_battery_low_red.bin", 304, 26, 40, 21);
+
+    // Create g0_img_cloud (hg_image)
+    g0_img_cloud = gui_img_create_from_fs((gui_obj_t *)view, "g0_img_cloud", "/elements/common_ic_cloud.bin", 355, 26, 26, 19);
+
+    // Create g0_lbl_cloud_count (hg_label)
+    g0_lbl_cloud_count = gui_text_create((gui_obj_t *)view, "g0_lbl_cloud_count", 384, 20, 30, 30);
+    gui_text_set((gui_text_t *)g0_lbl_cloud_count, "2", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 1, 26);
+    gui_text_type_set((gui_text_t *)g0_lbl_cloud_count, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)g0_lbl_cloud_count, LEFT);
+
+    // Create g0_lbl_warning (hg_label)
+    g0_lbl_warning = gui_text_create((gui_obj_t *)view, "g0_lbl_warning", 143, 84, 180, 36);
+    gui_text_set((gui_text_t *)g0_lbl_warning, "Low battery", GUI_FONT_SRC_TTF, gui_rgb(255, 49, 65), 11, 28);
+    gui_text_type_set((gui_text_t *)g0_lbl_warning, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)g0_lbl_warning, LEFT);
+
+    // Create g0_img_mark (hg_image)
+    g0_img_mark = gui_img_create_from_fs((gui_obj_t *)view, "g0_img_mark", "/elements/common_ic_arrow.bin", 47, 273, 30, 30);
+
+    // Create g0_lbl_mark_num (hg_label)
+    g0_lbl_mark_num = gui_text_create((gui_obj_t *)view, "g0_lbl_mark_num", 81, 272, 30, 32);
+    gui_text_set((gui_text_t *)g0_lbl_mark_num, "2", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 1, 27);
+    gui_text_type_set((gui_text_t *)g0_lbl_mark_num, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)g0_lbl_mark_num, LEFT);
+
+    // Create g0_lbl_mode (hg_label)
+    g0_lbl_mode = gui_text_create((gui_obj_t *)view, "g0_lbl_mode", 46, 306, 120, 30);
+    gui_text_set((gui_text_t *)g0_lbl_mode, "Mode A", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 6, 26);
+    gui_text_type_set((gui_text_t *)g0_lbl_mode, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)g0_lbl_mode, LEFT);
+
+    // Create g0_lbl_timer (hg_timer_label)
+    g0_lbl_timer = gui_text_create((gui_obj_t *)view, "g0_lbl_timer", 172, 272, 270, 55);
+    gui_text_set((gui_text_t *)g0_lbl_timer, g0_lbl_timer_time_str, GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), strlen(g0_lbl_timer_time_str), 52);
+    gui_text_type_set((gui_text_t *)g0_lbl_timer, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)g0_lbl_timer, LEFT);
+    // Create timer (interval 10ms, infinite loop)
+    gui_obj_create_timer((gui_obj_t *)g0_lbl_timer, 10, -1, g0_lbl_timer_timer_cb);
+    g0_lbl_timer_start();
+}
+GUI_VIEW_INSTANCE("view_g0_low_battery", false, view_g0_low_battery_switch_in, view_g0_low_battery_switch_out, false);
+
+// Create view_g1_storage_full (hg_view)
+static void view_g1_storage_full_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void view_g1_storage_full_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "view_a0_connecting", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_f0_progress", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_g2_no_sound", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_g0_low_battery", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
+
+
+    // Create g1_img_bg (hg_image)
+    g1_img_bg = gui_img_create_from_fs((gui_obj_t *)view, "g1_img_bg", "/elements/bg_main.bin", 0, 0, 450, 390);
+
+    // Create g1_img_rec_dot (hg_image)
+    g1_img_rec_dot = gui_img_create_from_fs((gui_obj_t *)view, "g1_img_rec_dot", "/elements/common_ic_rec_dot.bin", 47, 27, 18, 19);
+    // Bind timer: REC blink
+    gui_obj_create_timer((gui_obj_t *)g1_img_rec_dot, 50, true, g1_img_rec_dot_blink_cb);
+    gui_obj_start_timer((gui_obj_t *)g1_img_rec_dot);
+
+    // Create g1_lbl_rec (hg_label)
+    g1_lbl_rec = gui_text_create((gui_obj_t *)view, "g1_lbl_rec", 76, 20, 70, 30);
+    gui_text_set((gui_text_t *)g1_lbl_rec, "REC", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 3, 26);
+    gui_text_type_set((gui_text_t *)g1_lbl_rec, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)g1_lbl_rec, LEFT);
+
+    // Create g1_img_device (hg_image)
+    g1_img_device = gui_img_create_from_fs((gui_obj_t *)view, "g1_img_device", "/elements/error_ic_device_red.bin", 211, 22, 28, 31);
+
+    // Create g1_img_laptop (hg_image)
+    g1_img_laptop = gui_img_create_from_fs((gui_obj_t *)view, "g1_img_laptop", "/elements/inactive_ic_laptop_off.bin", 267, 25, 28, 24);
+
+    // Create g1_img_battery (hg_image)
+    g1_img_battery = gui_img_create_from_fs((gui_obj_t *)view, "g1_img_battery", "/elements/inactive_ic_battery_full.bin", 305, 26, 40, 21);
+
+    // Create g1_img_cloud (hg_image)
+    g1_img_cloud = gui_img_create_from_fs((gui_obj_t *)view, "g1_img_cloud", "/elements/common_ic_cloud.bin", 355, 27, 26, 19);
+
+    // Create g1_lbl_cloud_count (hg_label)
+    g1_lbl_cloud_count = gui_text_create((gui_obj_t *)view, "g1_lbl_cloud_count", 384, 21, 30, 30);
+    gui_text_set((gui_text_t *)g1_lbl_cloud_count, "2", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 1, 26);
+    gui_text_type_set((gui_text_t *)g1_lbl_cloud_count, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)g1_lbl_cloud_count, LEFT);
+
+    // Create g1_lbl_warning (hg_label)
+    g1_lbl_warning = gui_text_create((gui_obj_t *)view, "g1_lbl_warning", 107, 84, 260, 38);
+    gui_text_set((gui_text_t *)g1_lbl_warning, "Local storage full", GUI_FONT_SRC_TTF, gui_rgb(255, 49, 65), 18, 29);
+    gui_text_type_set((gui_text_t *)g1_lbl_warning, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)g1_lbl_warning, LEFT);
+
+    // Create g1_img_mark (hg_image)
+    g1_img_mark = gui_img_create_from_fs((gui_obj_t *)view, "g1_img_mark", "/elements/common_ic_arrow.bin", 47, 273, 30, 30);
+
+    // Create g1_img_wave (hg_image)
+    g1_img_wave = gui_img_create_from_fs((gui_obj_t *)view, "g1_img_wave", "/elements/error_ic_wave_flat.bin", 50, 160, 351, 67);
+
+    // Create g1_lbl_mark_num (hg_label)
+    g1_lbl_mark_num = gui_text_create((gui_obj_t *)view, "g1_lbl_mark_num", 80, 271, 30, 32);
+    gui_text_set((gui_text_t *)g1_lbl_mark_num, "2", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 1, 27);
+    gui_text_type_set((gui_text_t *)g1_lbl_mark_num, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)g1_lbl_mark_num, LEFT);
+
+    // Create g1_lbl_mode (hg_label)
+    g1_lbl_mode = gui_text_create((gui_obj_t *)view, "g1_lbl_mode", 46, 306, 120, 30);
+    gui_text_set((gui_text_t *)g1_lbl_mode, "Mode A", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 6, 26);
+    gui_text_type_set((gui_text_t *)g1_lbl_mode, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)g1_lbl_mode, LEFT);
+
+    // Create g1_lbl_timer (hg_timer_label)
+    g1_lbl_timer = gui_text_create((gui_obj_t *)view, "g1_lbl_timer", 172, 272, 270, 55);
+    gui_text_set((gui_text_t *)g1_lbl_timer, g1_lbl_timer_time_str, GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), strlen(g1_lbl_timer_time_str), 52);
+    gui_text_type_set((gui_text_t *)g1_lbl_timer, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)g1_lbl_timer, LEFT);
+    // Create timer (interval 10ms, infinite loop)
+    gui_obj_create_timer((gui_obj_t *)g1_lbl_timer, 10, -1, g1_lbl_timer_timer_cb);
+    g1_lbl_timer_start();
+}
+GUI_VIEW_INSTANCE("view_g1_storage_full", false, view_g1_storage_full_switch_in, view_g1_storage_full_switch_out, false);
+
+// Create view_g2_no_sound (hg_view)
+static void view_g2_no_sound_switch_out(gui_view_t *view)
+{
+    GUI_UNUSED(view);
+}
+
+static void view_g2_no_sound_switch_in(gui_view_t *view)
+{
+    // Set animation step
+    gui_view_set_animate_step(view, 39);
+
+    // Set opacity
+    gui_view_set_opacity(view, 255);
+
+    // Set background color
+    gui_view_set_bg_color(view, gui_rgb(0, 0, 0));
+
+    gui_view_switch_on_event(view, "view_a0_connecting", SWITCH_OUT_TO_LEFT_USE_TRANSLATION, SWITCH_IN_FROM_RIGHT_USE_TRANSLATION, GUI_EVENT_TOUCH_LEFT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_f0_progress", SWITCH_OUT_TO_RIGHT_USE_TRANSLATION, SWITCH_IN_FROM_LEFT_USE_TRANSLATION, GUI_EVENT_TOUCH_RIGHT_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_g0_low_battery", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_UP_SLIDE_QUICK);
+    gui_view_switch_on_event(view, "view_g1_storage_full", SWITCH_OUT_ANIMATION_FADE, SWITCH_IN_ANIMATION_FADE, GUI_EVENT_TOUCH_DOWN_SLIDE_QUICK);
+
+
+    // Create g2_img_bg (hg_image)
+    g2_img_bg = gui_img_create_from_fs((gui_obj_t *)view, "g2_img_bg", "/elements/bg_main.bin", 0, 0, 450, 390);
+
+    // Create g2_img_rec_dot (hg_image)
+    g2_img_rec_dot = gui_img_create_from_fs((gui_obj_t *)view, "g2_img_rec_dot", "/elements/common_ic_rec_dot.bin", 47, 27, 18, 19);
+    // Bind timer: REC blink
+    gui_obj_create_timer((gui_obj_t *)g2_img_rec_dot, 50, true, g2_img_rec_dot_blink_cb);
+    gui_obj_start_timer((gui_obj_t *)g2_img_rec_dot);
+
+    // Create g2_lbl_rec (hg_label)
+    g2_lbl_rec = gui_text_create((gui_obj_t *)view, "g2_lbl_rec", 76, 20, 70, 30);
+    gui_text_set((gui_text_t *)g2_lbl_rec, "REC", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 3, 26);
+    gui_text_type_set((gui_text_t *)g2_lbl_rec, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)g2_lbl_rec, LEFT);
+
+    // Create g2_img_laptop (hg_image)
+    g2_img_laptop = gui_img_create_from_fs((gui_obj_t *)view, "g2_img_laptop", "/elements/inactive_ic_laptop_on.bin", 267, 25, 28, 24);
+
+    // Create g2_img_battery (hg_image)
+    g2_img_battery = gui_img_create_from_fs((gui_obj_t *)view, "g2_img_battery", "/elements/inactive_ic_battery_full.bin", 305, 26, 40, 21);
+
+    // Create g2_img_cloud (hg_image)
+    g2_img_cloud = gui_img_create_from_fs((gui_obj_t *)view, "g2_img_cloud", "/elements/common_ic_cloud.bin", 355, 27, 26, 19);
+
+    // Create g2_lbl_cloud_count (hg_label)
+    g2_lbl_cloud_count = gui_text_create((gui_obj_t *)view, "g2_lbl_cloud_count", 384, 21, 30, 30);
+    gui_text_set((gui_text_t *)g2_lbl_cloud_count, "2", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 1, 26);
+    gui_text_type_set((gui_text_t *)g2_lbl_cloud_count, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)g2_lbl_cloud_count, LEFT);
+
+    // Create g2_lbl_warning (hg_label)
+    g2_lbl_warning = gui_text_create((gui_obj_t *)view, "g2_lbl_warning", 94, 85, 280, 36);
+    gui_text_set((gui_text_t *)g2_lbl_warning, "No sound detected", GUI_FONT_SRC_TTF, gui_rgb(243, 187, 99), 17, 29);
+    gui_text_type_set((gui_text_t *)g2_lbl_warning, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)g2_lbl_warning, LEFT);
+
+    // Create g2_img_wave (hg_image)
+    g2_img_wave = gui_img_create_from_fs((gui_obj_t *)view, "g2_img_wave", "/elements/error_ic_wave_flat.bin", 50, 160, 351, 67);
+
+    // Create g2_img_mark (hg_image)
+    g2_img_mark = gui_img_create_from_fs((gui_obj_t *)view, "g2_img_mark", "/elements/common_ic_arrow.bin", 47, 273, 30, 30);
+
+    // Create g2_lbl_mark_num (hg_label)
+    g2_lbl_mark_num = gui_text_create((gui_obj_t *)view, "g2_lbl_mark_num", 80, 271, 30, 32);
+    gui_text_set((gui_text_t *)g2_lbl_mark_num, "2", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 1, 27);
+    gui_text_type_set((gui_text_t *)g2_lbl_mark_num, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)g2_lbl_mark_num, LEFT);
+
+    // Create g2_lbl_mode (hg_label)
+    g2_lbl_mode = gui_text_create((gui_obj_t *)view, "g2_lbl_mode", 46, 306, 120, 30);
+    gui_text_set((gui_text_t *)g2_lbl_mode, "Mode A", GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), 6, 26);
+    gui_text_type_set((gui_text_t *)g2_lbl_mode, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)g2_lbl_mode, LEFT);
+
+    // Create g2_lbl_timer (hg_timer_label)
+    g2_lbl_timer = gui_text_create((gui_obj_t *)view, "g2_lbl_timer", 169, 272, 270, 55);
+    gui_text_set((gui_text_t *)g2_lbl_timer, g2_lbl_timer_time_str, GUI_FONT_SRC_TTF, gui_rgb(255, 255, 255), strlen(g2_lbl_timer_time_str), 52);
+    gui_text_type_set((gui_text_t *)g2_lbl_timer, "/Inter_SemiBold_vector.bin", FONT_SRC_FILESYS);
+    gui_text_mode_set((gui_text_t *)g2_lbl_timer, LEFT);
+    // Create timer (interval 10ms, infinite loop)
+    gui_obj_create_timer((gui_obj_t *)g2_lbl_timer, 10, -1, g2_lbl_timer_timer_cb);
+    g2_lbl_timer_start();
+}
+GUI_VIEW_INSTANCE("view_g2_no_sound", false, view_g2_no_sound_switch_in, view_g2_no_sound_switch_out, false);
